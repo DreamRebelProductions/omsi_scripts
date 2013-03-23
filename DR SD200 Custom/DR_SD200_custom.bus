@@ -34,8 +34,8 @@ Engine: Cummins ISBe4 225, 225 PK/HP, 165 kW, 850 Nm.
 Gearbox: ZF Ecomat-6HP504C
 Maximum speed: 90 km/h
 
-Empty weight: 9800 kg
-Gross weight: 12.000 kg
+Empty weight: 10.500 kg
+Gross weight: 14.000 kg
 
 Seats upper deck: 47
 Seats lower deck: 34
@@ -62,7 +62,7 @@ Standing places: 8
 
 
 [number]
-Regs_SD83.org
+Regs_SD200.org
 
 	[registration_free]
 
@@ -72,15 +72,15 @@ B-V
 
 
 [kmcounter_init]
-2000
-60000
+2013
+00000
 
 
 [sound]
-sound\Sound_SD82.cfg
+Sound\sound_dr_sd_200_custom_voith.cfg
 
 [sound_ai]
-sound\Sound_SD80_AI.cfg
+sound\sound_dr_sd_200_custom_voith.cfg
 
 [model]
 model\model_SD83.cfg
