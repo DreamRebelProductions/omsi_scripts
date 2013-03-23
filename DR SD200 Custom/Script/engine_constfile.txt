@@ -142,7 +142,7 @@ Heizwert Diesel: 11.8 kWh/kg mit Dichte 0.845 kg/l verrechnet
 
 [const]
 engine_tank_capacity
-250
+280
 
 
 [const]
