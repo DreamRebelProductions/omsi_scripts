@@ -16,11 +16,11 @@ engine_ASR
 
 [const]
 engine_governed_idle_RPM
-592
+993
 
 [const]
 engine_power_idle
-22710
+32710
 
 [const]
 engine_coldM
@@ -34,39 +34,39 @@ engine_M_maxThrottle
 0
 
 [pnt]
-300
-400
-
-[pnt]
-592
-500
-
-[pnt]
 600
+300
+
+[pnt]
+1092
 500
 
 [pnt]
-1000
+2000
+500
+
+[pnt]
+2600
 630
 
 [pnt]
-1400
+4000
 660
 
 [pnt]
-1900
+4900
 650
 
 [pnt]
-2100
+5500
 641
 
 [pnt]
-2300
+6300
 530
 
 [pnt]
-2350
+7350
 0
 
 [newcurve]
