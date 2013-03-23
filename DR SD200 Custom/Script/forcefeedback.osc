@@ -1,0 +1,36 @@
+'##############
+'Force Feedback
+'##############
+
+'Force Feedback Effects
+
+'Verursacht das typische Scheppern im SD bei Leerlauf im Force-Feedback-Lenkrad
+
+'(c) 25.04.2008 Marcel Kuhnt
+
+'Script Version: 1.0
+'Omsi release: 1.0
+
+'Needs:
+'- engine
+
+'Revision History:
+'- Marcel Kuhnt		25.04.2008	File created
+'- Marcel Kuhnt		10.08.2009	Revision History Added
+
+'------------------------------------------------------------------------------------------
+
+
+
+{macro:FF_frame}
+
+	(L.L.engine_n) s0 (F.L.FF_vibampl_n)
+	(L.L.Throttle) (F.L.FF_vibampl_Throttle) * 0.1 * (S.L.FF_Vib_Amp)
+
+	l0 0 >
+	{if}
+		60 l0 / (S.L.FF_Vib_Period)
+	{else}
+		1 (S.L.FF_Vib_Period)
+	{endif}
+{end}

@@ -1,0 +1,410 @@
+'##############
+'Matrix Script
+'##############
+
+'Simulates 80s style Matrix Line and Terminus Display (Type Annax)
+
+'(c) 13.04.2010 Marcel Kuhnt
+
+'Script Version: 1.1
+'Omsi release: 1.0
+
+'Needs:
+'- Cockpit (Batterietrennschalter)
+'- IBIS
+
+
+'Revision History:
+'- Marcel Kuhnt		10.08.2009	Added Revision History
+'- Marcel Kuhnt		13.04.2010	Added Line List Script
+
+'------------------------------------------------------------------------------------------
+
+
+{macro:Matrix_init}
+	0 (S.L.Matrix_TerminusIndex_Last)
+	0 (S.L.Matrix_Nr_Last)
+	"                @                @                " (S.$.Matrix_Terminus)
+	"   " (S.$.Matrix_Nr)
+{end}
+
+
+{trigger:ai_scheduled_settarget}
+
+'Stromversorgung herstellen:
+	1 (S.L.elec_busbar_main_sw)	
+	1.0 (S.L.elec_V_battery)
+
+'Hier wird die Nummer eingestellt:
+	(L.$.SetLineTo) 3 $SetLengthL (S.$.Matrix_Nr)
+
+'Hier wird das Ziel eingestellt:
+	1 (S.L.elec_busbar_main_sw)
+	(L.L.AI_target_index) (S.L.IBIS_TerminusIndex) (M.V.GetTerminusCode) (S.L.Debug_2) (S.L.IBIS_TerminusCode)
+
+{end}
+
+
+{macro:Matrix_frame}
+
+'******************************+
+'    Terminus-Matrix
+'******************************+
+
+' Zeitdifferenz:
+	(L.S.GetTime) (L.L.Matrix_TerminusActTimer) - s2
+
+	l2 0 <
+	{if}
+		(L.S.GetTime) (S.L.Matrix_TerminusActTimer) 0 s2
+		1 (S.L.Matrix_TerminusCreateString)
+	{endif}
+
+
+' Ob der Suffix >= 94 ist, speichere in s4:
+	(L.L.IBIS_Linie_Suffix) 94 >= s4
+
+'Changecounter zurücksetzen: (wenn kein Wechselziel angezeigt wird)
+	(L.L.IBIS_Linie_Suffix) 97 <=
+	(L.L.IBIS_Linie_Suffix) 96 = ! &&
+	(L.L.IBIS_Linie_Suffix) 95 = ! &&
+	{if}
+		0 (S.L.Matrix_ChangeCounter)
+	{endif}
+
+' Wenn sich das neue Ziel vom alten unterscheidet, dann wechsele:
+
+	l4 ! (L.L.IBIS_TerminusIndex) s0 (L.L.Matrix_TerminusIndex_Last) = !  &&
+
+' ODER wenn die Nummer eine "zielbeeinflussende" ist und ungleich dem negativen Matrix_terminusIndex_Last:
+
+	l4 (L.L.IBIS_Linie_Suffix) s1 /-/ (L.L.Matrix_TerminusIndex_Last) = ! && ||
+	(L.L.elec_busbar_main) &&
+	{if}
+		l2 (C.L.Matrix_Waittime) (C.L.Matrix_Changetime_Terminus) 3.5 * + <
+		{if}
+			l2 (C.L.Matrix_Waittime) >
+			{if}
+' Nur beim ersten Mal:
+				(L.L.Matrix_TerminusCreateString)
+				{if}
+					l1 94 =
+					{if}
+						" 'FIX, SCHWYZ!' @ QUÄKTE JÜRGEN  @ BLÖD VOM PASS. " (S.$.Matrix_NewTerminus)
+					{else}
+					l1 95 = (L.L.Matrix_ChangeCounter) ! &&
+					{if}
+						" FRANZ JAGT IM  @ KOMPLETT VER-  @WAHRLOSTEN TAXI " (S.$.Matrix_NewTerminus)
+					{else}
+					l1 95 =
+					{if}
+						"   QUER DURCH   @    BAYERN.     @1234567890,;(*')" (S.$.Matrix_NewTerminus)
+					{else}
+					l1 96 = (L.L.Matrix_ChangeCounter) ! &&
+					{if}
+						" 01234567890ABCD@EFGHIJKLMNOPQRST@UVWXYZÄÖÜ-.'+/xy" (S.$.Matrix_NewTerminus)
+					{else}
+					l1 96 =
+					{if}
+						"()*;,%&zyx/+'.-A@ÖÜABCDEFGHIJKLMN@OPQRSTUVWXYZ0123" (S.$.Matrix_NewTerminus)
+					{else}
+					l1 97 =
+					{if}
+						"SOFTWAREVERSION @  JULI   2009   @VERS. JULI  2009" (S.$.Matrix_NewTerminus)
+					{else}
+					l1 98 = (L.L.Matrix_ChangeCounter) &&
+					{if}
+						"yxyxyxyxyxyxyxyx@xyxyxyxyxyxyxyxy@yxyxyxyxyxyxyxyx" (S.$.Matrix_NewTerminus)
+					{else}
+					l1 98 =
+					{if}
+						"xyxyxyxyxyxyxyxy@yxyxyxyxyxyxyxyx@xyxyxyxyxyxyxyxy" (S.$.Matrix_NewTerminus)
+					{else}
+					l1 99 = (L.L.Matrix_ChangeCounter) &&
+					{if}
+						"                @                @                " (S.$.Matrix_NewTerminus)
+					{else}
+					l1 99 =
+					{if}
+						"zzzzzzzzzzzzzzzz@zzzzzzzzzzzzzzzz@zzzzzzzzzzzzzzzz" (S.$.Matrix_NewTerminus)
+					{else}
+						l0 1 (M.V.GetTerminusString) 16 $SetLengthL "@" $+
+						l0 2 (M.V.GetTerminusString) 16 $SetLengthL "@" $+ $+
+						l0 3 (M.V.GetTerminusString) 16 $SetLengthL $+ (S.$.Matrix_NewTerminus)
+					{endif}
+					{endif}
+					{endif}
+					{endif}
+					{endif}
+					{endif}
+					{endif}
+					{endif}
+					{endif}
+					{endif}
+					0 (S.L.Matrix_TerminusCreateString)
+					(T.L.ev_Matrix_Terminus_change)
+'Das soeben in den temporären Speicher geschriebene Ziel:
+					l4
+					{if}
+						l1 /-/ 
+					{else}
+						l0 
+					{endif}
+					(S.L.Matrix_TerminusAct)
+				{endif}
+
+'Zahl von aktualisierten Zeichen:
+
+				l2 (C.L.Matrix_Waittime) - 0 max 16 * (C.L.Matrix_Changetime_Terminus) / trunc 50 min s3
+
+				l3 1 >=
+				{if}
+					(L.$.Matrix_NewTerminus) l3 $SetLengthL
+					(L.$.Matrix_Terminus) 50 l3 - $SetLengthR $+
+					(S.$.Matrix_Terminus)
+				{endif}
+			{endif}
+		{else}
+			l1 98 >=
+			l1 96 = ||
+			l1 95 = ||
+			{if}
+				(L.L.Matrix_ChangeCounter) ! (S.L.Matrix_ChangeCounter)
+'Hierdurch wird der Wechsel der Nummern-Matrix initiiert:
+				-1 (S.L.Matrix_Nr_Last)
+			{else}
+				(L.L.Matrix_TerminusAct) (S.L.Matrix_TerminusIndex_Last) (S.L.target_index_int)
+			{endif}
+			1 (S.L.Matrix_TerminusCreateString)
+			(L.S.GetTime) (S.L.Matrix_TerminusActTimer)
+			(L.$.Matrix_NewTerminus) (S.$.Matrix_Terminus)
+		{endif}
+
+'Omsi sagen, dass die Strings-Ausgaben aktualisiert werden sollen:
+		1 (S.L.Refresh_Strings)
+	
+	{else}
+		(L.S.GetTime) (S.L.Matrix_TerminusActTimer)
+		1 (S.L.Matrix_TerminusCreateString)
+	{endif}
+
+'******************************+
+'    Nr-Matrix
+'******************************+
+
+' Zeitdifferenz:
+	(L.S.GetTime) (L.L.Matrix_NrActTimer) - s2
+
+	l2 0 <
+	{if}
+		(L.S.GetTime) (S.L.Matrix_NrActTimer) 0 s2
+		1 (S.L.Matrix_NrCreateString)
+	{endif}
+
+' Wenn sich die neue Linie von der alten unterscheidet, dann wechsele:
+	(L.L.IBIS_Linie_Complex) s0 (L.L.Matrix_Nr_Last) = ! 
+	(L.L.elec_busbar_main) &&
+	{if}
+		l2 (C.L.Matrix_Waittime) (C.L.Matrix_Changetime_Nr) 1.5 * + <
+		{if}
+			l2 (C.L.Matrix_Waittime) >
+			{if}
+' Nur beim ersten Mal:
+				(L.L.Matrix_NrCreateString)
+				{if}
+					l0 100 / trunc s1
+					(L.L.IBIS_Linie_Suffix) s4
+' l0: Originalzahl; l1: erste drei Ziffern; l4: letzte zwei Ziffern
+
+' Falls gleich 0, dann gar nix:
+					l1 0 =
+					{if}
+						""
+					{else}
+' Sonst die normale Nummer:
+						l1 trunc $IntToStr
+					{endif}
+
+					(S.$.Matrix_NewNr)
+
+' ===============================================================================
+' Falls jetzt die hinteren beiden Ziffern (l2) etwas Interessantes enthalten:
+' ===============================================================================
+
+' Zunächst wird verlängert, wenn einstellig - und zwar je nach Anwendung links- oder rechtsbündig:
+
+					(L.$.Matrix_NewNr) $length 1 <=
+					{if}
+						l4 1 =
+						l4 5 = ||
+						l4 6 = ||
+						l4 24 = ||
+						l4 26 = ||
+						l4 28 = ||
+						{if}
+							2 $SetLengthL
+						{else}
+							2 $SetLengthR
+						{endif}
+					{endif}
+
+					(S.$.Matrix_NewNr)
+
+					l4 1 =
+					{if}
+						"E" (L.$.Matrix_NewNr) 2 $SetLengthR $+
+					{endif}
+					l4 2 =
+					{if}
+						"/^\"
+					{endif}
+					l4 3 =
+					{if}
+						"gh "
+					{endif}
+					l4 4 =
+					{if}
+						(L.$.Matrix_NewNr) 2 $SetLengthR "N" $+
+					{endif}
+					l4 5 = l4 24 = ||
+					{if}
+						"S" (L.$.Matrix_NewNr) 2 $SetLengthR $+
+					{endif}
+					l4 6 =
+					{if}
+						"A" (L.$.Matrix_NewNr) 2 $SetLengthR $+
+					{endif}
+
+					l4 9 =
+					{if}
+						" E" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+					l4 10 =
+					{if}
+						(L.$.Matrix_NewNr) 2 $SetLengthR "E" $+
+					{endif}
+					l4 11 =
+					{if}
+						" D" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+					l4 12 =
+					{if}
+						" C" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+					l4 13 =
+					{if}
+						" B" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+					l4 14 =
+					{if}
+						" A" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+					l4 15 =
+					{if}
+						" N" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+
+					l4 23 =
+					{if}
+						" S" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+' 24 s.o. bei 5!
+					l4 25 =
+					{if}
+						" U" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+					l4 26 =
+					{if}
+						"U" (L.$.Matrix_NewNr) 2 $SetLengthR $+
+					{endif}
+					l4 27 =
+					{if}
+						" M" (L.$.Matrix_NewNr) 1 $SetLengthR $+
+					{endif}
+					l4 28 =
+					{if}
+						"M" (L.$.Matrix_NewNr) 2 $SetLengthR $+
+					{endif}
+					l4 29 =
+					{if}
+						"BVG"
+					{endif}
+					l4 30 =
+					{if}
+						(L.$.Matrix_NewNr) 2 $SetLengthR "S" $+
+					{endif}
+					l4 31 =
+					{if}
+						(L.$.Matrix_NewNr) 2 $SetLengthR "U" $+
+					{endif}
+					l4 32 =
+					{if}
+						(L.$.Matrix_NewNr) 2 $SetLengthR "M" $+
+					{endif}
+					l4 35 =
+					{if}
+						"N" (L.$.Matrix_NewNr) 2 $SetLengthR $+
+					{endif}
+					l4 36 =
+					{if}
+						"X" (L.$.Matrix_NewNr) 2 $SetLengthR $+
+					{endif}
+					l4 98 = (L.L.Matrix_ChangeCounter) &&
+					{if}
+						"yxy"
+					{else}
+					l4 98 =
+					{if}
+						"xyx"
+					{endif}
+					{endif}
+					l4 99 = (L.L.Matrix_ChangeCounter) &&
+					{if}
+						"   "
+					{else}
+					l4 99 =
+					{if}
+						"zzz"
+					{endif}
+					{endif}
+
+
+					3 $SetLengthL
+
+					(S.$.Matrix_NewNr)
+
+					0 (S.L.Matrix_NrCreateString)
+					(T.L.ev_Matrix_Line_change)
+					l0 (S.L.Matrix_NrAct)
+				{endif}
+
+'Zahl von aktualisierten Zeichen:
+
+				l2 (C.L.Matrix_Waittime) - 0 max 3 * (C.L.Matrix_Changetime_Nr) / trunc 3 min s3
+
+				l3 1 >=
+				{if}
+					(L.$.Matrix_NewNr) l3 $SetLengthL
+					(L.$.Matrix_Nr) 3 l3 - $SetLengthR $+
+					(S.$.Matrix_Nr)
+				{endif}
+			{endif}
+		{else}
+			(L.L.Matrix_NrAct) (S.L.Matrix_Nr_Last)
+			(L.$.Matrix_NewNr) (S.$.Matrix_Nr)
+			1 (S.L.Matrix_NrCreateString)
+			(L.S.GetTime) (S.L.Matrix_NrActTimer)
+		{endif}		
+'Omsi sagen, dass die Strings-Ausgaben aktualisiert werden sollen:
+		1 (S.L.Refresh_Strings)
+	{else}
+		(L.S.GetTime) (S.L.Matrix_NrActTimer)
+		1 (S.L.Matrix_NrCreateString)
+	{endif}
+
+'Aktualisierung der Code-Tafel:
+
+	"Linienlisten\" (L.$.yard) "_ANX.jpg" $+ $+ (S.$.Matrix_Linelist)
+
+{end}
+
