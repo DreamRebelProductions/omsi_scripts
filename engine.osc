@@ -1,0 +1,355 @@
+'##############
+'Engine Script
+'##############
+
+'Simulates basic engine behaviour, fuel cunsumption and cooling circuit
+
+'(c) 23.03.2009 Rüdiger Hülsmann
+'(c) 09.08.2009 Marcel Kuhnt
+
+'Script Version: 1.0
+'Omsi release: 1.0
+
+'Needs:
+'- Antrieb
+'- Heizung
+
+
+'Revision History:
+'- Marcel Kuhnt		09.08.2009	Added Engine Failure
+'- Marcel Kuhnt		10.08.2009	Added Revision History
+'- Rüdiger Hülsmann	12.10.2009	Added possibility of idle speed control
+'- Rüdiger Hülsmann	11.05.2010	Added "E-Gas" function (throttle override by stop brake)
+'- Rüdiger Hülsmann	13.05.2010	Added engine temperature and cooling system
+'- Rüdiger Hülsmann	08.07.2010	Bugfix E-Gas
+'- Rüdiger Hülsmann	06.11.2010	Improved engine start and stop procedure 
+'- Marcel Kuhnt		09.11.2010	refueling included
+'- Rüdiger Hülsmann	21.11.2010	thermostat short circuit
+'- Rüdiger Hülsmann	22.11.2010	engine coolable by fan heaters
+'- Rüdiger Hülsmann	24.12.2010	optional ASR (traction control)
+'- Rüdiger Hülsmann	29.12.2010	ASR debugged
+'- Rüdiger Hülsmann	01.01.2011	ASR debugged again
+'- Rüdiger Hülsmann	05.01.2011	20h-switch E-Gas
+'- Marcel Kuhnt		07.01.2011	writing tank_percent variable
+'- Rüdiger Hülsmann	10.01.2011	Internal throttle set to 0 during shutdown
+
+'------------------------------------------------------------------------------------------
+
+
+'----------------------
+'	Trigger
+'----------------------
+
+{trigger:kw_m_engine_startbutton}
+	(L.L.engine_on) ! (L.L.antrieb_getr_gangwahl) 1 = (L.L.elec_busbar_main) && &&
+	{if}
+		1 (S.L.engine_on) (S.L.engine_injection_on)
+		(T.L.ev_enginestart)
+		300 (S.L.engine_n)
+	{endif}	
+	1 (S.L.cp_taster_anlasser)
+{end}
+
+{trigger:kw_m_engine_startbutton_off}
+	0 (S.L.cp_taster_anlasser)
+{end}
+
+{trigger:kw_m_enginestart}
+	(L.L.engine_starter_antirepeat) !
+	{if}
+		(L.L.engine_on) !
+		{if}	
+			(L.L.antrieb_getr_gangwahl) 1 = (L.L.elec_busbar_main) && 
+			{if}
+				1 (S.L.engine_on) (S.L.engine_injection_on)
+				(T.L.ev_enginestart)
+				300 (S.L.engine_n)
+			{endif}	
+			1 (S.L.cp_taster_anlasser) (S.L.engine_starter_antirepeat)
+		{else}
+			(L.L.elec_busbar_main)
+			{if}
+				0 (S.L.engine_injection_on)
+				1 (S.L.engine_starter_antirepeat)
+			{endif}
+			1 (S.L.cp_taster_motorabstellung)
+		{endif}
+	{endif}
+
+{end}
+
+{trigger:kw_m_enginestart_off}
+	0 (S.L.cp_taster_motorabstellung) (S.L.cp_taster_anlasser) (S.L.engine_starter_antirepeat)
+	1 (S.L.engine_injection_on)
+{end}
+
+
+{trigger:kw_m_engineshutdown}
+	(L.L.elec_busbar_main)
+	{if}
+		0 (S.L.engine_injection_on)
+	{endif}
+	1 (S.L.cp_taster_motorabstellung)
+{end}
+
+{trigger:kw_m_engineshutdown_off}
+	0 (S.L.cp_taster_motorabstellung)
+	1 (S.L.engine_injection_on)
+{end}
+
+{trigger:veh_tank}
+	(L.L.engine_tank_content) (L.S.Timegap) 3 * + 250 min (S.L.engine_tank_content)
+{end}
+
+{macro:engine_init}
+	50 200 random + (S.L.engine_tank_content)
+	(L.S.Weather_Temperature) (S.L.engine_temperature) (S.L.engine_temperature_envir)
+{end}
+
+
+{macro:engine_frame}
+
+	(L.L.engine_last_n) 300 >=
+	(L.L.engine_n) 300 < &&
+	{if}
+		(M.L.engine_stall)
+		0 (S.L.engine_on)
+	{endif}
+	
+
+	(L.L.engine_n) (S.L.engine_last_n)
+
+	
+	(L.L.engine_n) 100 < (L.L.engine_injection_on) ! &&
+	{if}
+		0 (S.L.engine_n) 
+	{endif}
+
+	(L.L.bremse_kompressor)	(L.L.engine_on) &&
+	{if}	
+		10 (S.L.engine_M_additional_load)
+	{else}
+		0 (S.L.engine_M_additional_load)
+	{endif}
+
+	(M.L.engine_temperature)
+
+	(M.L.engine_consumption)
+
+	(L.L.throttle) (S.L.engine_internal_throttle)
+
+'	Override durch Haltestellenbremse ODER Motorabstellung
+
+	(L.L.bremse_halte_sw) (L.L.door_20h_sw) || (C.L.engine_e-gas) &&
+	(L.L.engine_injection_on) ! ||
+	{if}
+		0 (S.L.engine_internal_throttle)
+	{endif}
+
+	(C.L.engine_speedcontrol)
+	{if}
+		(M.L.engine_speedcontrol)
+	{endif}
+
+'MCQ: calculating tank content percent and write into pre defined variable for publishing on red line:
+	(L.L.engine_tank_content) 250 / (S.L.tank_percent)
+
+'	Motormanagement durch ASR-Eingriff, sofern vorhanden
+
+	(C.L.engine_ASR)
+	(L.L.cp_ASR_off) ! &&
+	(L.L.elec_busbar_main) &&
+	{if}
+		(L.L.Wheel_RotationSpeed_1_L) (L.L.Wheel_RotationSpeed_1_R) + 2 / abs (L.L.Wheel_RotationSpeed_0_L) (L.L.Wheel_RotationSpeed_0_R) + 2 / 10 + abs >
+		(L.L.Wheel_RotationSpeed_1_L) 1 > &&
+		(L.L.Wheel_RotationSpeed_1_R) 1 > &&
+		(L.L.engine_internal_throttle) 0 > &&
+		{if}
+			1 (S.L.engine_ASR_eingriff)
+		{endif}
+		(L.L.Wheel_RotationSpeed_1_L) (L.L.Wheel_RotationSpeed_1_R) + 2 / abs (L.L.Wheel_RotationSpeed_0_L) (L.L.Wheel_RotationSpeed_0_R) + 2 / 8 + abs <
+		{if}
+			0 (S.L.engine_ASR_eingriff)
+		{endif}
+
+		(L.L.engine_ASR_eingriff)
+		{if}
+			0 (S.L.engine_internal_throttle)
+		{endif}
+
+	{else}
+'		Wenn ASR aus, dann Dauerleuchten
+		(L.L.elec_busbar_main) 
+		{if}
+			1 (S.L.engine_ASR_eingriff)
+		{else}
+			0 (S.L.engine_ASR_eingriff)
+		{endif}
+	{endif}
+
+{end}
+
+
+{macro:engine_moment}
+
+
+'	Reaktionszeit der Einspritzpumpe
+	(L.L.engine_internal_throttle) (L.L.engine_throttle_injection) >
+	{if}
+		(L.L.engine_throttle_injection) (L.S.Timegap) 3 * + (L.L.engine_internal_throttle) min (S.L.engine_throttle_injection)
+	{else}
+		(L.L.engine_throttle_injection) (L.S.Timegap) 3 * - (L.L.engine_internal_throttle) max (S.L.engine_throttle_injection)
+	{endif}
+
+	(L.L.engine_injection_on) (L.L.engine_on) &&
+	{if}
+		(L.L.engine_throttle_injection) s1 (L.L.engine_n) s0 (F.L.engine_M_maxThrottle) * 1 l1 - l0 (F.L.engine_M_minThrottle) * + (S.L.engine_M)
+	{else}
+		(L.L.engine_n) 1 >
+		{if}
+			(C.L.engine_coldM) (S.L.engine_M)
+		{else}
+			0 (S.L.engine_M)
+		{endif}
+	{endif}
+
+{end}
+
+
+{macro:engine_acceleration}
+'	Berechnung der Drehzahlbeschleunigung:
+
+	(L.L.engine_M) (L.L.antrieb_getr_M_an) (L.L.engine_M_additional_load) + - (C.L.engine_J) /
+
+'	... Berechnung der Motordrehzahl anhand der Drehzahlbeschleunigung:
+
+	(L.S.Timegap) * 30 * pi / (L.L.engine_n) + (S.L.engine_n)
+{end}
+
+
+{macro:engine_consumption}
+'					      	=2*PI/60
+	(L.L.engine_M) 0 max (L.L.engine_n) * 0.10472 * s0
+	(L.L.engine_on)
+	{if}
+		l0 (C.L.engine_power_idle) + (S.L.engine_power)
+	{else}
+		l0 (S.L.engine_power)
+	{endif}
+	
+	(L.L.engine_energytransfer) (L.L.engine_power) (L.S.Timegap) * 1000 / 3600 / + (S.L.engine_energytransfer)
+	(L.L.engine_energy_used) (L.L.engine_power) (L.S.Timegap) * 1000 / 3600 / (L.L.engine_n) (F.L.engine_efficiency_rpm) (L.L.engine_throttle_injection) (F.L.engine_efficiency_throttle) / / s0 + (S.L.engine_energy_used)
+	(L.L.engine_fuel_used) l0 (C.L.engine_fuel_value) / s1 + (S.L.engine_fuel_used)
+	
+	l1 (L.S.Timegap) / 3600 * (S.L.engine_consumption_h)
+
+	(L.L.engine_tank_content) l1 - 0 max (S.L.engine_tank_content)
+	0 <= 
+	(L.L.engine_failure_general) ||
+	{if}
+		0 (S.L.engine_on)
+	{endif}
+	
+{end}
+
+{macro:engine_stall}
+	
+	(T.L.ev_engineshutdown)
+	
+	0 (S.L.engine_on) 
+{end}
+
+{macro:engine_speedcontrol}
+
+	(L.L.engine_n) (C.L.engine_governed_idle_RPM) <
+	{if}
+		(L.L.engine_additional_throttle) (L.S.Timegap) 0.2 * + (S.L.engine_additional_throttle)
+	{else}
+		(L.L.engine_additional_throttle) (L.S.Timegap) 0.2 * - 0 max (S.L.engine_additional_throttle)
+	{endif}
+
+	(L.L.engine_internal_throttle) (L.L.engine_additional_throttle) + 1 min 0 max (S.L.engine_internal_throttle)
+
+{end}
+
+
+{macro:engine_temperature}
+
+
+	(L.L.engine_power) (C.L.engine_Qrate_engine_factor) * (S.L.engine_Qrate_engine)
+
+
+	(L.L.elec_busbar_main) (L.L.engine_on) &&
+	{if}
+		(L.L.engine_temperature) (C.L.luefterthermostat_opn) >
+		(L.L.cp_motorkuehlung_sw) ||
+		{if}
+			1 (S.L.engine_luefter)
+		{else}
+			(L.L.engine_temperature) (C.L.luefterthermostat_cls) <
+			(L.L.cp_motorkuehlung_sw) ! &&
+			{if}
+			0 (S.L.engine_luefter)
+			{endif}
+		{endif}
+	{else}
+		0 (S.L.engine_luefter)
+	{endif}
+
+	(L.L.engine_temperature) (C.L.kuehlerthermostat_opn) >
+	{if}
+		1 (S.L.engine_thermostat_open)
+	{else}
+		(L.L.engine_temperature) (C.L.kuehlerthermostat_cls) <
+		{if}
+			0 (S.L.engine_thermostat_open)
+		{endif}
+	{endif}
+
+	
+'	--------------------------------------------------
+'	Berechnung der Raten:
+
+	(L.L.engine_temperature) (L.L.engine_temperature_envir) - (C.L.engine_Qrate_cooling_factor) * (S.L.engine_Qrate_cooling)
+	(L.L.engine_temperature_envir) (L.S.Weather_Temperature) - (C.L.engine_Qrate_Veloc_factor_basic) (C.L.engine_Qrate_veloc_factor) (L.L.velocity) abs * + * (S.L.engine_Qrate_veloc)
+
+	(L.L.engine_temperature) (L.S.Weather_Temperature) - (C.L.engine_Qrate_fan_factor) * (L.L.engine_n) * (S.L.engine_Qrate_fan)
+
+
+	(L.L.engine_thermostat_open)
+	{if}
+		(L.L.engine_luefter) !
+		{if}	
+'			Reduktion der Kühlwirkung durch nur leer mitdrehenden Lüfter
+			(L.L.engine_Qrate_fan) 0.4 * (S.L.engine_Qrate_fan)	
+		{endif}
+	{else}			
+'		Nullwirkung des Lüfters durch Kühlwasserkurzschluss	
+		0 (S.L.engine_Qrate_fan)
+	{endif}
+
+
+'	--------------------------------------------------
+'	Berechnung der Temperaturveränderungen:
+
+	(L.L.engine_Qrate_engine) (L.L.engine_Qrate_cooling) - (L.L.engine_Qrate_fan) - (L.L.cabinair_Qrate_engine_fanheatcooling) - (C.L.engine_cvm_engine) / (L.S.Timegap) * (L.L.engine_temperature) + (S.L.engine_temperature) 
+	(L.L.engine_Qrate_cooling) (L.L.engine_Qrate_veloc) - (C.L.engine_cvm_envir) / (L.S.Timegap) * (L.L.engine_temperature_envir) + (S.L.engine_temperature_envir) 
+
+
+'--------------------------------------------------
+
+
+
+
+'	Kochendes Kühlwasser
+	(L.L.engine_temperature) (F.L.kuehlwassersmoke) (S.L.engine_kuehlwasser_freq)
+
+
+	
+
+	
+{end}
+
+
+
+

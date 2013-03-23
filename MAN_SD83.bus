@@ -1,0 +1,614 @@
+	Programmiersprache funktioniert wie folgt: Man kann reinschreiben, was man will, das Programm ignoriert
+	alles AUßER die Schlüsselwörter wie [mesh], wenn sie am Anfang der Zeile stehen! Die Schlüsselwörter müssen
+	außerdem alleine in ihrer Zeile stehen, nur dann werden sie erkannt. Ist dem so, werden die entsprechenden folgenden Zeilen
+	ausgelesen, um die Parameter zu finden, d.h. diese müssen dann direkt im Anschluss und zeilenweise alleine folgen! Wurde
+	die Anzahl der Zeilen abgearbeitet, sucht das Programm wieder nach Schlüsselwörtern.
+
+	Im Allgemeinen spielt die Reihenfolge keine Rolle, außer bei der Beschreibung von Arrays, wie den Gängen oder den Meshs.
+
+	Es folgt nun der SD200 von Rüdiger H. aus B.:
+
+
+
+
+	[friendlyname] ist der Abschnitt, wo
+	{Hersteller} und
+	{Typ} genannt wird.
+	{Anstrich} ist der Name des Standardanstrichs (wenn der Texturtausch nicht aktiv ist)
+
+[friendlyname]
+DR
+SD200 - Custom
+Fane
+
+[description]
+This is the DreamRebel Productions version of the MAN SD200 SD83. The DR SD200 Custom is not only faster, but also modern.
+
+- Technical Specifications -
+
+Length: 11.490 mm
+Width: 2500 mm
+Height: 4060 mm
+
+Engine: Cummins ISBe4 225, 225 PK/HP, 165 kW, 850 Nm.
+Gearbox: ZF Ecomat-6HP504C
+Maximum speed: 90 km/h
+
+Empty weight: 9800 kg
+Gross weight: 12.000 kg
+
+Seats upper deck: 47
+Seats lower deck: 34
+Standing places: 8
+[end]
+
+	[number] aktiviert die Zuweisung von Nummern
+	{colorscheme specific numbers path}	Pfad zu den *.org-(Omsi-Registration)-Dateien, welche für die Vergabe von Nummern zuständig sind.
+
+	Aufbau einer Nummernliste: in der ersten Zeile kommt der Name des Anstrichs (wie er auch im CTC angegeben wird), dann beliebig viele zulässige Nummern.
+	Steht in der ersten Zeile nichts, dann handelt es sich um die "Hauptliste", welche für alle Anstriche gilt, für welche keine Nummern spezifiziert werden.
+
+
+	[registration_automatic] aktiviert die Zuweisung der Kennzeichen im automatischen Modus
+	{regPrefix}				Präfix vor Nummer am Kennzeichen. Soll bspw. Nr 2000 das Kennzeichen "D-A 2000H" bekommen, ist der Präfix "D-A "
+	{regPostfix}				Postfix hinter Nummer am Kennzeichen. Im obigen Beispiel "H".
+
+	[registration_list] öffnet die angegebene Datei, um die Kennzeichenzuweisung nach den Nummern vorzunehmen. Der Index läuft hierbei parallel zu jener *.org-Datei, welche die Hauptliste enthält.
+	{filename}
+
+	[registration_free] aktiviert die freie Kennzeichenzuweisung. Im AI-Modus wird ein Kennzeichen der Map-Registrations-Datei verwendet, der User kann es für sein Fahrzeug frei wählen.
+
+
+
+
+[number]
+Regs_SD83.org
+
+	[registration_free]
+
+[registration_automatic]
+B-V 
+
+
+
+[kmcounter_init]
+2000
+60000
+
+
+[sound]
+sound\Sound_SD82.cfg
+
+[sound_ai]
+sound\Sound_SD80_AI.cfg
+
+[model]
+model\model_SD83.cfg
+
+[paths]
+model\paths.cfg
+
+[passengercabin]
+model\passengercabin.cfg
+
+	////////////////////////////////////////////////////////
+		Scripts
+	////////////////////////////////////////////////////////
+
+[varnamelist]
+21
+script\Collision_varlist.txt
+script\antrieb_varlist.txt
+script\engine_varlist.txt
+script\elec_varlist.txt
+script\bremse_varlist.txt
+script\auspuff_varlist.txt
+script\lights_varlist.txt
+script\door_varlist.txt
+script\wiper_varlist.txt
+script\cockpit_varlist.txt
+script\klappern_varlist.txt
+script\rollband_varlist.txt
+script\heizung_varlist.txt
+script\rain_varlist.txt
+script\dirt_varlist.txt
+script\IBIS_varlist.txt
+script\Matrix_varlist.txt
+script\wimpel_varlist.txt
+script\visual_varlist.txt
+script\cashdesk_varlist.txt
+script\AI_varlist.txt
+
+[stringvarnamelist]
+3
+script\IBIS_stringvarlist.txt
+script\matrix_stringvarlist.txt
+script\cockpit_stringvarlist.txt
+
+[script]
+23
+script\man_sd85_main.osc
+script\man_sd85_main_AI.osc
+script\collision.osc
+script\cockpit.osc
+script\antrieb.osc
+script\engine.osc
+script\elec.osc
+script\bremse.osc
+script\auspuff.osc
+script\lights.osc
+script\door.osc
+script\wiper.osc
+script\klappern.osc
+script\forcefeedback.osc
+script\rain.osc
+script\dirt.osc
+script\sound_volume.osc
+script\heizung.osc
+script\IBIS.osc
+script\Matrix.osc
+script\wimpel.osc
+script\visual.osc
+script\cashdesk.osc
+
+[constfile]
+18
+script\collision_constfile.txt
+script\antrieb_constfile_SD80.txt
+script\engine_constfile_2566MUH.txt
+script\elec_constfile.txt
+script\bremse_constfile.txt
+script\lights_constfile.txt
+script\door_constfile.txt
+script\auspuff_constfile.txt
+script\cockpit_constfile.txt
+script\klappern_constfile.txt
+script\rollband_constfile.txt
+script\forcefeedback_constfile.txt
+script\wiper_constfile.txt
+script\dirt_constfile.txt
+script\heizung_constfile.txt
+script\IBIS_constfile.txt
+script\matrix_constfile.txt
+script\AI_constfile.txt
+
+	////////////////////////////////////////////////////////
+		Kameras *NEU01*
+	////////////////////////////////////////////////////////
+
+	Folgender Befehl fügt eine Kamera hinzu. Die Reihenfolge entscheidet darüber,
+	in welcher selbigen die Kameras später erscheinen. _fahrer heißt, dass es sich
+	um eine Fahrersicht handelt. Später wird dem _fahrgast hinzugefügt werden, welcher
+	erst durch einen grundsätzlichen Wechsel der Perspektive aktiviert wird und welcher
+	nicht die Ehre hat, auf einem Isri 200 zu sitzen...
+
+	* x (lateral)
+	* y (longitudinal)
+	* z (vertikal)
+	* dist, d.h. wie weit befindet sich das Auge vor dem Halsgelenk ;-) vgl. Außensicht:
+		hier ist die Distanz variabel und normalerweise einige Dekameter positiv, sodass
+		der Mittelpunkt (durch x,y,z) in Form des Busses sichtbar und zentriert ist.
+		Beim Fahrer sollte der Wert ein wenig negativ sein, da sich der Kopf nicht ums Auge sondern
+		um eine Punkt, ca. 6cm dahinter dreht ;-)
+	* sichtwinkel: Bildausschnitt in Grad, für Fahrer normalerweise 52°, normal ist jedoch 45°.
+	* Normale Sichtausrichtung in Querrichtung in °
+	* Normale Sichtausrichtung in vertikale Richtung in °
+
+	0: Blick nach ganz links
+[add_camera_driver]
+-0.9
+4.80
+2.13
+-0.06
+48
+-120
+-5
+	1: Blick nach schräg links
+[add_camera_driver]
+-0.72
+4.41
+2.13
+-0.06
+48
+-60
+-5
+	2: Blick in den linken Spiegel
+[add_camera_driver]
+-0.7
+4.41
+2.13
+-0.06
+48
+-20
+-5
+
+	3: Blick nach vorne (std)
+[add_camera_driver]
+-0.72
+4.41
+2.13
+-0.06
+50
+0
+-10
+
+
+
+	4: Blick in den rechten Spiegel
+[add_camera_driver]
+-0.72
+4.41
+2.13
+-0.06
+48
+33
+0
+
+	5: Blick zur Tür
+[add_camera_driver]
+-0.72
+4.61
+2.13
+-0.06
+55
+85
+-10
+
+	5: Blick nach ganz rechts
+[add_camera_driver]
+-0.72
+4.61
+2.13
+-0.06
+55
+115
+-10
+
+	6: Rollband-Bedienpanel
+[add_camera_driver]
+-1.05
+4.8
+2.3
+-0.06
+45
+0
+25
+
+	7: Panel-Zoom
+[add_camera_driver]
+-0.72
+5.2
+2.25
+-0.06
+50
+5
+-70
+
+	8: Fahrplan-Sicht
+[add_camera_driver]
+-0.72
+5.2
+2.13
+-0.06
+25
+88
+-35
+
+[view_schedule]
+
+	9: Fahrscheinverkauf-Sicht
+[add_camera_driver]
+-0.72
+4.61
+2.13
+-0.06
+40
+64
+-40
+
+[view_ticketselling]
+################
+Passagiersichten
+################
+
+	0: Hinten mittig sitzend
+[add_camera_pax]
+0.0
+-5.3
+2.3
+-0.06
+45
+0
+0
+
+	1: Stehplatz an der Hintertür
+[add_camera_pax]
+-0.4
+-0.5
+2.3
+-0.06
+45
+90
+0
+	2: vorne auf dem "Beifahrersitz"
+[add_camera_pax]
+0.8
+3.5
+2.2
+-0.06
+45
+-20
+0
+
+	3: Oberdeck vorne rechts
+[add_camera_pax]
+0.8
+4.4
+3.7
+-0.06
+45
+0
+0
+
+	4: Oberdeck hinten Mitte
+[add_camera_pax]
+0.0
+-5.3
+3.8
+-0.06
+45
+0
+0
+
+
+
+
+	Folgender Befehl setzt die Standardfahrerkamera:
+
+[set_camera_std]
+3
+
+	Folgender Befehl setzt den Zentrierpunkt der Außenkamera:
+
+[set_camera_outside_center]
+0
+0
+1.2
+
+
+
+	////////////////////////////////////////////////////////
+		Reflexionskameras *NEU01*
+	////////////////////////////////////////////////////////
+
+	In dieser Sektion werden die Reflexionkameras gesetzt. Ist dieses Fahrzeug das eigene, wird aus einer jeden Kamera Perspektive
+	die Szene gerendert und dann entsprechend aufsteigend in die Texturen mit den Namen "reflexion0.bmp", "reflexion1.bmp" usw. gespeichert,
+	von wo aus dann auf die Textur zwecks eigentlichen Rendervorgang zurückgegriffen werden kann.
+
+[add_camera_reflexion]
+-1.332
+5.327
+1.831
+0
+52
+169
+5
+
+[add_camera_reflexion]
+1.312
+5.769
+2.280
+0
+52
+202
+-2.5
+
+[add_camera_reflexion]
+0.218
+5.415
+2.410
+0
+52
+200
+-12.5
+
+
+
+	////////////////////////////////////////////////////////
+		ticket block attach points
+	////////////////////////////////////////////////////////	
+
+	Please mind: Nr.0 = ticket type 0, Nr.1 = ticket type 1 and so on.
+
+ticket type 0:
+
+[new_attachment]
+
+attach_rot_y
+16
+
+attach_trans
+-0.177
+5.002
+1.733
+
+ticket type 1:
+
+[new_attachment]
+
+attach_rot_y
+16
+
+attach_trans
+-0.177
+5.112
+1.733
+
+ticket type 2:
+
+[new_attachment]
+
+attach_rot_y
+16
+
+attach_trans
+-0.110
+5.002
+1.753
+
+ticket type 3:
+
+[new_attachment]
+
+attach_rot_y
+16
+
+attach_trans
+-0.244
+5.002
+1.714
+
+ticket type 4:
+
+[new_attachment]
+
+attach_rot_y
+16
+
+attach_trans
+-0.244
+5.112
+1.714
+
+
+
+	////////////////////////////////////////////////////////
+		Physikalische und geometrische Grunddaten
+	////////////////////////////////////////////////////////
+
+
+	Masse in t:
+[mass]
+10.9
+
+	Trägheitsmomente um x, y und z-Achse, also Quer-, Längs- und Hochachse um den Schwerpunkt in dieser Reihenfolge in t*m^2:
+500
+200
+500
+
+[momentofintertia]
+300
+80
+300
+
+
+	Boundingbox des Busses *NEU01*
+
+[boundingbox]
+2.5
+11.46
+3.76
+0
+-0.01
+2.29
+
+
+	Höhe d. Schwerpunktes überm Boden:
+
+[schwerpunkt]
+1.3
+
+
+
+	Rollwiderstand (konstant, wird demnächst eventuell geändert) als Kraft in N
+[rollwiderstand]
+1000
+
+	Längskoordinate des Drehpunktes, wenn der Bus eine Kurve beschreibt:
+[rot_pnt_long]
+-2.577
+
+	Kehrwert des minimalen Lenkradiuses: (Berechenbar über die Formel: inv_turnradius = tan(alpha)/s,
+	wobei alpha der maximale Winkel bspw. der Vorderachse und s deren Abstand zum Drehpunkt in Längsrichtung ist:
+
+[inv_min_turnradius]
+0.13
+
+
+
+
+[ai_deltaheight]
+-0.12
+
+
+
+
+	Folgende Sektion erzeugt nacheinander die Busachsen mit ihren Parametern. ACHTUNG: bei einem Fahrzeug mit
+	unterschiedlich großen Rädern sollte zunächst die angetriebene Achse eingegeben werden, da die zuerst ein-
+	gegebene Achse den Antriebsraddurchmesser vorgibt, d.h. das Getriebeübersetzungsverhältnis zur Ge-
+	schwindigkeit ist in Bezug auf die 0. Achse gemessen.
+
+	Vorderachse:
+
+
+[newachse]
+
+	Koordinate:
+
+achse_long
+2.943
+
+	Breite der Auflagefläche beider Reifen, also ungefähr die Busbreite
+
+achse_maxwidth
+2.4
+
+achse_minwidth
+1.76
+
+	Raddurchmesser der Räder dieser Achse
+
+achse_raddurchmesser
+1.023
+1.05
+
+	Federkonstante der Federung PRO SEITE in kN/m
+
+achse_feder
+240
+
+	Höchstbelastung in kN
+
+achse_maxforce
+90
+
+	Dämpferkonstante in kNs/m
+
+achse_daempfer
+20
+	Ist diese Achse angetrieben?
+
+achse_antrieb
+0
+
+
+	Hinterachse:
+
+[newachse]
+achse_long
+-2.577
+achse_maxwidth
+2.4
+achse_minwidth
+1.4
+achse_raddurchmesser
+1.023
+1.05
+achse_feder
+280
+achse_maxforce
+116
+achse_daempfer
+20
+achse_antrieb
+1
