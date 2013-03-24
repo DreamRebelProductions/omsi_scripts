@@ -4,7 +4,7 @@ Getriebeversion:
 3: Retarder nicht im 1. Gang, Neutralschaltung
 [const]
 antrieb_getr_version
-1
+3
 
 Zeit für den Wechsel zwischen Retarder und Traktion (nur bei Getriebeversion 2)
 [const]
@@ -19,33 +19,28 @@ antrieb_gear_engaged_mintime
 Geschwindigkeit, unterhalb der die Neutralschaltung greift
 [const]
 antrieb_neutral_maxspeed
-100
+70
 
 Bremsdruck in Pa, ab dem Neutralschaltung greift
 [const]
 antrieb_neutral_brakepressure
-200000
-
-Zeit zwischen Erfüllen der Bedingungen zur Neutralschaltung und tatsächlichem Auskuppeln
-[const]
-antrieb_neutral_time
-1
+170000
 
 [const]
 antrieb_kuppl_M_up_max
-1100
+1600
 
 [const]
 antrieb_kuppl_M_up_min
-500
-
-[const]
-antrieb_kuppl_M_dn_max
 1100
 
 [const]
+antrieb_kuppl_M_dn_max
+1600
+
+[const]
 antrieb_kuppl_M_dn_min
-400
+1100
 
 [const]
 antrieb_getr_ratio1
@@ -61,7 +56,7 @@ antrieb_getr_ratio3
 
 [const]
 antrieb_i_achse
-5.68
+5.74
 
 
 Die folgenden Werte beziehen sich auf die Drehzahl der Kardanwelle und sind somit unabhängig von Achsübersetzung und Reifengröße!
@@ -69,15 +64,15 @@ km/h zu Wellendrehzahl (Raddurchmesser=1.03, i_achse=5.74 =>Faktor 29.56
 
 [const]
 antrieb_getr_autoSwUpMinSpd1
-710
+662
 
 [const]
 antrieb_getr_autoSwUpMaxSpd1
-883
+845
 
 [const]
 antrieb_getr_autoSwUpkickdnSpd1
-1090
+1250
 
 [const]
 antrieb_getr_autoSwDnMinSpd2
@@ -85,41 +80,39 @@ antrieb_getr_autoSwDnMinSpd2
 
 [const]
 antrieb_getr_autoSwDnMaxSpd2
-740
+735
 
 [const]
 antrieb_getr_autoSwDnkickdnSpd2
-1025.5
+1176
 
 [const]
 antrieb_getr_autoSwUpMinSpd2
-1300
+900
 
 [const]
 antrieb_getr_autoSwUpMaxSpd2
-1300
+1325
 
 [const]
 antrieb_getr_autoSwUpkickdnSpd2
-1537
+1654
 
 [const]
 antrieb_getr_autoSwDnMinSpd3
-975
+900
 
 [const]
 antrieb_getr_autoSwDnMaxSpd3
-1100
+1025
 
 [const]
 antrieb_getr_autoSwDnkickdnSpd3
-1408
-
+1525
 
 [const]
 antrieb_wandler_fillrate
 1000
-
 
 [const]
 retarder_min_einschaltspeed
@@ -222,7 +215,7 @@ retarder_stufe3
 
 [const]
 antrieb_gangwahlzeit
-0.7
+0.5
 
 [const]
 antrieb_neutralwahlzeit
@@ -233,7 +226,7 @@ antrieb_wandler_lambda
 
 [pnt]
 -2
-100
+50
 
 [pnt]
 0
@@ -247,20 +240,13 @@ antrieb_wandler_lambda
 0.7
 0
 
-[pnt]
-1
--4
-
-[pnt]
-2
--10
-
 [newcurve]
 antrieb_wandler_my
 
 [pnt]
 0
 5
+4.65
 
 [pnt]
 0.6
@@ -270,9 +256,6 @@ antrieb_wandler_my
 0.7
 0
 
-[pnt]
-2
-5
 
 [newcurve]
 antrieb_reverse_torque_reduction
@@ -280,7 +263,6 @@ antrieb_reverse_torque_reduction
 [pnt]
 -220
 0
-
 
 [pnt]
 0
@@ -306,7 +288,6 @@ antrieb_wandler_lambda_r
 [pnt]
 1.42857
 0
-
 
 
 [newcurve]
@@ -351,7 +332,46 @@ retarder_fadein
 
 [const]
 gear_efficiency
-0.95
+0.85
+
+
+'Actuator rate in 1/n per second (total range 0..1)
+
+[const]
+kickdown_stellglied_inc_rate
+2
+
+[const]
+kickdown_stellglied_dec_rate
+1
+
+[const]
+throttle_stellglied_inc_rate
+1
+
+[const]
+throttle_stellglied_dec_rate
+0.3
+
+'minimum acceleration for upshift (m/s^2)
+
+[const]
+min_upshift_acceleration
+-0.2
+
+[const]
+partialthrottle_rate
+0.8
+
+[const]
+partialthrottle_rate_Dn
+0.5
+
+[const]
+throttleinjection_governor
+0.80
+
+
 
 
 

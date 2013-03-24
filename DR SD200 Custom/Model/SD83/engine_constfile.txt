@@ -8,19 +8,19 @@ engine_speedcontrol
 
 [const]
 engine_e-gas
-0
+1
 
 [const]
 engine_ASR
-0
+1
 
 [const]
 engine_governed_idle_RPM
-592
+550
 
 [const]
 engine_power_idle
-22710
+15124
 
 [const]
 engine_coldM
@@ -34,40 +34,37 @@ engine_M_maxThrottle
 0
 
 [pnt]
-300
-400
-
-[pnt]
-592
-500
-
-[pnt]
 600
-500
+1000
+
+[pnt]
+800
+1030
 
 [pnt]
 1000
-630
+1050
 
 [pnt]
 1400
-660
+1050
+
+[pnt]
+1600
+1025
 
 [pnt]
 1900
-650
-
-[pnt]
-2100
-641
+960
 
 [pnt]
 2300
-530
+750
 
 [pnt]
-2350
+2500
 0
+
 
 [newcurve]
 engine_M_minThrottle
@@ -86,15 +83,15 @@ engine_M_minThrottle
 
 [pnt]
 650
--100
+-150
 
 [pnt]
 1000
--300
+-400
 
 [pnt]
 2500
--350
+-500
 
 [newcurve]
 engine_efficiency_rpm
@@ -145,13 +142,14 @@ engine_tank_capacity
 250
 
 
+
 [const]
 luefterthermostat_opn
-92
+90
 
 [const]
 luefterthermostat_cls
-88
+87
 
 [const]
 kuehlerthermostat_opn
@@ -159,7 +157,7 @@ kuehlerthermostat_opn
 
 [const]
 kuehlerthermostat_cls
-80
+82
 
 [newcurve]
 kuehlwassersmoke
@@ -183,25 +181,24 @@ engine_Qrate_engine_factor
 
 [const]
 engine_Qrate_cooling_factor
-700
+300
 
 [const]
 engine_Qrate_fan_factor
-0.9
+1.15
 
 [const]
 engine_Qrate_veloc_factor_basic
-1500
+200
 
 [const]
 engine_Qrate_veloc_factor
-100
+4
 
 [const]
 engine_cvm_engine
-362000
+600000
 
 [const]
 engine_cvm_envir
-50000
-
+10000

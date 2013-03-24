@@ -80,13 +80,13 @@ B-V
 
 
 [sound]
-Sound\sound_om447hla_voith_leise.cfg.cfg
+Sound\Sound_SD82.cfg
 
 [sound_ai]
-sound\sound_OM447HLA_Voith.cfg
+sound\Sound_SD82.cfg
 
 [model]
-model\model_SD200.cfg
+model\model_SD83.cfg
 
 [paths]
 model\paths.cfg
