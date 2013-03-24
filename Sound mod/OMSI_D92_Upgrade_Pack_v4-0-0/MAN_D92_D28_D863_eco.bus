@@ -17,32 +17,34 @@
 	{Anstrich} ist der Name des Standardanstrichs (wenn der Texturtausch nicht aktiv ist)
 
 [friendlyname]
-DR
-SD200 Custom
-Grey
+MAN
+SD202 - D92 - D28 & D863.3E - Economy
+Beige
 
 [description]
-This is the DreamRebel Productions version of the MAN SD200 SD83. The DR SD200 Custom is not only faster, but also modern.
-The bus looks like a real classic bus, but it sounds diffrent.
+The updated D92 units are fitted with the D2866 LUH engine that meets Euro III emissions regulations.  This engine has a larger bore diameter compared to the previous D2566-series (128mm instead of 125mm) and therefore displaces 11.967-litres instead of 11.412-litres.  In addition, this engine is fitted with a turbocharger and an intercooler for better energy efficiency and improved mid-range torque.  The more powerful provides better driveability and gradeability.
 
 - Technical Specifications -
 
-Length: 11.490 mm
+Length: 11.450 mm
 Width: 2500 mm
 Height: 4060 mm
 
-Engine: Cummins ISBe4 225.
+Engine: MAN D2866 LUH 23 (Euro III)
 Power: 191 kW (260 PS) @ 1,900 rpm
 Torque: 1,050 Nm @ 1,000-1,400 rpm
 Gearbox: Voith D863.3E
 Maximum speed: 72 km/h
 
-Empty weight: 10.500 kg
-Gross weight: 14.000 kg
+Empty weight: 10930 kg
+Gross weight: 17.000 kg
 
 Seats upper deck: 47
-Seats lower deck: 34
-Standing places: 8
+Seats lower deck: 32
+Standing places: 17
+
+Produced by PoweredByCNG & krtz07
+Version 4.0.0 - 28/12/2011 22:00h AWST
 [end]
 
 	[number] aktiviert die Zuweisung von Nummern
@@ -65,7 +67,7 @@ Standing places: 8
 
 
 [number]
-Regs_SD200.org
+Regs_D92.org
 
 	[registration_free]
 
@@ -73,33 +75,34 @@ Regs_SD200.org
 B-V 
 
 
-
 [kmcounter_init]
-2013
-00000
+1992
+60000
+
 
 
 [sound]
-Sound\sound_om447hla_voith_leise.cfg.cfg
+sound\sound_D92.cfg
 
 [sound_ai]
-sound\sound_OM447HLA_Voith.cfg
+sound\sound_D88_AI.cfg
 
 [model]
-model\model_SD200.cfg
+model\model_D92.cfg
 
 [paths]
 model\paths.cfg
 
 [passengercabin]
-model\passengercabin.cfg
+model\passengercabin_D92.cfg
 
 	////////////////////////////////////////////////////////
 		Scripts
 	////////////////////////////////////////////////////////
 
 [varnamelist]
-21
+22
+script\AI_varlist.txt
 script\Collision_varlist.txt
 script\antrieb_varlist.txt
 script\engine_varlist.txt
@@ -120,18 +123,19 @@ script\Matrix_varlist.txt
 script\wimpel_varlist.txt
 script\visual_varlist.txt
 script\cashdesk_varlist.txt
-script\AI_varlist.txt
+script\ticketprinter_varlist.txt
 
 [stringvarnamelist]
-3
+4
 script\IBIS_stringvarlist.txt
-script\matrix_stringvarlist.txt
+script\Matrix_stringvarlist.txt
+script\ticketprinter_stringvarlist.txt
 script\cockpit_stringvarlist.txt
 
 [script]
 23
-script\man_sd85_main.osc
-script\man_sd85_main_AI.osc
+script\man_D92_main.osc
+script\man_D86_main_AI.osc
 script\collision.osc
 script\cockpit.osc
 script\antrieb.osc
@@ -148,23 +152,24 @@ script\rain.osc
 script\dirt.osc
 script\sound_volume.osc
 script\heizung.osc
-script\IBIS.osc
-script\Matrix.osc
+script\IBIS-2.osc
+script\matrix_D.osc
 script\wimpel.osc
-script\visual.osc
 script\cashdesk.osc
+script\ticketprinter.osc
 
 [constfile]
 18
+script\AI_constfile.txt
 script\collision_constfile.txt
-script\antrieb_constfile_SD80.txt
-script\engine_constfile_2566MUH.txt
+script\antrieb_constfile_D92_D28_D863_eco.txt
+script\engine_constfile_D92_D28.txt
 script\elec_constfile.txt
-script\bremse_constfile.txt
-script\lights_constfile.txt
-script\door_constfile.txt
+script\bremse_constfile_D92.txt
+script\lights_constfile_mod.txt
+script\door_constfile_D92.txt
 script\auspuff_constfile.txt
-script\cockpit_constfile.txt
+script\cockpit_constfile_D92.txt
 script\klappern_constfile.txt
 script\rollband_constfile.txt
 script\forcefeedback_constfile.txt
@@ -173,7 +178,8 @@ script\dirt_constfile.txt
 script\heizung_constfile.txt
 script\IBIS_constfile.txt
 script\matrix_constfile.txt
-script\AI_constfile.txt
+
+
 
 	////////////////////////////////////////////////////////
 		Kameras *NEU01*
@@ -200,8 +206,8 @@ script\AI_constfile.txt
 	0: Blick nach ganz links
 [add_camera_driver]
 -0.9
-4.80
-2.13
+4.7
+1.89
 -0.06
 48
 -120
@@ -209,17 +215,17 @@ script\AI_constfile.txt
 	1: Blick nach schräg links
 [add_camera_driver]
 -0.72
-4.41
-2.13
+4.37
+1.89
 -0.06
 48
 -60
 -5
 	2: Blick in den linken Spiegel
 [add_camera_driver]
--0.7
-4.41
-2.13
+-0.72
+4.37
+1.89
 -0.06
 48
 -20
@@ -228,20 +234,21 @@ script\AI_constfile.txt
 	3: Blick nach vorne (std)
 [add_camera_driver]
 -0.72
-4.41
-2.13
+4.37
+1.89
 -0.06
 50
 0
 -10
 
+2.13
 
 
 	4: Blick in den rechten Spiegel
 [add_camera_driver]
 -0.72
-4.41
-2.13
+4.37
+1.89
 -0.06
 48
 33
@@ -250,8 +257,8 @@ script\AI_constfile.txt
 	5: Blick zur Tür
 [add_camera_driver]
 -0.72
-4.61
-2.13
+4.5
+1.89
 -0.06
 55
 85
@@ -260,24 +267,15 @@ script\AI_constfile.txt
 	5: Blick nach ganz rechts
 [add_camera_driver]
 -0.72
-4.61
-2.13
+4.55
+1.89
 -0.06
 55
 115
 -10
 
-	6: Rollband-Bedienpanel
-[add_camera_driver]
--1.05
-4.8
-2.3
--0.06
-45
-0
-25
 
-	7: Panel-Zoom
+	6: Panel-Zoom
 [add_camera_driver]
 -0.72
 5.2
@@ -287,29 +285,29 @@ script\AI_constfile.txt
 5
 -70
 
-	8: Fahrplan-Sicht
+	7: Fahrplan-Sicht
 [add_camera_driver]
 -0.72
-5.2
+4.5
 2.13
 -0.06
-25
-88
--35
-
+30
+17
+10
 [view_schedule]
 
-	9: Fahrscheinverkauf-Sicht
+	8: Fahrscheinverkauf-Sicht
 [add_camera_driver]
 -0.72
-4.61
-2.13
+4.5
+1.89
 -0.06
-40
-64
--40
+44
+60
+-35
 
 [view_ticketselling]
+
 ################
 Passagiersichten
 ################
@@ -326,9 +324,9 @@ Passagiersichten
 
 	1: Stehplatz an der Hintertür
 [add_camera_pax]
--0.4
+-0.3
 -0.5
-2.3
+2.2
 -0.06
 45
 90
@@ -336,8 +334,8 @@ Passagiersichten
 	2: vorne auf dem "Beifahrersitz"
 [add_camera_pax]
 0.8
-3.5
-2.2
+3.6
+2.1
 -0.06
 45
 -20
@@ -389,31 +387,32 @@ Passagiersichten
 	von wo aus dann auf die Textur zwecks eigentlichen Rendervorgang zurückgegriffen werden kann.
 
 [add_camera_reflexion]
--1.332
-5.327
-1.831
+-1.342
+5.345
+1.718
 0
 52
 169
-5
+0
 
 [add_camera_reflexion]
-1.312
-5.769
-2.280
+1.32
+5.78
+2.202
 0
 52
-202
--2.5
+201
+-5
 
 [add_camera_reflexion]
-0.218
-5.415
-2.410
+0.043
+5.278
+2.225
 0
 52
-200
--12.5
+195
+-13
+
 
 
 
@@ -431,9 +430,9 @@ attach_rot_y
 16
 
 attach_trans
--0.177
-5.002
-1.733
+-0.165
+4.943
+1.40
 
 ticket type 1:
 
@@ -443,9 +442,9 @@ attach_rot_y
 16
 
 attach_trans
--0.177
-5.112
-1.733
+-0.165
+5.053
+1.40
 
 ticket type 2:
 
@@ -455,9 +454,9 @@ attach_rot_y
 16
 
 attach_trans
--0.110
-5.002
-1.753
+-0.097
+4.943
+1.40
 
 ticket type 3:
 
@@ -467,9 +466,9 @@ attach_rot_y
 16
 
 attach_trans
--0.244
-5.002
-1.714
+-0.232
+4.943
+1.40
 
 ticket type 4:
 
@@ -479,10 +478,9 @@ attach_rot_y
 16
 
 attach_trans
--0.244
-5.112
-1.714
-
+-0.232
+5.053
+1.40
 
 
 	////////////////////////////////////////////////////////
@@ -492,7 +490,7 @@ attach_trans
 
 	Masse in t:
 [mass]
-10.9
+10.93
 
 	Trägheitsmomente um x, y und z-Achse, also Quer-, Längs- und Hochachse um den Schwerpunkt in dieser Reihenfolge in t*m^2:
 500
@@ -509,17 +507,18 @@ attach_trans
 
 [boundingbox]
 2.5
-11.46
+11.37
 3.76
 0
--0.01
-2.29
+-0.05
+2.28
+
 
 
 	Höhe d. Schwerpunktes überm Boden:
 
 [schwerpunkt]
-1.3
+1.2
 
 
 
@@ -529,7 +528,7 @@ attach_trans
 
 	Längskoordinate des Drehpunktes, wenn der Bus eine Kurve beschreibt:
 [rot_pnt_long]
--2.577
+-2.700
 
 	Kehrwert des minimalen Lenkradiuses: (Berechenbar über die Formel: inv_turnradius = tan(alpha)/s,
 	wobei alpha der maximale Winkel bspw. der Vorderachse und s deren Abstand zum Drehpunkt in Längsrichtung ist:
@@ -537,13 +536,8 @@ attach_trans
 [inv_min_turnradius]
 0.13
 
-
-
-
 [ai_deltaheight]
--0.12
-
-
+-0.10
 
 
 	Folgende Sektion erzeugt nacheinander die Busachsen mit ihren Parametern. ACHTUNG: bei einem Fahrzeug mit
@@ -559,7 +553,7 @@ attach_trans
 	Koordinate:
 
 achse_long
-2.943
+3.100
 
 	Breite der Auflagefläche beider Reifen, also ungefähr die Busbreite
 
@@ -572,8 +566,7 @@ achse_minwidth
 	Raddurchmesser der Räder dieser Achse
 
 achse_raddurchmesser
-1.023
-1.05
+0.940
 
 	Federkonstante der Federung PRO SEITE in kN/m
 
@@ -599,14 +592,13 @@ achse_antrieb
 
 [newachse]
 achse_long
--2.577
+-2.700
 achse_maxwidth
 2.4
 achse_minwidth
-1.4
+1.2
 achse_raddurchmesser
-1.023
-1.05
+0.94
 achse_feder
 280
 achse_maxforce
@@ -615,3 +607,4 @@ achse_daempfer
 20
 achse_antrieb
 1
+

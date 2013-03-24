@@ -64,15 +64,15 @@ km/h zu Wellendrehzahl (Raddurchmesser=1.03, i_achse=5.74 =>Faktor 29.56
 
 [const]
 antrieb_getr_autoSwUpMinSpd1
-662
+625
 
 [const]
 antrieb_getr_autoSwUpMaxSpd1
-845
+698
 
 [const]
 antrieb_getr_autoSwUpkickdnSpd1
-1250
+1176
 
 [const]
 antrieb_getr_autoSwDnMinSpd2
@@ -80,39 +80,40 @@ antrieb_getr_autoSwDnMinSpd2
 
 [const]
 antrieb_getr_autoSwDnMaxSpd2
-735
+662
 
 [const]
 antrieb_getr_autoSwDnkickdnSpd2
-1176
+985
 
 [const]
 antrieb_getr_autoSwUpMinSpd2
-900
+850
 
 [const]
 antrieb_getr_autoSwUpMaxSpd2
-1325
+1000
 
 [const]
 antrieb_getr_autoSwUpkickdnSpd2
-1654
+1617
 
 [const]
 antrieb_getr_autoSwDnMinSpd3
-900
+850
 
 [const]
 antrieb_getr_autoSwDnMaxSpd3
-1025
+925
 
 [const]
 antrieb_getr_autoSwDnkickdnSpd3
-1525
+1260
 
 [const]
 antrieb_wandler_fillrate
 1000
+
 
 [const]
 retarder_min_einschaltspeed

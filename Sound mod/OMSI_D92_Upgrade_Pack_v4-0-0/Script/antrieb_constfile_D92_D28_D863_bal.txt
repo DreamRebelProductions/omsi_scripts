@@ -68,11 +68,11 @@ antrieb_getr_autoSwUpMinSpd1
 
 [const]
 antrieb_getr_autoSwUpMaxSpd1
-845
+735
 
 [const]
 antrieb_getr_autoSwUpkickdnSpd1
-1250
+1176
 
 [const]
 antrieb_getr_autoSwDnMinSpd2
@@ -80,11 +80,11 @@ antrieb_getr_autoSwDnMinSpd2
 
 [const]
 antrieb_getr_autoSwDnMaxSpd2
-735
+662
 
 [const]
 antrieb_getr_autoSwDnkickdnSpd2
-1176
+1029
 
 [const]
 antrieb_getr_autoSwUpMinSpd2
@@ -92,11 +92,11 @@ antrieb_getr_autoSwUpMinSpd2
 
 [const]
 antrieb_getr_autoSwUpMaxSpd2
-1325
+1100
 
 [const]
 antrieb_getr_autoSwUpkickdnSpd2
-1654
+1617
 
 [const]
 antrieb_getr_autoSwDnMinSpd3
@@ -108,11 +108,12 @@ antrieb_getr_autoSwDnMaxSpd3
 
 [const]
 antrieb_getr_autoSwDnkickdnSpd3
-1525
+1360
 
 [const]
 antrieb_wandler_fillrate
 1000
+
 
 [const]
 retarder_min_einschaltspeed

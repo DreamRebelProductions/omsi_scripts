@@ -1,4 +1,4 @@
-Getriebeversion: 
+Getriebeversion:
 1: Retarder nicht im 1. Gang, keine Neutralschaltung
 2: Retarder im 1. Gang, Neutralschaltung
 3: Retarder nicht im 1. Gang, Neutralschaltung
@@ -55,6 +55,10 @@ antrieb_getr_ratio3
 1.0
 
 [const]
+antrieb_getr_ratio4
+0.73
+
+[const]
 antrieb_i_achse
 5.74
 
@@ -109,6 +113,30 @@ antrieb_getr_autoSwDnMaxSpd3
 [const]
 antrieb_getr_autoSwDnkickdnSpd3
 1525
+
+[const]
+antrieb_getr_autoSwUpMinSpd3
+1233
+
+[const]
+antrieb_getr_autoSwUpMaxSpd3
+1815
+
+[const]
+antrieb_getr_autoSwUpkickdnSpd3
+2250
+
+[const]
+antrieb_getr_autoSwDnMinSpd4
+1232
+
+[const]
+antrieb_getr_autoSwDnMaxSpd4
+1350
+
+[const]
+antrieb_getr_autoSwDnkickdnSpd4
+2000
 
 [const]
 antrieb_wandler_fillrate
@@ -212,6 +240,35 @@ retarder_stufe3
 80
 2039
 
+[newcurve]
+retarder_stufe4
+[pnt]
+0
+0
+[pnt]
+10
+291
+[pnt]
+20
+582
+[pnt]
+30
+1068
+[pnt]
+40
+1654
+[pnt]
+50
+1845
+[pnt]
+60
+2500
+[pnt]
+70
+2747
+[pnt]
+80
+2857
 
 [const]
 antrieb_gangwahlzeit
@@ -261,7 +318,7 @@ antrieb_wandler_my
 antrieb_reverse_torque_reduction
 
 [pnt]
--220
+-150
 0
 
 [pnt]
@@ -369,9 +426,4 @@ partialthrottle_rate_Dn
 
 [const]
 throttleinjection_governor
-0.80
-
-
-
-
-
+0.8
