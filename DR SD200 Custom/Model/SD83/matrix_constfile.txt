@@ -1,0 +1,11 @@
+[const]
+Matrix_Waittime
+0.5
+
+[const]
+Matrix_Changetime_Terminus
+1.83
+
+[const]
+Matrix_Changetime_Nr
+1.25

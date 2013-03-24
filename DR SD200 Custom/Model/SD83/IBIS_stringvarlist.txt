@@ -1,0 +1,7 @@
+IBIS
+IBIS_busstop_name
+IBIS_terminus_name
+IBIS_Complex_Line
+IBIS_cabindisplay
+wagennummer
+kennzeichen

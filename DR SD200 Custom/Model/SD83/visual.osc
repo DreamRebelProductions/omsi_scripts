@@ -1,0 +1,86 @@
+'##############
+'Visuals-Script
+'##############
+
+'Beeinflusst das Fahrzeugaussehen in Abhängigkeit von der gewählten Wagennummer und Lackierungsvariante
+'(Sonderausstattungen bestimmter Fahrzeuge etc.)
+
+'(c) 19.10.2010 Rüdiger Hülsmann
+
+'Script Version: 1.0
+'Omsi release: 1.0
+
+'Needs:
+'- none
+
+
+'Revision History:
+'- Rüdiger Hülsmann	19.09.2010	File created	
+'- Rüdiger Hülsmann	04.10.2010	File renamed from Ident-Features to match with visual_varlist (including MAN grill visibility depending on livery)	
+'- Rüdiger Hülsmann	14.10.2010	New SD83 visuals		
+
+
+
+
+{macro:ident-features_frame}
+
+'	SD80: Ist dies ein Bus mit O&K-Klappe (1746-1770)?
+
+	(L.$.number) "1746" $>= (L.$.number) "1770" $<= &&
+
+'	Klappe nur darstellen, sofern kein Vollwerbeanstrich vorliegt
+
+	(L.L.vis_grill_invisible) ! &&
+
+	{if}
+		1 (S.L.vis_SD80_tauschklappe)
+	{else}
+		0 (S.L.vis_SD80_tauschklappe)
+	{endif}
+
+
+
+'	SD80: Ist dies ein Bus mit Polstersitzen (1721-1745)?
+
+	(L.$.number) "1721" $>= (L.$.number) "1745" $<= &&
+	(L.$.number) "1739" $= ! &&
+	(L.$.number) "1742" $= ! &&
+	{if}
+		1 (S.L.vis_SD80_polster)
+	{else}
+		0 (S.L.vis_SD80_polster)
+	{endif}
+
+'	SD81: Ist dies ein Bus mit Kunstledersitzen (1773, 1775, 1776, 1782, 1787, 1788, 1800, 1801, 1807, 1810, 1825, 1840)?
+
+	(L.$.number) "1773" $=
+	(L.$.number) "1775" $= ||
+	(L.$.number) "1776" $= ||
+	(L.$.number) "1782" $= ||
+	(L.$.number) "1787" $= ||
+	(L.$.number) "1788" $= ||
+	(L.$.number) "1800" $= ||
+	(L.$.number) "1801" $= ||
+	(L.$.number) "1807" $= ||
+	(L.$.number) "1810" $= ||
+	(L.$.number) "1825" $= ||
+	(L.$.number) "1840" $= ||
+	{if}
+		1 (S.L.vis_SD81_kunstleder)
+	{else}
+		0 (S.L.vis_SD81_kunstleder)
+	{endif}
+
+'	SD83: Grüne Matrix (3233-3250)?
+
+	(L.$.number) "3233" $>= (L.$.number) "3250" $<= &&
+	{if}
+		1 (S.L.vis_SD83_matrix_gruen)
+	{else}
+		0 (S.L.vis_SD83_matrix_gruen)
+	{endif}
+		
+
+
+
+{end}

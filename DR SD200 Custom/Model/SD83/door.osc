@@ -1,0 +1,520 @@
+'##############
+'Door Script
+'##############
+
+'Controls Doors
+
+'(c) 2007-2009 Rüdiger Hülsmann
+'(c) 2007-2009 Marcel Kuhnt
+
+'Script Version: 1.1
+'Omsi release: 1.0
+
+'Needs:
+'- elec
+
+'Revision History:
+'- Marcel Kuhnt		13.06.2009	Batterietrennschalter => elec_busbar_main
+'- Marcel Kuhnt		21.06.2009	AI-Unterstützung hinzugefügt	
+'- Rüdiger Hülsmann	24.10.2009	Ansteuerung des Kinderwagenwunsches modifiziert
+'- Rüdiger Hülsmann	19.12.2009	Timer für Ausstiegstür jetzt Timegap-basiert, Bugfix: Tür schließt jetzt nur bei elec_busbar=1
+'- RÜdiger Hülsmann	22.09.2010	Door light trigger value set to 0.1
+'- RÜdiger Hülsmann	07.11.2010	Door speed based on reservoir pressure, air-operated doors made an option
+'- Marcel Kuhnt		08.11.2010	AI procedure closing doors debugged
+'- Rüdiger Hülsmann	21.11.2010	Front doors only operable when busbar on
+'- Rüdiger Hülsmann	23.12.2010	External front door operation included, option: doors only operable with actual stop brake
+'-Rüdiger Hülsmann	31.12.2010	Electric door function debugged
+'-Rüdiger Hülsmann	05.01.2011	20h-switch
+'-Rüdiger Hülsmann	07.01.2011	Backdoor manual switch sound debugged, 20h switch depending on bus type
+
+'--------------------------------------------------------------------------------
+
+{trigger:bus_doorfront0}
+	(L.L.elec_busbar_main) (L.L.bremse_halte_sw) (C.L.door_needs_stopbrake) ! && &&
+	(L.L.elec_busbar_main) (L.L.bremse_halte) (C.L.door_needs_stopbrake) && && ||
+	{if}
+		(M.L.trg_bus_doorfront0)
+	{endif}
+	1 (S.L.cockpit_tuertaster1)
+{end}
+
+{trigger:bus_doorfront0_off}
+	0 (S.L.cockpit_tuertaster1)
+{end}
+
+{trigger:bus_doorfront0_external}
+	(L.L.elec_busbar_avail)
+	{if}
+		(M.L.trg_bus_doorfront0)
+	{endif}
+{end}
+
+{trigger:bus_doorfront1}
+	(L.L.elec_busbar_main) (L.L.bremse_halte_sw) (C.L.door_needs_stopbrake) ! && &&
+	(L.L.elec_busbar_main) (L.L.bremse_halte) (C.L.door_needs_stopbrake) && && ||
+	{if}
+		(M.L.trg_bus_doorfront1)
+	{endif}
+	1 (S.L.cockpit_tuertaster2)
+{end}
+
+{trigger:bus_doorfront1_off}
+	0 (S.L.cockpit_tuertaster2)
+{end}
+
+{trigger:bus_dooraft}
+	(M.L.trg_bus_dooraft)
+{end}
+
+{trigger:bus_20h-switch}
+	(C.L.cockpit_has_20h_switch)
+	{if}
+		(M.L.trg_bus_20h-switch)
+	{endif}
+{end}
+
+{trigger:int_haltewunsch}
+	1 (S.L.haltewunsch)
+{end}
+
+{trigger:door_haltewunsch}
+	1 (S.L.haltewunsch) (S.L.door_haltewunsch_knopfdruck)
+{end}
+
+{trigger:door_haltewunsch_off}
+	0 (S.L.door_haltewunsch_knopfdruck)
+{end}
+
+{trigger:cp_schalter_kinderwagen}
+	(L.L.door_handsteuerung) ! (S.L.door_handsteuerung)
+	{if}
+		0 (S.L.door_kinderwagenwunsch)
+		(T.L.ev_kippschalter_ein)
+	{else}
+		(T.L.ev_kippschalter_aus)
+	{endif}
+		
+{end}
+
+{trigger:door_kinderwagenwunsch}
+	(L.L.bremse_halte) (L.L.door_handsteuerung) ! &&
+	{if}
+		1 (S.L.door_kinderwagenwunsch)
+	{endif}
+{end}
+
+
+{macro:Door_Init}
+	1000 random 500 / 1 - (C.L.door_acc_var) * (C.L.fdoor_acc) + (S.L.doorAcc_0)
+	1000 random 500 / 1 - (C.L.door_acc_var) * (C.L.fdoor_acc) + (S.L.doorAcc_1)
+	1000 random 500 / 1 - (C.L.door_acc_var) * (C.L.bdoor_acc) + (S.L.doorAcc_2)
+	1000 random 500 / 1 - (C.L.door_acc_var) * (C.L.bdoor_acc) + (S.L.doorAcc_3)
+
+	1000 random 500 / 1 - (C.L.door_maxspeed_var) * (C.L.fdoor_maxspeed) + (S.L.doorMaxSpeed_0_norm)
+	1000 random 500 / 1 - (C.L.door_maxspeed_var) * (C.L.fdoor_maxspeed) + (S.L.doorMaxSpeed_1_norm)
+	1000 random 500 / 1 - (C.L.door_maxspeed_var) * (C.L.bdoor_maxspeed) + (S.L.doorMaxSpeed_2_norm)
+	1000 random 500 / 1 - (C.L.door_maxspeed_var) * (C.L.bdoor_maxspeed) + (S.L.doorMaxSpeed_3_norm)
+
+	(C.L.door_refl) (S.L.doorRefl_0)
+	(C.L.door_refl) (S.L.doorRefl_1)
+	(C.L.door_refl) (S.L.doorRefl_2)
+	(C.L.door_refl) (S.L.doorRefl_3)
+
+	
+{end}
+
+{macro:Door_Frame}
+	(M.L.Door0_Calc)
+	(M.L.Door1_Calc)
+	(M.L.DoorAftCalc)
+	(M.L.Door2_Calc)
+	(M.L.Door3_Calc)
+
+	(L.L.door_0) 0.9 > (S.L.PAX_Entry0_Open)
+	(L.L.door_1) 0.9 > (S.L.PAX_Entry1_Open)	
+	(L.L.door_2) 0.9 > (L.L.door_3) 0.9 > && (S.L.PAX_Exit0_Open) (S.L.PAX_Exit1_Open)
+
+'	"Dauerfeuer"-Haltewunsch über Kinderwagenschalter (macht genau dasselbe wie der "trigger:int_haltewunsch"):
+	(L.L.door_handsteuerung) (L.L.door_haltewunsch_knopfdruck) ||
+	{if}
+		1 (S.L.haltewunsch)
+	{endif}
+
+'	Setzen der Haltestellenbremse erst bei Stillstand des Busses:
+	(L.L.bremse_halte_sw) (L.L.door_20h_sw) ||
+	(L.L.bremse_halte) ! (L.L.Velocity) (C.L.Door_Bremse_Halte_MaxKMH) < && &&
+	{if}
+		(L.L.elec_busbar_main)
+		{if}
+			(T.L.ev_haltebremse_an)		
+			1 (S.L.bremse_halte)
+		{endif}
+	{endif}
+
+'	Anhand dieser Bedingungen kann nun die Automatiktür geöffnet werden:
+	(M.L.DoorAft_Open)
+
+'	Türfreigabekriterium
+
+	(L.L.bremse_halte_sw) (L.L.bremse_halte) && (S.L.door_freigabe)
+
+'	Haltewunschlampe:
+	(L.L.haltewunsch) (L.L.door_2) 0.2 < (L.L.elec_busbar_main) && &&
+	{if}
+		1 (S.L.haltewunschlampe)
+	{else}
+		0 (S.L.haltewunschlampe) (S.L.haltewunsch)
+	{endif}
+
+'	Abfall des Kinderwagenwunsch-Relais bei fehlender Stromversorgung:
+
+	(L.L.elec_busbar_main) 0 = 
+	{if}
+		0 (S.L.door_kinderwagenwunsch)
+	{endif}
+
+'	Beleuchtung der Einstiege
+
+	(L.L.elec_busbar_main)
+	{if}
+		(L.L.door_0) 0.1 > (L.L.door_1) 0.1 > || (S.L.door_light_1)
+		(L.L.door_2) 0.1 > (L.L.door_3) 0.1 > || (S.L.door_light_2)
+	{else}
+		0 (S.L.door_light_1) (S.L.door_light_2)
+	{endif}
+
+'	Druckabhängige Türgeschwindigkeit
+	
+	(C.L.door_druckluft)
+	{if}
+		(L.L.doorMaxSpeed_0_norm) (L.L.bremse_p_Tank04) 100000 - 850000 / (S.L.doorMaxSpeed_0)
+		(L.L.doorMaxSpeed_1_norm) (L.L.bremse_p_Tank04) 100000 - 850000 / (S.L.doorMaxSpeed_1)
+		(L.L.doorMaxSpeed_2_norm) (L.L.bremse_p_Tank04) 100000 - 850000 / (S.L.doorMaxSpeed_2)
+		(L.L.doorMaxSpeed_3_norm) (L.L.bremse_p_Tank04) 100000 - 850000 / (S.L.doorMaxSpeed_3)
+	{else}
+		(L.L.doorMaxSpeed_0_norm) (S.L.doorMaxSpeed_0)
+		(L.L.doorMaxSpeed_1_norm) (S.L.doorMaxSpeed_1)
+		(L.L.doorMaxSpeed_2_norm) (S.L.doorMaxSpeed_2)
+		(L.L.doorMaxSpeed_3_norm) (S.L.doorMaxSpeed_3)
+	{endif}
+'----------------------
+'	AI-Ablauf:
+
+(L.L.AI_Scheduled_AtStation) s0
+1 =
+{if}
+'Wenn Türen geöffnet werden sollen:
+	(L.L.Velocity) (C.L.Door_Bremse_Halte_MaxKMH) <
+	{if}
+'Nur, wenn v < maxkmh, sonst warten
+'Taster jeweils nur betätigen, falls noch nicht an
+		(L.L.bremse_halte_sw) !
+		{if}
+			(M.L.trg_bus_dooraft)
+		{endif}
+		(L.L.doorTarget_0) ! (L.L.door_AI_timer) 0.3 > &&
+		{if}
+			(M.L.trg_bus_doorfront0)
+		{endif}
+		(L.L.doorTarget_1) ! (L.L.door_AI_timer) 0.6 > &&
+		{if}
+			(M.L.trg_bus_doorfront1)
+		{endif}
+	{else}
+		0 (S.L.door_AI_timer)
+	{endif}
+	(L.L.door_AI_timer) (L.S.Timegap) + (S.L.door_AI_timer)
+{else}
+l0 -1 =
+{if}
+'Wenn Türen geschlossen werden sollen:
+'Taster jeweils nur betätigen, falls noch nicht aus:
+	(L.L.doorTarget_1)
+	{if}
+		(M.L.trg_bus_doorfront1)
+		0 (S.L.door_AI_timer)
+	{endif}
+	(L.L.doorTarget_0) (L.L.door_AI_timer) 0.3 > &&
+	{if}
+		(M.L.trg_bus_doorfront0)
+	{endif}
+'Haltestellenbremse erst wegnehmen, wenn alle Türen zu. Dann auch erst den Bus AI-mäßig freigeben:
+	(L.L.door_0) 0.1 <
+	(L.L.door_1) 0.1 < &&
+	(L.L.door_2) 0.1 < &&
+	{if}
+		(L.L.bremse_halte_sw) (L.L.door_AI_timer) 0.3 > &&
+		{if}
+			(M.L.trg_bus_dooraft)
+		{endif}
+		(L.L.bremse_halte_sw) !
+		{if}
+			0 (S.L.AI_Scheduled_AtStation)
+		{endif}
+	{else}
+'Sollte eine der Türen auf sein und die Haltestellenbremse aus, dann sofort diese einlegen
+		(L.L.bremse_halte_sw) !
+		{if}
+			(M.L.trg_bus_dooraft)
+		{endif}
+		(L.L.doorTarget_0) !
+		(L.L.doorTarget_1) ! &&
+		{if}
+			0 (S.L.door_AI_timer)
+		{endif}
+	{endif}
+	(L.L.door_AI_timer) (L.S.Timegap) + (S.L.door_AI_timer)
+{endif}
+{endif}
+
+
+{end}
+
+
+
+
+{macro:Door0_Calc}
+	(L.L.doorTarget_0) ! (L.L.doorSpeed_0) s0 abs 0.05 > (L.L.door_0) 0 > || && 
+	{if}
+		l0 /-/ (L.L.doorMaxSpeed_0) <
+		{if}
+			(L.L.doorSpeed_0) (L.L.doorAcc_0) (L.S.Timegap) * - (S.L.doorSpeed_0)
+		{endif}
+		(L.L.door_0) (L.L.doorSpeed_0) (L.S.Timegap) * + (S.L.door_0)
+	{else}
+		(L.L.doorSpeed_0) abs 0.05 > (L.L.door_0) 1 < || (L.L.doorTarget_0) &&
+		{if}
+			l0 (L.L.doorMaxSpeed_0) <
+			{if}
+				(L.L.doorSpeed_0) (L.L.doorAcc_0) (L.S.Timegap) * + (S.L.doorSpeed_0) 
+			{endif}
+			(L.L.door_0) (L.L.doorSpeed_0) (L.S.Timegap) * + (S.L.door_0)
+		{else}
+			0 (S.L.doorSpeed_0)
+		{endif}
+	{endif}
+
+	(L.L.door_0) 1 >
+	{if}
+		(T.L.ev_doorhitopen_0)
+		1 (S.L.door_0)
+		(L.L.doorSpeed_0) /-/ (L.L.doorRefl_0) * (S.L.doorSpeed_0)
+	{else}
+		(L.L.door_0) 0 <
+		{if}
+			(T.L.ev_doorhitclose_0)
+			0 (S.L.door_0)
+			(L.L.doorSpeed_0) /-/ (L.L.doorRefl_0) * (S.L.doorSpeed_0)
+		{endif}
+	{endif}
+{end}
+
+{macro:Door1_Calc}
+	(L.L.doorTarget_1) ! (L.L.doorSpeed_1) s0 abs 0.05 > (L.L.door_1) 0 > || && 
+	{if}
+		l0 /-/ (L.L.doorMaxSpeed_1) <
+		{if}
+			(L.L.doorSpeed_1) (L.L.doorAcc_1) (L.S.Timegap) * - (S.L.doorSpeed_1)
+		{endif}
+		(L.L.door_1) (L.L.doorSpeed_1) (L.S.Timegap) * + (S.L.door_1)
+	{else}
+		(L.L.doorSpeed_1) abs 0.05 > (L.L.door_1) 1 < || (L.L.doorTarget_1) &&
+		{if}
+			l0 (L.L.doorMaxSpeed_1) <
+			{if}
+				(L.L.doorSpeed_1) (L.L.doorAcc_1) (L.S.Timegap) * + (S.L.doorSpeed_1) 
+			{endif}
+			(L.L.door_1) (L.L.doorSpeed_1) (L.S.Timegap) * + (S.L.door_1)
+		{else}
+			0 (S.L.doorSpeed_1)
+		{endif}
+	{endif}
+
+	(L.L.door_1) 1 >
+	{if}
+		(T.L.ev_doorhitopen_1)
+		1 (S.L.door_1)
+		(L.L.doorSpeed_1) /-/ (L.L.doorRefl_1) * (S.L.doorSpeed_1)
+	{else}
+		(L.L.door_1) 0 <
+		{if}
+			(T.L.ev_doorhitclose_1)
+			0 (S.L.door_1)
+			(L.L.doorSpeed_1) /-/ (L.L.doorRefl_1) * (S.L.doorSpeed_1)
+		{endif}
+	{endif}
+{end}
+
+{macro:DoorAft_Open}
+	
+	(L.L.haltewunsch) (L.L.bremse_halte) &&
+	{if}
+		(L.L.doorTarget_23) !
+		(L.L.bremse_halte_sw) &&
+		{if}
+			(T.L.ev_doortriggeropen_2)
+			1 (S.L.doorTarget_23)
+			(C.L.door_druckluft)
+			{if}
+			(L.L.bremse_p_Tank04) 100000 - 0.96 * 100000 + (S.L.bremse_p_Tank04)
+			{endif}
+		{endif}
+		0 (S.L.doorAftLastOpen)		
+	{endif}
+{end}
+
+{macro:DoorAftCalc}
+
+	(L.L.bremse_halte_sw) !
+	(L.L.door_20h_sw) ! &&
+	(L.L.door_2) 0 = &&
+	(L.L.door_3) 0 = &&
+	(L.L.elec_busbar_main) ! ||
+	(L.L.bremse_halte) &&
+	{if}
+		0 (S.L.bremse_halte) (S.L.doorAftLastOpen)
+		(T.L.ev_haltebremse_aus)
+	{endif}
+
+	(L.L.elec_busbar_main)
+	{if}
+		(L.L.bremse_halte)
+		{if}
+			(L.L.doorAftLastOpen) (L.S.Timegap) + (S.L.doorAftLastOpen)
+		{endif}
+
+		(L.L.doorTarget_23)
+		(L.L.doorAftLastOpen) (C.L.doorAftOpenTime) > &&
+		{if}
+			(T.L.ev_doortriggerclose_2)
+			0 (S.L.doorTarget_23)
+			(C.L.door_druckluft)
+			{if}
+			(L.L.bremse_p_Tank04) 100000 - 0.96 * 100000 + (S.L.bremse_p_Tank04)
+			{endif}
+		{endif}
+	{endif}
+{end}
+
+{macro:Door2_Calc}
+	(L.L.doorTarget_23) ! (L.L.doorSpeed_2) s0 abs 0.05 > (L.L.door_2) 0 > || && 
+	{if}
+		l0 /-/ (L.L.doorMaxSpeed_2) <
+		{if}
+			(L.L.doorSpeed_2) (L.L.doorAcc_2) (L.S.Timegap) * - (S.L.doorSpeed_2)
+		{endif}
+		(L.L.door_2) (L.L.doorSpeed_2) (L.S.Timegap) * + (S.L.door_2)
+	{else}
+		(L.L.doorSpeed_2) abs 0.05 > (L.L.door_2) 1 < || (L.L.doorTarget_23) &&
+		{if}
+			l0 (L.L.doorMaxSpeed_2) <
+			{if}
+				(L.L.doorSpeed_2) (L.L.doorAcc_2) (L.S.Timegap) * + (S.L.doorSpeed_2) 
+			{endif}
+			(L.L.door_2) (L.L.doorSpeed_2) (L.S.Timegap) * + (S.L.door_2)
+		{else}
+			0 (S.L.doorSpeed_2)
+		{endif}
+	{endif}
+
+	(L.L.door_2) 1 >
+	{if}
+		(T.L.ev_doorhitopen_2)
+		1 (S.L.door_2)
+		(L.L.doorSpeed_2) /-/ (L.L.doorRefl_2) * (S.L.doorSpeed_2)
+	{else}
+		(L.L.door_2) 0 <
+		{if}
+			(T.L.ev_doorhitclose_2)
+			0 (S.L.door_2)
+			(L.L.doorSpeed_2) /-/ (L.L.doorRefl_2) * (S.L.doorSpeed_2)
+		{endif}
+	{endif}
+{end}
+
+{macro:Door3_Calc}
+	(L.L.doorTarget_23) ! (L.L.doorSpeed_3) s0 abs 0.05 > (L.L.door_3) 0 > || && 
+	{if}
+		l0 /-/ (L.L.doorMaxSpeed_3) <
+		{if}
+			(L.L.doorSpeed_3) (L.L.doorAcc_3) (L.S.Timegap) * - (S.L.doorSpeed_3)
+		{endif}
+		(L.L.door_3) (L.L.doorSpeed_3) (L.S.Timegap) * + (S.L.door_3)
+	{else}
+		(L.L.doorSpeed_3) abs 0.05 > (L.L.door_3) 1 < || (L.L.doorTarget_23) &&
+		{if}
+			l0 (L.L.doorMaxSpeed_3) <
+			{if}
+				(L.L.doorSpeed_3) (L.L.doorAcc_3) (L.S.Timegap) * + (S.L.doorSpeed_3) 
+			{endif}
+			(L.L.door_3) (L.L.doorSpeed_3) (L.S.Timegap) * + (S.L.door_3)
+		{else}
+			0 (S.L.doorSpeed_3)
+		{endif}
+	{endif}
+
+	(L.L.door_3) 1 >
+	{if}
+		(T.L.ev_doorhitopen_3)
+		1 (S.L.door_3)
+		(L.L.doorSpeed_3) /-/ (L.L.doorRefl_3) * (S.L.doorSpeed_3)
+	{else}
+		(L.L.door_3) 0 <
+		{if}
+			(T.L.ev_doorhitclose_3)
+			0 (S.L.door_3)
+			(L.L.doorSpeed_3) /-/ (L.L.doorRefl_3) * (S.L.doorSpeed_3)
+		{endif}
+	{endif}
+
+{end}
+
+{macro:trg_bus_doorfront0}
+
+	(L.L.doorTarget_0) ! (S.L.doorTarget_0) 
+	{if}
+		(T.L.ev_doortriggeropen_0)
+	{else}
+		(T.L.ev_doortriggerclose_0)
+	{endif}
+		(C.L.door_druckluft)
+		{if}
+		(L.L.bremse_p_Tank04) 100000 - 0.98 * 100000 + (S.L.bremse_p_Tank04)
+		{endif}
+{end}
+
+{macro:trg_bus_doorfront1}
+
+	(L.L.doorTarget_1) ! (S.L.doorTarget_1) 
+	{if}
+		(T.L.ev_doortriggeropen_1)
+	{else}
+		(T.L.ev_doortriggerclose_1)
+	{endif}	
+		(C.L.door_druckluft)
+		{if}
+		(L.L.bremse_p_Tank04) 100000 - 0.98 * 100000 + (S.L.bremse_p_Tank04)
+		{endif}
+{end}
+
+{macro:trg_bus_dooraft}
+	(L.L.bremse_halte_sw) ! (S.L.bremse_halte_sw)
+	
+	(L.L.bremse_halte_sw)
+	{if}
+		(T.L.ev_haltebremse_sw_an)
+	{else}
+		(T.L.ev_haltebremse_sw_aus)
+	{endif}	
+{end}
+
+{macro:trg_bus_20h-switch}
+	(L.L.door_20h_sw) ! (S.L.door_20h_sw)
+	
+	(L.L.door_20h_sw)
+	{if}
+		(T.L.ev_haltebremse_sw_an)
+	{else}
+		(T.L.ev_haltebremse_sw_aus)
+	{endif}	
+{end}

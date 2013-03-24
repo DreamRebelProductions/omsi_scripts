@@ -1,0 +1,366 @@
+'##############
+'Rollband Script
+'##############
+
+'Rollbandanimation für ein SD79-Rollband (Ziffern manuell, Ziel automatisch)
+
+'(c) 20.02.2009 Rüdiger Hülsmann
+'(c) 03.02.2010 Marcel Kuhnt
+
+'Script Version: 1.5
+'Omsi release: 1.0
+
+'Needs:
+'- none
+
+
+'Revision History:
+'- Marcel Kuhnt		10.08.2009	Added Revision History
+'- Marcel Kuhnt		13.04.2010	Added Line List Script
+'- Rüdiger Hülsmann	11.10.2010	New AI Scheduled trigger
+'- Rüdiger Hülsmann	17.10.2010	line offset added
+'- Marcel Kuhnt		25.01.2011	Reduced error offset
+'- Marcel Kuhnt		03.02.2011	/^\ corrected
+
+'------------------------------------------------------------------------------------------
+
+{trigger:rollband_auf}
+	1 (S.L.rlbnd_auf_pressed) 
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rollband_auf_off}
+	0 (S.L.rlbnd_auf_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+{trigger:rollband_ab}
+	1 (S.L.rlbnd_ab_pressed) 
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rollband_ab_off}
+	0 (S.L.rlbnd_ab_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rollband_sync}
+	1 (S.L.rlbnd_sync_pressed) 
+	(T.L.rlbnd_taste_ein)
+	(L.L.elec_busbar_main)
+	{if}
+		(S.L.rlbnd_running_dn)
+		0 (S.L.rlbnd_ziel_target)
+	{endif}
+{end}
+
+{trigger:rollband_sync_off}
+	0 (S.L.rlbnd_sync_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+'*******************************************
+' Trigger für Tastaturbedienung
+
+{trigger:bus_rollband_up_step}
+	(L.L.rlbnd_activekurbel) 4 =
+	{if}
+		1 (S.L.rlbnd_auf_pressed) 
+		(T.L.rlbnd_taste_ein)
+	{endif}
+{end}
+
+{trigger:bus_rollband_up_step_off}
+	(L.L.rlbnd_activekurbel) 4 =
+	{if}
+		0 (S.L.rlbnd_auf_pressed) 
+		(T.L.rlbnd_taste_aus)
+	{endif}
+{end}
+
+{trigger:bus_rollband_dn_step}
+	(L.L.rlbnd_activekurbel) 4 =
+	{if}
+		1 (S.L.rlbnd_ab_pressed) 
+		(T.L.rlbnd_taste_ein)
+	{endif}
+{end}
+
+{trigger:bus_rollband_dn_step_off}
+	(L.L.rlbnd_activekurbel) 4 =
+	{if}
+		0 (S.L.rlbnd_ab_pressed)
+		(T.L.rlbnd_taste_aus)
+	{endif}
+{end}
+
+{trigger:bus_rollband_up}
+	(L.L.rlbnd_activekurbel) 1 =
+	{if}
+		(L.L.rlbnd_ln1) (L.S.timegap) 1 / + (S.L.rlbnd_ln1)
+		(M.L.rollband_actu)
+	{else}
+	(L.L.rlbnd_activekurbel) 2 =
+	{if}
+		(L.L.rlbnd_ln2) (L.S.timegap) 1 / + (S.L.rlbnd_ln2)
+		(M.L.rollband_actu)
+	{else}
+	(L.L.rlbnd_activekurbel) 3 =
+	{if}
+		(L.L.rlbnd_ln3) (L.S.timegap) 1 / + (S.L.rlbnd_ln3)
+		(M.L.rollband_actu)
+	{endif}
+	{endif}
+	{endif}
+{end}
+
+{trigger:bus_rollband_dn}
+	(L.L.rlbnd_activekurbel) 1 =
+	{if}
+		(L.L.rlbnd_ln1) (L.S.timegap) 1 / - (S.L.rlbnd_ln1)
+		(M.L.rollband_actu)
+	{else}
+	(L.L.rlbnd_activekurbel) 2 =
+	{if}
+		(L.L.rlbnd_ln2) (L.S.timegap) 1 / - (S.L.rlbnd_ln2)
+		(M.L.rollband_actu)
+	{else}
+	(L.L.rlbnd_activekurbel) 3 =
+	{if}
+		(L.L.rlbnd_ln3) (L.S.timegap) 1 / - (S.L.rlbnd_ln3)
+		(M.L.rollband_actu)
+	{endif}
+	{endif}
+	{endif}
+{end}
+
+
+{trigger:bus_rollband_setL1}
+	1 (S.L.rlbnd_activekurbel)
+{end}
+
+{trigger:bus_rollband_setL2}
+	2 (S.L.rlbnd_activekurbel)
+{end}
+
+{trigger:bus_rollband_setL3}
+	3 (S.L.rlbnd_activekurbel)
+{end}
+
+{trigger:bus_rollband_setT}
+	4 (S.L.rlbnd_activekurbel)
+{end}
+
+
+'****************************************************************
+'**  MCQ 24.5.2009 - Trigger für AI-Scheduled-Initialisierung: **
+'****************************************************************
+
+{trigger:ai_scheduled_settarget}
+
+'Hier wird das automatische Rollband eingestellt:
+	1 (S.L.elec_busbar_main_sw)
+	1.0 (S.L.elec_V_battery)
+	(L.L.AI_target_index) (S.L.rlbnd_ziel_target)
+'Und gleich "schnell" gekurbelt: (aber +0.1, damit das Zielband noch aktualisiert wird)
+	0.1 + (S.L.rlbnd_ziel)
+
+'Hier werden die Nummernrollbänder eingestellt:
+
+'Nummern-String holen:
+
+
+'Vorgehensweise pro Ziffer: zunächst wird die Ziffer "ausgeschnitten", dann jeweils dubliziert, damit
+'jeweils ein Exemplar der ausgeschnittenen Ziffer im Cache bleibt (die andere geht beim $= verloren)
+
+'1. Ziffer:
+
+	(L.$.SetLineTo) 1 $SetLengthL		$d
+
+	" " $=		{if}	 0 (S.L.rlbnd_ln1)	{endif} $d
+	"N" $=		{if}	 2 (S.L.rlbnd_ln1)	{endif} $d
+	"g" $=		{if}	 3 (S.L.rlbnd_ln1)	{endif} $d
+	"0" $=		{if}	 4 (S.L.rlbnd_ln1)	{endif} $d
+	"1" $=		{if}	 5 (S.L.rlbnd_ln1)	{endif} $d
+	"2" $=		{if}	 6 (S.L.rlbnd_ln1)	{endif} $d
+	"3" $=		{if}	 7 (S.L.rlbnd_ln1)	{endif} $d
+	"4" $=		{if}	 8 (S.L.rlbnd_ln1)	{endif} $d
+	"5" $=		{if}     9 (S.L.rlbnd_ln1)	{endif} $d
+	"6" $=		{if}	10 (S.L.rlbnd_ln1)	{endif} $d
+	"7" $=		{if}	11 (S.L.rlbnd_ln1)	{endif} $d
+	"8" $=		{if}	12 (S.L.rlbnd_ln1)	{endif} $d
+	"9" $=		{if}	13 (S.L.rlbnd_ln1)	{endif} $d
+	"/" $=		{if}	14 (S.L.rlbnd_ln1)	{endif}
+
+'2. Ziffer:
+
+	(L.$.SetLineTo) 2 $SetLengthL 1 $SetLengthR		$d
+
+	" " $=		{if}	 0 (S.L.rlbnd_ln2)	{endif} $d
+	"E" $=		{if}	 1 (S.L.rlbnd_ln2)	{endif} $d
+	"h" $=		{if}	 3 (S.L.rlbnd_ln2)	{endif} $d
+	"0" $=		{if}	 4 (S.L.rlbnd_ln2)	{endif} $d
+	"1" $=		{if}	 5 (S.L.rlbnd_ln2)	{endif} $d
+	"2" $=		{if}	 6 (S.L.rlbnd_ln2)	{endif} $d
+	"3" $=		{if}	 7 (S.L.rlbnd_ln2)	{endif} $d
+	"4" $=		{if}	 8 (S.L.rlbnd_ln2)	{endif} $d
+	"5" $=		{if}     9 (S.L.rlbnd_ln2)	{endif} $d
+	"6" $=		{if}	10 (S.L.rlbnd_ln2)	{endif} $d
+	"7" $=		{if}	11 (S.L.rlbnd_ln2)	{endif} $d
+	"8" $=		{if}	12 (S.L.rlbnd_ln2)	{endif} $d
+	"9" $=		{if}	13 (S.L.rlbnd_ln2)	{endif} $d
+	"^" $=		{if}	14 (S.L.rlbnd_ln2)	{endif} 
+
+'3. Ziffer:
+
+	(L.$.SetLineTo) 3 $SetLengthL 1 $SetLengthR		$d
+
+	" " $=		{if}	 0 (S.L.rlbnd_ln3)	{endif} $d
+	"E" $=		{if}	 1 (S.L.rlbnd_ln3)	{endif} $d
+	"N" $=		{if}	 2 (S.L.rlbnd_ln3)	{endif} $d
+	"0" $=		{if}	 4 (S.L.rlbnd_ln3)	{endif} $d
+	"1" $=		{if}	 5 (S.L.rlbnd_ln3)	{endif} $d
+	"2" $=		{if}	 6 (S.L.rlbnd_ln3)	{endif} $d
+	"3" $=		{if}	 7 (S.L.rlbnd_ln3)	{endif} $d
+	"4" $=		{if}	 8 (S.L.rlbnd_ln3)	{endif} $d
+	"5" $=		{if}     9 (S.L.rlbnd_ln3)	{endif} $d
+	"6" $=		{if}	10 (S.L.rlbnd_ln3)	{endif} $d
+	"7" $=		{if}	11 (S.L.rlbnd_ln3)	{endif} $d
+	"8" $=		{if}	12 (S.L.rlbnd_ln3)	{endif} $d
+	"9" $=		{if}	13 (S.L.rlbnd_ln3)	{endif} $d
+	"\" $=		{if}	14 (S.L.rlbnd_ln3)	{endif} 
+
+
+
+' Das ultimative Sahnehäubchen: die drei Rollbänder werden noch zufällig verrutscht...! *ggg*
+
+11 random 5 - 75 / (L.L.rlbnd_ln1) + (S.L.rlbnd_ln1)
+11 random 5 - 75 / (L.L.rlbnd_ln2) + (S.L.rlbnd_ln2)
+11 random 5 - 75 / (L.L.rlbnd_ln3) + (S.L.rlbnd_ln3)
+
+	(M.L.rollband_actu)
+
+{end}
+
+'********************************************************************
+'**  MCQ 24.5.2009 - Ende Trigger für AI-Scheduled-Initialisierung **
+'********************************************************************
+
+
+
+'----------------------
+'	Init
+'----------------------
+
+{macro:rollband_init}
+	0
+		(S.L.rlbnd_ln1) (S.L.rlbnd_ln2) (S.L.rlbnd_ln3) (S.L.rlbnd_ziel)
+	1 (S.L.rlbnd_activekurbel)
+	(M.L.rollband_actu)
+
+	0	(S.L.rlbnd_ziel_target) (S.L.rlbnd_ziel)
+{end}
+
+{macro:rollband_frame}
+
+	(L.L.elec_busbar_main)
+	{if}
+		(L.L.rlbnd_ziel_target) (L.L.rlbnd_ziel) =
+		{if}
+			(L.L.rlbnd_auf_pressed) 
+			{if}
+				(L.L.rlbnd_ziel_target) 1 + (S.L.rlbnd_ziel_target)
+				1 (S.L.rlbnd_running) (S.L.rlbnd_running_up) 
+				0 (S.L.rlbnd_running_dn)
+				(T.L.rlbnd_klick)
+			{else}
+	
+				(L.L.rlbnd_ab_pressed) 
+				{if}
+					(L.L.rlbnd_ziel_target) 1 - (S.L.rlbnd_ziel_target)
+					1 (S.L.rlbnd_running) (S.L.rlbnd_running_dn) 
+					0 (S.L.rlbnd_running_up)
+					(T.L.rlbnd_klick)
+				{else}
+					(L.L.rlbnd_running)
+					{if}
+						(T.L.rlbnd_klick)
+					{endif}
+					0 (S.L.rlbnd_running) (S.L.rlbnd_running_up) (S.L.rlbnd_running_dn)
+				{endif}
+			{endif}
+		{else}
+			1 (S.L.rlbnd_running)
+			(L.L.rlbnd_ziel_target) (L.L.rlbnd_ziel) >
+			{if}
+				1 (S.L.rlbnd_running_up)
+				0 (S.L.rlbnd_running_dn)
+			{else}
+				1 (S.L.rlbnd_running_dn)
+				0 (S.L.rlbnd_running_up)
+			{endif}
+		{endif}
+	{else}
+		0 (S.L.rlbnd_running) (S.L.rlbnd_running_dn) (S.L.rlbnd_running_up)
+	{endif}
+
+
+
+'	Hier muss unterschieden werden zwischen Auf und Ab, da das Zählwerk sofort nach Betätigung des Tasters umspringen soll
+	(L.L.rlbnd_ziel) trunc s0
+	(L.L.rlbnd_ziel_target) (L.L.rlbnd_ziel) >
+	{if}
+		l0 (L.L.rlbnd_ziel) d trunc - (F.L.rlbnd_klinkwerk_auf) + s0
+	{else}
+		l0 (L.L.rlbnd_ziel) d trunc - (F.L.rlbnd_klinkwerk_ab) + s0
+	{endif}
+	l0 (S.L.rlbnd_1er)
+
+	(L.L.rlbnd_1er) 10 / trunc 
+	(L.L.rlbnd_1er) 10 / d trunc - (F.L.rlbnd_10er-uebertrag) +
+	(S.L.rlbnd_10er)
+
+	(L.L.rlbnd_10er) 10 / trunc 
+	(L.L.rlbnd_10er) 10 / d trunc - (F.L.rlbnd_10er-uebertrag) +
+	(S.L.rlbnd_100er)
+
+
+	(L.L.elec_busbar_main)
+	{if}
+		(L.S.timegap) (C.L.rlbnd_vmax) * s0 (L.L.rlbnd_ziel_target) (L.L.rlbnd_ziel) - l0 min s1 l0 /-/ l1 max s0
+
+		0 = !
+		{if}
+
+			l0 (L.L.rlbnd_ziel) + (S.L.rlbnd_ziel)
+
+			(L.L.rlbnd_ziel) (S.L.target_index_int) trunc
+'			(S.L.target_index_ext)
+			/-/ (L.L.rlbnd_ziel) + (S.L.rlbnd_ziel_trans) 1 - (S.L.rlbnd_ziel_trans_2)
+'			(L.L.target_texture) 1 + (S.L.target_texture_2)
+
+'Aktualisierung der Strings für das Austauschen der Texturen:
+			(L.L.rlbnd_ziel) trunc s0
+			4 "..\..\Anzeigen\Rollband_SD79\" (M.V.GetTerminusString) $+ (S.$.Rollband_Tex_V)
+			l0 1 +	4 "..\..\Anzeigen\Rollband_SD79\" (M.V.GetTerminusString) $+ (S.$.Rollband_Tex_H)
+		{endif}
+	{endif}
+
+'Aktualisierung der Code-Tafel:
+
+	"Linienlisten\" (L.$.yard) "_RLB.jpg" $+ $+ (S.$.Rollband_Linelist)
+
+{end}
+
+{macro:rollband_actu}
+	(L.L.rlbnd_ln1) trunc 0.001 + (S.L.rlbnd_ln1_bmp)
+	/-/ (L.L.rlbnd_ln1) + 2 / (S.L.rlbnd_ln1_trans)
+
+	(L.L.rlbnd_ln2) trunc 0.001 + (S.L.rlbnd_ln2_bmp)
+	/-/ (L.L.rlbnd_ln2) + 2 / (S.L.rlbnd_ln2_trans)
+
+	(L.L.rlbnd_ln3) trunc 0.001 + (S.L.rlbnd_ln3_bmp)
+	/-/ (L.L.rlbnd_ln3) + 2 / (S.L.rlbnd_ln3_trans)
+{end}

@@ -1,0 +1,607 @@
+'##############
+'Rollband Script
+'##############
+
+'Rollbandanimation für ein SD83-Rollband (Ziffern und Ziel automatisch)
+
+'(c) 11.10.2010 Rüdiger Hülsmann
+'(c) 03.02.2010 Marcel Kuhnt
+
+
+'Script Version: 1.5
+'Omsi release: 1.0
+
+'Needs:
+'- none
+
+
+'Revision History:
+'- Rüdiger Hülsmann		11.10.2010	File created (based on rollband.osc)
+'- Rüdiger Hülsmann		17.10.2010	line offset added
+'- Rüdiger Hülsmann		23.10.2010	line offset bugfixed
+'- Marcel Kuhnt			03.02.2011	/^\ corrected
+
+
+'------------------------------------------------------------------------------------------
+'Spezielle SD83-Trigger:
+
+{trigger:rlbnd_ziel_select_100_+}
+	1 (S.L.rlbnd_ziel_select_100_+_pressed)
+	(L.L.rlbnd_ziel_select_100_rolle) 1 + (S.L.rlbnd_ziel_select_100_rolle) s0
+	10 % s1
+	s0 0 <
+	{if}
+		l1 10 + s1
+	{endif}
+	l1 (S.L.rlbnd_ziel_select_100)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_ziel_select_100_+_off}
+	0 (S.L.rlbnd_ziel_select_100_+_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_ziel_select_10_+}
+	1 (S.L.rlbnd_ziel_select_10_+_pressed)
+	(L.L.rlbnd_ziel_select_10_rolle) 1 + (S.L.rlbnd_ziel_select_10_rolle) s0
+	10 % s1
+	s0 0 <
+	{if}
+		l1 10 + s1
+	{endif}
+	l1 (S.L.rlbnd_ziel_select_10)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_ziel_select_10_+_off}
+	0 (S.L.rlbnd_ziel_select_10_+_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_ziel_select_1_+}
+	1 (S.L.rlbnd_ziel_select_1_+_pressed)
+	(L.L.rlbnd_ziel_select_1_rolle) 1 + (S.L.rlbnd_ziel_select_1_rolle) s0
+	10 % s1
+	s0 0 <
+	{if}
+		l1 10 + s1
+	{endif}
+	l1 (S.L.rlbnd_ziel_select_1)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_ziel_select_1_+_off}
+	0 (S.L.rlbnd_ziel_select_1_+_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_linie_select_100_+}
+	1 (S.L.rlbnd_linie_select_100_+_pressed)
+	(L.L.rlbnd_linie_select_100_rolle) 1 + (S.L.rlbnd_linie_select_100_rolle) s0
+	16 % s1
+	s0 0 <
+	{if}
+		l1 16 + s1
+	{endif}
+	l1 (S.L.rlbnd_linie_select_100)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_linie_select_100_+_off}
+	0 (S.L.rlbnd_linie_select_100_+_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_linie_select_10_+}
+	1 (S.L.rlbnd_linie_select_10_+_pressed)
+	(L.L.rlbnd_linie_select_10_rolle) 1 + (S.L.rlbnd_linie_select_10_rolle) s0
+	16 % s1
+	s0 0 <
+	{if}
+		l1 16 + s1
+	{endif}
+	l1 (S.L.rlbnd_linie_select_10)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_linie_select_10_+_off}
+	0 (S.L.rlbnd_linie_select_10_+_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_linie_select_1_+}
+	1 (S.L.rlbnd_linie_select_1_+_pressed)
+	(L.L.rlbnd_linie_select_1_rolle) 1 + (S.L.rlbnd_linie_select_1_rolle) s0
+	16 % s1
+	s0 0 <
+	{if}
+		l1 16 + s1
+	{endif}
+	l1 (S.L.rlbnd_linie_select_1)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_linie_select_1_+_off}
+	0 (S.L.rlbnd_linie_select_1_+_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+
+
+{trigger:rlbnd_ziel_select_100_-}
+	1 (S.L.rlbnd_ziel_select_100_-_pressed)
+	(L.L.rlbnd_ziel_select_100_rolle) 1 - (S.L.rlbnd_ziel_select_100_rolle) s0
+	10 % s1
+	s0 0 <
+	{if}
+		l1 10 + s1
+	{endif}
+	l1 (S.L.rlbnd_ziel_select_100)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_ziel_select_100_-_off}
+	0 (S.L.rlbnd_ziel_select_100_-_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_ziel_select_10_-}
+	1 (S.L.rlbnd_ziel_select_10_-_pressed)
+	(L.L.rlbnd_ziel_select_10_rolle) 1 - (S.L.rlbnd_ziel_select_10_rolle) s0
+	10 % s1
+	s0 0 <
+	{if}
+		l1 10 + s1
+	{endif}
+	l1 (S.L.rlbnd_ziel_select_10)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_ziel_select_10_-_off}
+	0 (S.L.rlbnd_ziel_select_10_-_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_ziel_select_1_-}
+	1 (S.L.rlbnd_ziel_select_1_-_pressed)
+	(L.L.rlbnd_ziel_select_1_rolle) 1 - (S.L.rlbnd_ziel_select_1_rolle) s0
+	10 % s1
+	s0 0 <
+	{if}
+		l1 10 + s1
+	{endif}
+	l1 (S.L.rlbnd_ziel_select_1)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_ziel_select_1_-_off}
+	0 (S.L.rlbnd_ziel_select_1_-_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_linie_select_100_-}
+	1 (S.L.rlbnd_linie_select_100_-_pressed)
+	(L.L.rlbnd_linie_select_100_rolle) 1 - (S.L.rlbnd_linie_select_100_rolle) s0
+	16 % s1
+	s0 0 <
+	{if}
+		l1 16 + s1
+	{endif}
+	l1 (S.L.rlbnd_linie_select_100)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_linie_select_100_-_off}
+	0 (S.L.rlbnd_linie_select_100_-_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_linie_select_10_-}
+	1 (S.L.rlbnd_linie_select_10_-_pressed)
+	(L.L.rlbnd_linie_select_10_rolle) 1 - (S.L.rlbnd_linie_select_10_rolle) s0
+	16 % s1
+	s0 0 <
+	{if}
+		l1 16 + s1
+	{endif}
+	l1 (S.L.rlbnd_linie_select_10)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_linie_select_10_-_off}
+	0 (S.L.rlbnd_linie_select_10_-_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_linie_select_1_-}
+	1 (S.L.rlbnd_linie_select_1_-_pressed)
+	(L.L.rlbnd_linie_select_1_rolle) 1 - (S.L.rlbnd_linie_select_1_rolle) s0
+	16 % s1
+	s0 0 <
+	{if}
+		l1 16 + s1
+	{endif}
+	l1 (S.L.rlbnd_linie_select_1)
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_linie_select_1_-_off}
+	0 (S.L.rlbnd_linie_select_1_-_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+'Start-Trigger
+
+{trigger:rlbnd_ziel_start}
+	1 (S.L.rlbnd_ziel_start_pressed)
+	(L.L.elec_busbar_main)
+	{if}
+		(L.L.rlbnd_ziel_select_target) (S.L.rlbnd_ziel_target)
+	{endif}
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_ziel_start_off}
+	0 (S.L.rlbnd_ziel_start_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+{trigger:rlbnd_linie_start}
+	1 (S.L.rlbnd_linie_start_pressed)
+	(L.L.elec_busbar_main)
+	{if}
+		(L.L.rlbnd_linie_select_100) (S.L.rlbnd_ln1_target)
+		(L.L.rlbnd_linie_select_10) (S.L.rlbnd_ln2_target)
+		(L.L.rlbnd_linie_select_1) (S.L.rlbnd_ln3_target)
+	{endif}
+	(T.L.rlbnd_taste_ein)
+{end}
+
+{trigger:rlbnd_linie_start_off}
+	0 (S.L.rlbnd_linie_start_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+
+'Rollband-Standardtrigger
+
+
+{trigger:rollband_sync}
+	1 (S.L.rlbnd_sync_pressed) 
+	(T.L.rlbnd_taste_ein)
+	(L.L.elec_busbar_main)
+	{if}
+		(S.L.rlbnd_running_dn)
+		0 (S.L.rlbnd_ziel_target)
+	{endif}
+{end}
+
+{trigger:rollband_sync_off}
+	0 (S.L.rlbnd_sync_pressed)
+	(T.L.rlbnd_taste_aus)
+{end}
+
+
+'*******************************************
+' Trigger für Tastaturbedienung
+
+' Braucht der SD83 nicht
+
+'****************************************************************
+'**  MCQ 24.5.2009 - Trigger für AI-Scheduled-Initialisierung: **
+'****************************************************************
+
+{trigger:ai_scheduled_settarget}
+
+'Hier wird das automatische Rollband eingestellt:
+	1 (S.L.elec_busbar_main_sw)
+	1.0 (S.L.elec_V_battery)
+	(L.L.AI_target_index) (S.L.rlbnd_ziel_target)
+'Und gleich "schnell" gekurbelt: (aber +0.1, damit das Zielband noch aktualisiert wird)
+	0.1 + (S.L.rlbnd_ziel)
+
+'Hier werden die Nummernrollbänder eingestellt:
+
+'Nummern-String holen:
+
+
+'Vorgehensweise pro Ziffer: zunächst wird die Ziffer "ausgeschnitten", dann jeweils dubliziert, damit
+'jeweils ein Exemplar der ausgeschnittenen Ziffer im Cache bleibt (die andere geht beim $= verloren)
+
+'1. Ziffer:
+
+	(L.$.SetLineTo) 1 $SetLengthL		$d
+
+	" " $=		{if}	 0 (S.L.rlbnd_ln1_target)	{endif} $d
+	"N" $=		{if}	 2 (S.L.rlbnd_ln1_target)	{endif} $d
+	"g" $=		{if}	 3 (S.L.rlbnd_ln1_target)	{endif} $d
+	"0" $=		{if}	 4 (S.L.rlbnd_ln1_target)	{endif} $d
+	"1" $=		{if}	 5 (S.L.rlbnd_ln1_target)	{endif} $d
+	"2" $=		{if}	 6 (S.L.rlbnd_ln1_target)	{endif} $d
+	"3" $=		{if}	 7 (S.L.rlbnd_ln1_target)	{endif} $d
+	"4" $=		{if}	 8 (S.L.rlbnd_ln1_target)	{endif} $d
+	"5" $=		{if}     9 (S.L.rlbnd_ln1_target)	{endif} $d
+	"6" $=		{if}	10 (S.L.rlbnd_ln1_target)	{endif} $d
+	"7" $=		{if}	11 (S.L.rlbnd_ln1_target)	{endif} $d
+	"8" $=		{if}	12 (S.L.rlbnd_ln1_target)	{endif} $d
+	"9" $=		{if}	13 (S.L.rlbnd_ln1_target)	{endif} $d
+	"/" $=		{if}	14 (S.L.rlbnd_ln1_target)	{endif}
+
+'2. Ziffer:
+
+	(L.$.SetLineTo) 2 $SetLengthL 1 $SetLengthR		$d
+
+	" " $=		{if}	 0 (S.L.rlbnd_ln2_target)	{endif} $d
+	"E" $=		{if}	 1 (S.L.rlbnd_ln2_target)	{endif} $d
+	"h" $=		{if}	 3 (S.L.rlbnd_ln2_target)	{endif} $d
+	"0" $=		{if}	 4 (S.L.rlbnd_ln2_target)	{endif} $d
+	"1" $=		{if}	 5 (S.L.rlbnd_ln2_target)	{endif} $d
+	"2" $=		{if}	 6 (S.L.rlbnd_ln2_target)	{endif} $d
+	"3" $=		{if}	 7 (S.L.rlbnd_ln2_target)	{endif} $d
+	"4" $=		{if}	 8 (S.L.rlbnd_ln2_target)	{endif} $d
+	"5" $=		{if}     9 (S.L.rlbnd_ln2_target)	{endif} $d
+	"6" $=		{if}	10 (S.L.rlbnd_ln2_target)	{endif} $d
+	"7" $=		{if}	11 (S.L.rlbnd_ln2_target)	{endif} $d
+	"8" $=		{if}	12 (S.L.rlbnd_ln2_target)	{endif} $d
+	"9" $=		{if}	13 (S.L.rlbnd_ln2_target)	{endif} $d
+	"^" $=		{if}	14 (S.L.rlbnd_ln2_target)	{endif} 
+
+'3. Ziffer:
+
+	(L.$.SetLineTo) 3 $SetLengthL 1 $SetLengthR		$d
+
+	" " $=		{if}	 0 (S.L.rlbnd_ln3_target)	{endif} $d
+	"E" $=		{if}	 1 (S.L.rlbnd_ln3_target)	{endif} $d
+	"N" $=		{if}	 2 (S.L.rlbnd_ln3_target)	{endif} $d
+	"0" $=		{if}	 4 (S.L.rlbnd_ln3_target)	{endif} $d
+	"1" $=		{if}	 5 (S.L.rlbnd_ln3_target)	{endif} $d
+	"2" $=		{if}	 6 (S.L.rlbnd_ln3_target)	{endif} $d
+	"3" $=		{if}	 7 (S.L.rlbnd_ln3_target)	{endif} $d
+	"4" $=		{if}	 8 (S.L.rlbnd_ln3_target)	{endif} $d
+	"5" $=		{if}     9 (S.L.rlbnd_ln3_target)	{endif} $d
+	"6" $=		{if}	10 (S.L.rlbnd_ln3_target)	{endif} $d
+	"7" $=		{if}	11 (S.L.rlbnd_ln3_target)	{endif} $d
+	"8" $=		{if}	12 (S.L.rlbnd_ln3_target)	{endif} $d
+	"9" $=		{if}	13 (S.L.rlbnd_ln3_target)	{endif} $d
+	"\" $=		{if}	14 (S.L.rlbnd_ln3_target)	{endif} 
+
+
+' Das ultimative Sahnehäubchen: die drei Rollbänder werden noch zufällig verrutscht...! *ggg*
+
+' Nöö, nicht beim SD83...
+
+	(M.L.rollband_actu)
+
+{end}
+
+'********************************************************************
+'**  MCQ 24.5.2009 - Ende Trigger für AI-Scheduled-Initialisierung **
+'********************************************************************
+
+
+
+'----------------------
+'	Init
+'----------------------
+
+{macro:rollband_init}
+	0 (S.L.rlbnd_ln1) (S.L.rlbnd_ln2) (S.L.rlbnd_ln3) (S.L.rlbnd_ziel)
+	1 (S.L.rlbnd_activekurbel)
+	(M.L.rollband_actu)
+
+	0	(S.L.rlbnd_ziel_target) (S.L.rlbnd_ziel)
+{end}
+
+{macro:rollband_frame}
+
+'	Zusammensetzen des Zielcodes aus den drei Eingabefeldern:
+
+	(L.L.rlbnd_ziel_select_100) 100 * (L.L.rlbnd_ziel_select_10) 10 * + (L.L.rlbnd_ziel_select_1) + (S.L.rlbnd_ziel_select_target)
+
+
+'	Hauptteil: Rollbandbewegung
+
+	(L.L.elec_busbar_main)
+	{if}
+		(L.L.rlbnd_ziel_target) (L.L.rlbnd_ziel) =
+		{if}
+			(L.L.rlbnd_auf_pressed) 
+			{if}
+				(L.L.rlbnd_ziel_target) 1 + (S.L.rlbnd_ziel_target)
+				1 (S.L.rlbnd_running) (S.L.rlbnd_running_up) 
+				0 (S.L.rlbnd_running_dn)
+				(T.L.rlbnd_klick)	
+			{else}
+	
+				(L.L.rlbnd_ab_pressed) 
+				{if}
+					(L.L.rlbnd_ziel_target) 1 - (S.L.rlbnd_ziel_target)
+					1 (S.L.rlbnd_running) (S.L.rlbnd_running_dn) 
+					0 (S.L.rlbnd_running_up)
+					(T.L.rlbnd_klick)
+				{else}
+					(L.L.rlbnd_running)
+					{if}
+						(T.L.rlbnd_klick)
+					{endif}
+					0 (S.L.rlbnd_running) (S.L.rlbnd_running_up) (S.L.rlbnd_running_dn)
+				{endif}
+			{endif}
+		{else}
+			1 (S.L.rlbnd_running)
+			(L.L.rlbnd_ziel_target) (L.L.rlbnd_ziel) >
+			{if}
+				1 (S.L.rlbnd_running_up)
+				0 (S.L.rlbnd_running_dn)
+			{else}
+				1 (S.L.rlbnd_running_dn)
+				0 (S.L.rlbnd_running_up)
+			{endif}
+		{endif}
+
+
+'		Hier muss unterschieden werden zwischen Auf und Ab, da das Zählwerk sofort nach Betätigung des Tasters umspringen soll:
+
+		(L.L.rlbnd_ziel) trunc s0
+		(L.L.rlbnd_ziel_target) (L.L.rlbnd_ziel) >
+		{if}
+			l0 1 + (S.L.rlbnd_ziel_1)
+		{else}
+		l0 (S.L.rlbnd_ziel_1)
+		{endif}
+
+		(L.L.rlbnd_ziel_1) 10 / trunc 
+		(S.L.rlbnd_ziel_10)
+
+		(L.L.rlbnd_ziel_10) 10 / trunc 
+		(S.L.rlbnd_ziel_100)
+
+
+'		Tickern des Zählwerks (tickert bei getrunctem Übersprung):
+
+		(L.L.rlbnd_ziel) trunc s0 (L.L.rlbnd_last_ziel) = !
+		{if}
+			(T.L.rlbnd_klick)
+		{endif}
+		l0 (S.L.rlbnd_last_ziel)
+
+'		Bewegung Linienbänder
+
+		(L.S.timegap) (C.L.rlbnd_vmax) * s0 (L.L.rlbnd_ln1_target) (L.L.rlbnd_ln1) - l0 min s1 l0 /-/ l1 max s0 0 = !
+		{if}
+			l0 (L.L.rlbnd_ln1) + (S.L.rlbnd_ln1)
+			1 (S.L.rlbnd_ln1_running)
+			(M.L.rollband_actu)
+		{else}
+			(L.L.rlbnd_ln1_running)
+			{if}
+				(L.L.rlbnd_ln1_target) (S.L.rlbnd_ln1)
+				0 (S.L.rlbnd_ln1_running)
+				(T.L.rlbnd_klick)
+			{endif}		
+		{endif}
+		(L.S.timegap) (C.L.rlbnd_vmax) * s2 (L.L.rlbnd_ln2_target) (L.L.rlbnd_ln2) - l2 min s3 l2 /-/ l3 max s2 0 = !
+		{if}
+			l2 (L.L.rlbnd_ln2) + (S.L.rlbnd_ln2)
+			1 (S.L.rlbnd_ln2_running)
+			(M.L.rollband_actu)
+		{else}
+			(L.L.rlbnd_ln2_running)
+			{if}
+				(L.L.rlbnd_ln2_target) (S.L.rlbnd_ln2)
+				0 (S.L.rlbnd_ln2_running)
+				(T.L.rlbnd_klick)
+			{endif}	
+		{endif}
+		(L.S.timegap) (C.L.rlbnd_vmax) * s4 (L.L.rlbnd_ln3_target) (L.L.rlbnd_ln3) - l4 min s5 l4 /-/ l5 max s4	0 = !
+		{if}
+			l4 (L.L.rlbnd_ln3) + (S.L.rlbnd_ln3)
+			1 (S.L.rlbnd_ln3_running)
+			(M.L.rollband_actu)
+		{else}
+			(L.L.rlbnd_ln3_running)
+			{if}
+				(L.L.rlbnd_ln3_target) (S.L.rlbnd_ln3)
+				0 (S.L.rlbnd_ln3_running)
+				(T.L.rlbnd_klick)
+			{endif}	
+		{endif}
+
+		(L.L.rlbnd_ln1_running)
+		(L.L.rlbnd_ln2_running) ||
+		(L.L.rlbnd_ln3_running) ||
+		(S.L.rlbnd_ln_running)
+
+'		Sound für Linienbänder	
+				
+		(L.L.rlbnd_ln1_target) (L.L.rlbnd_ln1) >
+		(L.L.rlbnd_ln2_target) (L.L.rlbnd_ln2) > ||
+		(L.L.rlbnd_ln3_target) (L.L.rlbnd_ln3) > ||
+		{if}
+			1 (S.L.rlbnd_running_up)
+		{else}
+			(L.L.rlbnd_running) !
+			{if}
+				0 (S.L.rlbnd_running_up)
+			{endif}
+		{endif}
+
+		(L.L.rlbnd_ln1_target) (L.L.rlbnd_ln1) <
+		(L.L.rlbnd_ln2_target) (L.L.rlbnd_ln2) < ||
+		(L.L.rlbnd_ln3_target) (L.L.rlbnd_ln3) < ||
+		{if}
+			1 (S.L.rlbnd_running_dn)
+		{else}
+			(L.L.rlbnd_running) !
+			{if}
+				0 (S.L.rlbnd_running_dn)
+			{endif}
+		{endif}
+	
+
+	{else}
+		0 (S.L.rlbnd_running) (S.L.rlbnd_running_dn) (S.L.rlbnd_running_up)
+		(L.L.rlbnd_ziel) (S.L.rlbnd_ziel_target)
+		(L.L.rlbnd_ln1_target) (S.L.rlbnd_ln1)
+		(L.L.rlbnd_ln2_target) (S.L.rlbnd_ln2)
+		(L.L.rlbnd_ln3_target) (S.L.rlbnd_ln3)
+	{endif}
+
+
+
+
+
+
+
+	(L.L.elec_busbar_main)
+	{if}
+		(L.S.timegap) (C.L.rlbnd_vmax) * s0 (L.L.rlbnd_ziel_target) (L.L.rlbnd_ziel) - l0 min s1 l0 /-/ l1 max s0
+
+		0 = !
+		{if}
+
+			l0 (L.L.rlbnd_ziel) + (S.L.rlbnd_ziel)
+
+			(L.L.rlbnd_ziel) (S.L.target_index_int) trunc
+'			(S.L.target_index_ext)
+			/-/ (L.L.rlbnd_ziel) + (S.L.rlbnd_ziel_trans) 1 - (S.L.rlbnd_ziel_trans_2)
+'			(L.L.target_texture) 1 + (S.L.target_texture_2)
+
+'Aktualisierung der Strings für das Austauschen der Texturen:
+			(L.L.rlbnd_ziel) trunc s0
+			4 "..\..\Anzeigen\Rollband_SD79\" (M.V.GetTerminusString) $+ (S.$.Rollband_Tex_V)
+			l0 1 +	4 "..\..\Anzeigen\Rollband_SD79\" (M.V.GetTerminusString) $+ (S.$.Rollband_Tex_H)
+		{endif}
+	{endif}
+
+'Aktualisierung der Code-Tafel:
+
+	"Linienlisten\" (L.$.yard) "_RLB.jpg" $+ $+ (S.$.Rollband_Linelist)
+
+{end}
+
+{macro:rollband_actu}
+	(L.L.rlbnd_ln1) trunc 0.001 + (S.L.rlbnd_ln1_bmp)
+	/-/ (L.L.rlbnd_ln1) + 2 / (S.L.rlbnd_ln1_trans)
+
+	(L.L.rlbnd_ln2) trunc 0.001 + (S.L.rlbnd_ln2_bmp)
+	/-/ (L.L.rlbnd_ln2) + 2 / (S.L.rlbnd_ln2_trans)
+
+	(L.L.rlbnd_ln3) trunc 0.001 + (S.L.rlbnd_ln3_bmp)
+	/-/ (L.L.rlbnd_ln3) + 2 / (S.L.rlbnd_ln3_trans)
+{end}

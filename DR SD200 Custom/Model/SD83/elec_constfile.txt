@@ -1,0 +1,14 @@
+[const]
+elec_busbar_Vmin
+0.8
+
+
+	Duration the battery will need to decrease its voltage to zero [s]:
+
+[const]
+elec_battery_duration
+1000000
+
+[const]
+elec_generator_minRPM
+400
