@@ -97,9 +97,8 @@ model\passengercabin.cfg
 	////////////////////////////////////////////////////////
 
 [varnamelist]
-22
+21
 script\Collision_varlist.txt
-script\antrieb_varlist.txt
 script\Gearbox_ZF_varlist.txt
 script\engine_turbo_varlist.txt
 script\elec_varlist.txt
