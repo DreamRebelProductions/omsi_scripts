@@ -18,7 +18,7 @@
 
 [friendlyname]
 DR
-SD200 - Custom
+SD200 Custom - ZF
 Grey
 
 [description]
@@ -78,13 +78,13 @@ B-V
 
 
 [sound]
-Sound\sound_dr_sd_200_custom_voith.cfg
+Sound\DR_DAF_ZF.cfg
 
 [sound_ai]
-sound\sound_dr_sd_200_custom_voith.cfg
+sound\DR_DAF_ZF.cfg
 
 [model]
-model\model_SD83.cfg
+model\model_SD200.cfg
 
 [paths]
 model\paths.cfg
@@ -97,10 +97,11 @@ model\passengercabin.cfg
 	////////////////////////////////////////////////////////
 
 [varnamelist]
-21
+22
 script\Collision_varlist.txt
 script\antrieb_varlist.txt
-script\engine_varlist.txt
+script\Gearbox_ZF_varlist.txt
+script\engine_turbo_varlist.txt
 script\elec_varlist.txt
 script\bremse_varlist.txt
 script\auspuff_varlist.txt
@@ -132,8 +133,8 @@ script\man_sd85_main.osc
 script\man_sd85_main_AI.osc
 script\collision.osc
 script\cockpit.osc
-script\antrieb.osc
-script\engine.osc
+script\Gearbox_ZF_varlist.txt
+script\engine_turbo_varlist.txt
 script\elec.osc
 script\bremse.osc
 script\auspuff.osc
@@ -155,12 +156,12 @@ script\cashdesk.osc
 [constfile]
 18
 script\collision_constfile.txt
-script\antrieb_constfile_SD80.txt
-script\engine_constfile_2566MUH.txt
+script\gearbox_constfile_ZF_6HP-592.txt
+script\engine_constfile_D92_ZF_D28_turbo.txt
 script\elec_constfile.txt
 script\bremse_constfile.txt
 script\lights_constfile.txt
-script\door_constfile.txt
+script\door_constfile_D92.txt
 script\auspuff_constfile.txt
 script\cockpit_constfile.txt
 script\klappern_constfile.txt

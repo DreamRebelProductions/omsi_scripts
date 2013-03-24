@@ -1,0 +1,444 @@
+	########################
+		HOF-Datei
+	########################
+
+	Enthält die diversen Informationen zum Einsatz für diesen Hof.
+	Auf diese Weise kann EIN Bus-Modell für verschiedene Einsätze
+	mit verschiedenen Zielen und Haltestellen verwendet werden.
+
+
+
+	Name des Hofes:
+
+[name]
+Grundorf
+
+[servicetrip]
+Betriebsfahrt
+
+
+	Setzen der Anzahl der Strings:
+
+stringcount_terminus
+6
+
+	string0:	IBIS-Display & Rollband-Textur
+	string1:	Annax (Front, 1. Zeile)
+	string2:	Annax (Front, 2. Zeile)
+	string3:	Annax (SD Seite)
+	string4:	Rollbandtextur
+	string5:	IBIS2-Display (Klarname in Gro?/Kleinschreibung), max 20 Zeichen
+
+stringcount_busstop
+4
+
+
+	Fügt ein Ziel hinzu. Bei "_allexit" handelt es sich um ein Ziel,
+	wo nie Leute einsteigen bzw. wo alle aussteigen. (z.B. Betriebsfahrt)
+
+	[addterminus_{allexit}]
+	{ident}
+	{texture-string}
+	{terminus station}
+	{string0}
+	{string1}
+	{...}
+
+	die Nummer dient der Kodierung, der String der Auswahl der entsprechenden
+	Ziel-Austauschtextur.
+
+
+	Fehlt der Hinweis "allexit", muss zusätzlich in der dritten Zeile die Haltestelle
+	angegeben werden, wo alle aussteigen. Dies meistens der gleiche Sting wie der der
+	Austauschtextur - muss aber nicht sein, falls entweder die Textur oder aber die Haltestelle
+	über weitere Zusätze verfügt - aus diesem Grund gibt es beide Einträge separat.
+
+	Beispiel:
+	
+	[addterminus]				<= Titel
+	3					<= Code
+	SP_Johannesstift			<= Textur-Change-ID
+	Johannesstift				<= Haltestellenbezeichnung der Endhaltestelle
+	JOHANNESSTIFT				<= String 0: IBIS-Anzeige
+	    SPANDAU    				<= String 1: Front-Annax  - obere Zeile
+	 JOHANNESSTIFT				<= String 2: Front-Annax  - untere Zeile
+	 JOHANNESSTIFT				<= String 3: Seiten-Annax beim SD
+	................			<= Hilfslinie
+
+[addterminus_allexit]
+0
+Empty
+LEERFELD
+
+
+
+Blanko.tga
+Leerfeld
+................
+
+
+[addterminus_allexit]
+13
+Betriebsfahrt
+BETRIEBSFAHRT
+                
+ BETRIEBSFAHRT
+ BETRIEBSFAHRT
+Betriebsfahrt.tga
+Betriebsfahrt
+................
+
+[addterminus_allexit]
+206
+Schulbus
+SCHULBUS
+                
+    SCHULBUS
+    SCHULBUS
+Schulbus.tga
+Schulbus
+.........................................
+
+
+
+[addterminus]
+102
+Saganoallee
+SAGANOALLEE
+
+  SAGANOALLEE   
+  SAGANOALLEE
+Gru_Saganoallee.tga
+Saganoallee
+................
+
+[addterminus]
+103
+Thalesstr
+THALESSTRASSE
+ THALESSTRASSE
+- FERNSEHTURM -
+ THALESSTRASSE
+Gru_Thalesstr.tga
+THalesstraße
+................
+
+[addterminus]
+104
+Bhf Newtondorf
+BHF. NEWTONDORF
+    BAHNHOF
+   NEWTONDORF
+BHF. NEWTONDORF
+Gru_Bhf Newtondorf.tga
+Bhf. Newtondorf
+................
+
+[addterminus]
+105
+Krankenhaus
+  KRANKENHAUS
+  EINSTEINDORF
+  KRANKENHAUS
+  KRANKENHAUS
+Gru_Krankenhaus.tga
+E.-Dorf Krankenhaus
+....................
+................
+
+[addterminus]
+106
+Niemastr
+NIEMASTRASSE
+ ARCHIMEDESDORF
+   NIEMASTR.
+   NIEMASTR.
+Gru_Niemastr.tga
+Arch.-Dorf Niemastr.
+....................
+................
+
+[addterminus]
+107
+Bauernhof
+BAUERNHOF
+   NORDSPITZE
+   BAUERNHOF
+NORDSP. BAUERNH.
+Gru_Bauernhof.tga
+Nordsp. Bauernhof
+....................
+................
+
+[addterminus]
+108
+Nordspitze
+BHF. NORDSPITZE
+    BAHNHOF
+   NORDSPITZE
+BHF. NORDSPITZE
+Gru_Bhf Nordspitze.tga
+Bhf. Nordspitze
+....................
+................
+
+[addterminus]
+109
+Newtondorf
+NEWTONDORF      
+   NEWTONDORF
+A.-EINSTEIN-STR.
+NEWTOND. A.E.STR
+Gru_Newtondorf.tga
+Albert-Einstein-Str.
+....................
+................
+
+[addterminus]
+110
+Fallatuwasistr
+FALLATUWASISTR.
+   PLATONDORF
+FALLATUWASISTR.
+PLATOND. F.-STR.
+Gru_Fallatuwasistr.tga
+Fallatuwasistraße
+....................
+................
+
+[addterminus]
+111
+Curiedorf
+BHF. CURIEDORF
+BAHNHOF
+   CURIEDORF
+ BHF. CURIEDORF
+Gru_Bhf Curiedorf.tga
+Bhf. Curiedorf
+....................
+................
+
+[addterminus]
+112
+Loeptener Str
+LÖPTENER STRASSE
+ PYTHAGORASDORF
+ LÖPTENER STR.
+PYTH-D. LÖP-STR.
+Gru_Loeptener Str.tga
+Pyth.D. Löptener Str
+....................
+................
+
+[addterminus]
+113
+Flugplatz
+FLUGPLATZ
+   FLUGPLATZ
+    GRUNDORF
+   FLUGPLATZ
+Gru_Flugplatz.tga
+Flugplatz Grundorf
+....................
+................
+
+[addterminus]
+114
+Krummelstr
+KRUMMELSTRASSE
+   BERNERDORF
+ KRUMMELSTRASSE
+BERNERD. K.-STR.
+Gru_Krummelstr.tga
+Bernerd. Krummelstr.
+....................
+................
+
+[addterminus]
+115
+Grundorf Bay
+GRUNDORF BAY
+  GRUNDORF BAY
+  PENCHANTWEG
+GRUNDORF BAY
+737_Grundorf Penchantweg.tga
+Grundorf Bay
+....................
+................
+
+[addterminus]
+116
+Nottingham Court
+NOTTINGHAM COURT
+EASTERN DISTRICT
+NOTTINGHAM COURT
+NOTTINGHAM COURT
+737_Eastern District Nottingham Court.tga
+Nottingham Court
+....................
+................
+
+[addterminus]
+117
+Sumputuous Estate
+SUMPUTUOUS EST.
+EASTERN DISTRICT
+SUMPUTUOUS EST.
+SUMPUTUOUS EST.
+737_Eastern District Sumputuous Estate.tga
+Sumputuous Estate
+....................
+................
+
+[addterminus]
+901
+Not In Service
+NOT IN SERVICE
+     SORRY
+ NOT IN SERVICE
+NOT IN SERVICE
+737_Not in service.tga
+Not In Service
+....................
+................
+
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+
+			Informationssysteme
+
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+
+
+
+[addbusstop]
+Bauernhof
+NORDS. BAUERNHOF
+Nordspitze
+Bauernhof
+Nordsp. Bauernhof
+....................
+................
+
+[addbusstop]
+Nordspitze
+NORDSPITZE BHF.
+Nordspitze
+Bahnhof
+Bhf. Nordspitze
+....................
+................
+
+[addbusstop]
+Elsterplatz
+ELSTERPLATZ
+Elsterplatz
+
+Elsterplatz
+....................
+................
+
+[addbusstop]
+Gaußdorf
+GAUSSDORF
+Gaußdorf
+
+Gaußdorf
+................
+
+[addbusstop]
+Einsteindorf Ausbau
+E.DORF AUSBAU
+Einsteindorf
+Ausbau
+Einsteindorf Ausbau
+....................
+................
+
+[addbusstop]
+Einsteindorf Marktpl
+E.DORF MARKTPL.
+Einsteindorf
+Marktplatz
+E.-dorf Marktplatz
+....................
+................
+
+[addbusstop]
+Krankenhaus
+E.DORF KRK.HAUS
+Einsteindorf
+Krankenhaus
+E.-dorf Krkhaus
+....................
+................
+
+
+
+
+	[infosystem_trip]
+	{routecode} (z.B. '540001', integer)
+	{routestring} (ggf. für IBIS-Gerät oder vieleicht später auch zum Setzen)
+	{terminuscode}
+	{line string} (z.B. '54 ')
+
+	[infosystem_busstop]
+	{string0: IBIS-Name}
+	{string1: LCD 1. Zeile links}
+	{string2: LCD 1. Zeile rechts}
+	{string3: LCD 2. Zeile links}
+	{string4: LCD 2. Zeile rechts}
+	
+
+
+
+===============================================================================
+	76:
+===============================================================================
+
+Bauernhof - Krankenhaus
+-----------------------------------
+
+[infosystem_trip]
+7601
+BAUERNHOF-KRANKENHAUS
+105
+TML
+
+................
+
+[infosystem_busstop_list]
+7
+Bauernhof
+Nordspitze
+Elsterplatz
+Gaußdorf
+Einsteindorf Ausbau
+Einsteindorf Marktpl
+Krankenhaus
+
+Krankenhaus - Bauernhof
+-----------------------------------
+
+[infosystem_trip]
+7602
+KRANKENHAUS-BAUERNHOF
+107
+76
+
+................
+
+[infosystem_busstop_list]
+6
+Krankenhaus
+Einsteindorf Ausbau
+Gaußdorf
+Elsterplatz
+Nordspitze
+Bauernhof
+

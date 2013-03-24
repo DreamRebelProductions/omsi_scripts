@@ -1,0 +1,1070 @@
+#####TEMPLATE FILE#####
+SD200_SD202_Template.xml
+
+#####COMMENT#####
+
+#####ENDCOMMENT#####
+
+
+>>> Created: 10/12/2012, 22:28:53
+
+>>> This file was created with HOF Creator 1.1. Thank you for usage!
+>>> www.jan-kiesewalter.de
+
+
+[name]
+Römerberg
+
+[servicetrip]
+Betriebsfahrt
+
+
+stringcount_terminus
+6
+
+stringcount_busstop
+4
+
+
+
+######################################
+ TERMINI
+######################################
+
+
+[addterminus_allexit]
+000
+Leerfahrt
+LEERFAHRT
+
+LEERFAHRT
+
+RB_Leerfeld.tga
+Leerfahrt
+.........................
+
+
+[addterminus_allexit]
+001
+VVR
+VVR
+VERKEHRSVERBUND
+   RÖMERBERG
+VV RÖMERBERG
+RB_VVR.tga
+VVR
+.........................
+
+
+[addterminus_allexit]
+010
+Betriebsfahrt
+BETRIEBSFAHRT
+
+ BETRIEBSFAHRT
+ BETRIEBSFAHRT
+RB_Betriebsfahrt.tga
+Betriebsfahrt
+.........................
+
+
+[addterminus]
+020
+Sonderfahrt
+SONDERFAHRT
+
+  SONDERFAHRT
+  SONDERFAHRT
+RB_Sonderfahrt.tga
+Sonderfahrt
+.........................
+
+
+[addterminus]
+030
+Schülerfahrt
+SCHULBUS
+
+    SCHULBUS
+    SCHULBUS
+RB_Schulzentrum.tga
+Schulbus
+.........................
+
+
+[addterminus]
+100
+Römerberg ZOB
+RÖMERBERG ZOB
+   RÖMERBERG
+   BUSBAHNHOF
+ RÖMERBERG ZOB
+RB_Busbahnhof.tga
+Römerberg ZOB
+.........................
+
+
+[addterminus]
+195
+Zavelstein
+ZAVELSTEIN
+   ZAVELSTEIN
+ÜBER HOHENREUTH
+   ZAVELSTEIN
+RB_Zavelstein.tga
+Zavelstein
+.........................
+
+
+[addterminus]
+194
+Zavelstein Rf
+ZAVELSTEIN
+   HOHENREUTH
+   ZAVELSTEIN
+ZAVELSTEIN
+RB_Zavelstein2.tga
+Zavelstein
+.........................
+
+
+[addterminus]
+199
+Grafeneck
+GRAFENECK
+   GRAFENECK
+ÜBER HOHENREUTH
+   GRAFENECK
+RB_Grafeneck.tga
+Grafeneck
+.........................
+
+
+[addterminus]
+180
+Hohenstaufenstraße
+HOHENSTAUFENSTR
+
+HOHENSTAUFENSTR.
+HOHENSTAUFENSTR.
+RB_Hohenstaufenstr.tga
+Hohenstaufenstraße
+.........................
+
+
+[addterminus]
+190
+Hohenreuth
+HOHENREUTH
+   HOHENREUTH
+ MICHAELSKIRCHE
+   HOHENREUTH
+RB_Hohenreuth.tga
+Hohenreuth
+.........................
+
+
+[addterminus]
+170
+Gletscherbahn
+GLETSCHER
+GLETSCHER-XPRESS
+   TALSTATION
+GLETSCHER-XPRESS
+RB_Gletscher2.tga
+Gletscher-Xpress
+.........................
+
+
+[addterminus]
+193
+Zavelstein Steig3
+ZAVELSTEIN
+GLETSCHER-XPRESS
+   ZAVELSTEIN
+GLETSCHER-XPRESS
+RB_Gletscher1.tga
+Zavelstein Steig3
+.........................
+
+
+[addterminus]
+160
+Kalkmoor
+KALKMOOR
+
+    KALKMOOR
+KALKMOOR
+RB_Kalkmoor.tga
+Kalkmoor
+.........................
+
+
+[addterminus]
+151
+Nightliner Grafeneck
+NIGHTLINER
+   NIGHTLINER
+   GRAFENECK
+   NIGHTLINER
+RB_Nightliner1.tga
+Nightliner Grafeneck
+.........................
+
+
+[addterminus]
+150
+Nightliner Römerberg
+NIGHTLINER RB
+   NIGHTLINER
+ RÖMERBERG ZOB
+   NIGHTLINER
+RB_Nightliner2.tga
+Nightliner Römerberg
+.........................
+
+
+[addterminus]
+140
+Schnellbus Römerberg
+SCHNELLBUS RB
+   SCHNELLBUS
+ RÖMERBERG ZOB
+RÖMERBERG ZOB
+RB_S-Busbahnhof.tga
+Schnellbus Römerberg
+.........................
+
+
+[addterminus]
+141
+Schnellbus Zavelstein
+SCHNELLBUS ZV
+   SCHNELLBUS
+   ZAVELSTEIN
+ZAVELSTEIN
+RB_S-Zavelstein.tga
+Schnellbus Zavelstei
+.........................
+
+
+
+
+
+
+######################################
+ BUS STOPS
+######################################
+
+
+[addbusstop]
+Busbahnhof
+BUSBAHNHOF
+Busbahnhof
+Römerberg
+Busbahnhof
+.........................
+
+
+[addbusstop]
+Postsiedlung
+POSTSIEDLUNG
+Postsiedlung
+
+Postsiedlung
+.........................
+
+
+[addbusstop]
+Rathaus
+RATHAUS
+Rathaus
+
+Rathaus
+.........................
+
+
+[addbusstop]
+Alter Markt
+ALTER MARKT
+Alter Markt
+Stadtmitte
+Alter Markt
+.........................
+
+
+[addbusstop]
+Universität
+UNIVERSITÄT
+Universität
+
+Universität
+.........................
+
+
+[addbusstop]
+Schulzentrum
+SCHULZENTRUM
+Schulzentrum
+
+Schulzentrum
+.........................
+
+
+[addbusstop]
+Wildpark
+WILDPARK
+Wildpark
+
+Wildpark
+.........................
+
+
+[addbusstop]
+Waldkirche
+WALDKIRCHE
+Waldkirche
+
+Waldkirche
+.........................
+
+
+[addbusstop]
+Pfrondorf
+PFRONDORF
+Pfrondorf
+
+Pfrondorf
+.........................
+
+
+[addbusstop]
+Debingen
+DEBINGEN
+Debingen
+
+Debingen
+.........................
+
+
+[addbusstop]
+Internat Hohenreuth
+INTERNAT HOHENR
+Internat Hohenreuth
+
+Internat Hohenreuth
+.........................
+
+
+[addbusstop]
+Michaelskirche
+MICHAELSKIRCHE
+Michaelskirche
+Hohenreuth
+Michaelskirche
+.........................
+
+
+[addbusstop]
+Sportpark
+SPORTPARK
+Sportpark
+Hohenreuth
+Sportpark
+.........................
+
+
+[addbusstop]
+Aussiedlerhöfe
+AUSSIEDLERHÖFE
+Aussiedlerhöfe
+
+Aussiedlerhöfe
+.........................
+
+
+[addbusstop]
+Grafeneck
+GRAFENECK
+Grafeneck
+
+Grafeneck
+.........................
+
+
+[addbusstop]
+Manosquer Straße
+MANOSQUER STR
+Manosquer Straße
+
+Manosquer Straße
+.........................
+
+
+[addbusstop]
+Hohenstaufenstraße
+HOHENSTAUFENSTR
+Hohenstaufenstraße
+
+Hohenstaufenstraße
+.........................
+
+
+[addbusstop]
+Weilerau
+WEILERAU
+Weilerau
+
+Weilerau
+.........................
+
+
+[addbusstop]
+Baach
+BAACH
+Baach
+
+Baach
+.........................
+
+
+[addbusstop]
+Waldschlösschen
+WALDSCHLÖSSCHEN
+Waldschlösschen
+
+Waldschlösschen
+.........................
+
+
+[addbusstop]
+Drackensteinstraße
+DRACKENSTEINSTR.
+Drackensteinstraße
+Pfrondorf
+Drackensteinstraße
+.........................
+
+
+[addbusstop]
+Kanzach
+KANZACH
+Kanzach
+
+Kanzach
+.........................
+
+
+[addbusstop]
+Mineralbäder
+MINERALBÄDER
+Mineralbäder
+Hohenreuth
+Mineralbäder
+.........................
+
+
+[addbusstop]
+Claudiusstraße
+CLAUDIUSSTRASSE
+Claudiusstraße
+Hohenreuth
+Claudiusstraße
+.........................
+
+
+[addbusstop]
+Berghalde
+BERGHALDE
+Berghalde
+
+Berghalde
+.........................
+
+
+[addbusstop]
+Zavelstein Rf
+ZAVELSTEIN S 1
+Zavelstein
+
+Zavelstein Steig 1
+.........................
+
+
+[addbusstop]
+Zavelstein
+ZAVELSTEIN
+Zavelstein
+
+Zavelstein
+.........................
+
+
+[addbusstop]
+Römerberg ZOB
+RÖMERBERG ZOB
+Busbahnhof
+Römerberg
+Römerberg ZOB
+.........................
+
+
+[addbusstop]
+Betriebshof
+BETRIEBSHOF
+
+
+Betriebshof
+.........................
+
+
+[addbusstop]
+Gletscherbahn
+GLETSCHERBAHN
+Gletscherbahn
+Talstation
+Gletscherbahn
+.........................
+
+
+[addbusstop]
+Gletscherparkplatz
+PARKPLATZ GB
+Gletscherbahn
+Parkplatz
+Gletscherbahn Parkpl
+.........................
+
+
+[addbusstop]
+Zavelstein Steig3
+ZAVELSTEIN
+Zavelstein
+
+Zavelstein
+.........................
+
+
+[addbusstop]
+Stuttgarter Straße
+STUTTGARTER STR.
+Stuttgarter Straße
+
+Stuttgarter Straße
+.........................
+
+
+[addbusstop]
+Max-Planck-Institut
+MAX-PLANCK-INST.
+Max-Planck-Institut
+
+Max-Planck-Institut
+.........................
+
+
+[addbusstop]
+Weidacher Höhe
+WEIDACHER HÖHE
+Weidacher Höhe
+
+Weidacher Höhe
+.........................
+
+
+[addbusstop]
+Uhlandstraße
+UHLANDSTRASSE
+Uhlandstraße
+
+Uhlandstraße
+.........................
+
+
+[addbusstop]
+Pelargusstraße
+PELARGUSSTRASSE
+Pelargusstraße
+
+Pelargusstraße
+.........................
+
+
+[addbusstop]
+Moritzstraße
+MORITZSTRASSE
+Moritzstraße
+
+Moritzstraße
+.........................
+
+
+[addbusstop]
+Mozartgasse
+MOZARTGASSE
+Mozartgasse
+
+Mozartgasse
+.........................
+
+
+[addbusstop]
+Prager Platz
+PRAGER PLATZ
+Prager Platz
+
+Prager Platz
+.........................
+
+
+[addbusstop]
+Kalkmoor
+KALKMOOR
+Kalkmoor
+
+Kalkmoor
+.........................
+
+
+[addbusstop]
+Nightliner Römerberg
+RÖMERBERG ZOB
+Römerberg ZOB
+
+Römerberg ZOB
+.........................
+
+
+[addbusstop]
+Nightliner Grafeneck
+GRAFENECK
+Grafeneck
+
+Grafeneck
+.........................
+
+
+[addbusstop]
+Schnellbus Römerberg
+RÖMERBERG ZOB
+Römerberg
+Busbahnhof
+Römerberg ZOB
+.........................
+
+
+[addbusstop]
+Schnellbus Zavelstein
+ZAVELSTEIN
+Zavelstein
+
+Zavelstein Steig 2
+.........................
+
+
+
+
+
+
+######################################
+ TRIPS / ROUTES
+######################################
+
+
+Line 000, Route 03: Busbahnhof  >>  Römerberg ZOB
+----------------------------------------------------------------------
+
+[infosystem_trip]
+00003
+BUSBAHNHOF  >>  RÖMERBERG ZOB
+030
+XXX
+
+[infosystem_busstop_list]
+3
+Busbahnhof
+Schulzentrum
+Römerberg ZOB
+
+
+Line 115, Route 01: Busbahnhof  >>  Hohenstaufenstraße
+----------------------------------------------------------------------
+
+[infosystem_trip]
+11501
+BUSBAHNHOF  >>  HOHENSTAUFENSTRAßE
+180
+XXX
+
+[infosystem_busstop_list]
+7
+Busbahnhof
+Postsiedlung
+Rathaus
+Alter Markt
+Universität
+Manosquer Straße
+Hohenstaufenstraße
+
+
+Line 115, Route 02: Hohenstaufenstraße  >>  Römerberg ZOB
+----------------------------------------------------------------------
+
+[infosystem_trip]
+11502
+HOHENSTAUFENSTRAßE  >>  RÖMERBERG ZOB
+100
+XXX
+
+[infosystem_busstop_list]
+7
+Hohenstaufenstraße
+Manosquer Straße
+Universität
+Alter Markt
+Rathaus
+Postsiedlung
+Römerberg ZOB
+
+
+Line 208, Route 01: Zavelstein  >>  Zavelstein Rf
+----------------------------------------------------------------------
+
+[infosystem_trip]
+20801
+ZAVELSTEIN  >>  ZAVELSTEIN RF
+194
+XXX
+
+[infosystem_busstop_list]
+8
+Zavelstein
+Berghalde
+Grafeneck
+Aussiedlerhöfe
+Sportpark
+Michaelskirche
+Claudiusstraße
+Zavelstein Rf
+
+
+Line 612, Route 01: Busbahnhof  >>  Grafeneck
+----------------------------------------------------------------------
+
+[infosystem_trip]
+61201
+BUSBAHNHOF  >>  GRAFENECK
+199
+XXX
+
+[infosystem_busstop_list]
+15
+Busbahnhof
+Postsiedlung
+Rathaus
+Alter Markt
+Universität
+Schulzentrum
+Wildpark
+Waldkirche
+Pfrondorf
+Debingen
+Internat Hohenreuth
+Michaelskirche
+Sportpark
+Aussiedlerhöfe
+Grafeneck
+
+
+Line 612, Route 02: Grafeneck  >>  Römerberg ZOB
+----------------------------------------------------------------------
+
+[infosystem_trip]
+61202
+GRAFENECK  >>  RÖMERBERG ZOB
+100
+XXX
+
+[infosystem_busstop_list]
+15
+Grafeneck
+Aussiedlerhöfe
+Sportpark
+Michaelskirche
+Internat Hohenreuth
+Debingen
+Pfrondorf
+Waldkirche
+Wildpark
+Schulzentrum
+Universität
+Alter Markt
+Rathaus
+Postsiedlung
+Römerberg ZOB
+
+
+Line 626, Route 01: Busbahnhof  >>  Zavelstein
+----------------------------------------------------------------------
+
+[infosystem_trip]
+62601
+BUSBAHNHOF  >>  ZAVELSTEIN
+195
+XXX
+
+[infosystem_busstop_list]
+16
+Busbahnhof
+Postsiedlung
+Rathaus
+Alter Markt
+Universität
+Schulzentrum
+Manosquer Straße
+Hohenstaufenstraße
+Weilerau
+Baach
+Waldschlösschen
+Kanzach
+Mineralbäder
+Michaelskirche
+Sportpark
+Zavelstein
+
+
+Line 626, Route 02: Zavelstein  >>  Römerberg ZOB
+----------------------------------------------------------------------
+
+[infosystem_trip]
+62602
+ZAVELSTEIN  >>  RÖMERBERG ZOB
+100
+XXX
+
+[infosystem_busstop_list]
+15
+Zavelstein
+Sportpark
+Michaelskirche
+Mineralbäder
+Kanzach
+Waldschlösschen
+Baach
+Weilerau
+Hohenstaufenstraße
+Manosquer Straße
+Universität
+Alter Markt
+Rathaus
+Postsiedlung
+Römerberg ZOB
+
+
+Line 960, Route 01: Busbahnhof  >>  Nightliner Grafeneck
+----------------------------------------------------------------------
+
+[infosystem_trip]
+96001
+BUSBAHNHOF  >>  NIGHTLINER GRAFENECK
+151
+XXX
+
+[infosystem_busstop_list]
+25
+Busbahnhof
+Stuttgarter Straße
+Max-Planck-Institut
+Weidacher Höhe
+Postsiedlung
+Uhlandstraße
+Pelargusstraße
+Alter Markt
+Moritzstraße
+Manosquer Straße
+Hohenstaufenstraße
+Weilerau
+Baach
+Waldschlösschen
+Drackensteinstraße
+Debingen
+Internat Hohenreuth
+Mineralbäder
+Kanzach
+Claudiusstraße
+Michaelskirche
+Sportpark
+Zavelstein
+Berghalde
+Nightliner Grafeneck
+
+
+Line 960, Route 02: Grafeneck  >>  Nightliner Römerberg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+96002
+GRAFENECK  >>  NIGHTLINER RÖMERBERG
+150
+XXX
+
+[infosystem_busstop_list]
+25
+Grafeneck
+Berghalde
+Zavelstein
+Sportpark
+Michaelskirche
+Claudiusstraße
+Kanzach
+Mineralbäder
+Internat Hohenreuth
+Debingen
+Drackensteinstraße
+Waldschlösschen
+Baach
+Weilerau
+Hohenstaufenstraße
+Manosquer Straße
+Moritzstraße
+Alter Markt
+Pelargusstraße
+Uhlandstraße
+Postsiedlung
+Weidacher Höhe
+Max-Planck-Institut
+Stuttgarter Straße
+Nightliner Römerberg
+
+
+Line 000, Route 01: Gletscherbahn  >>  Zavelstein Steig3
+----------------------------------------------------------------------
+
+[infosystem_trip]
+00001
+GLETSCHERBAHN  >>  ZAVELSTEIN STEIG3
+193
+XXX
+
+[infosystem_busstop_list]
+3
+Gletscherbahn
+Gletscherparkplatz
+Zavelstein Steig3
+
+
+Line 000, Route 02: Zavelstein  >>  Gletscherbahn
+----------------------------------------------------------------------
+
+[infosystem_trip]
+00002
+ZAVELSTEIN  >>  GLETSCHERBAHN
+170
+XXX
+
+[infosystem_busstop_list]
+3
+Zavelstein
+Gletscherparkplatz
+Gletscherbahn
+
+
+Line 114, Route 01: Busbahnhof  >>  Kalkmoor
+----------------------------------------------------------------------
+
+[infosystem_trip]
+11401
+BUSBAHNHOF  >>  KALKMOOR
+160
+XXX
+
+[infosystem_busstop_list]
+10
+Busbahnhof
+Stuttgarter Straße
+Max-Planck-Institut
+Weidacher Höhe
+Pelargusstraße
+Universität
+Moritzstraße
+Mozartgasse
+Prager Platz
+Kalkmoor
+
+
+Line 114, Route 02: Kalkmoor  >>  Römerberg ZOB
+----------------------------------------------------------------------
+
+[infosystem_trip]
+11402
+KALKMOOR  >>  RÖMERBERG ZOB
+100
+XXX
+
+[infosystem_busstop_list]
+10
+Kalkmoor
+Prager Platz
+Mozartgasse
+Moritzstraße
+Universität
+Pelargusstraße
+Weidacher Höhe
+Max-Planck-Institut
+Stuttgarter Straße
+Römerberg ZOB
+
+
+Line 620, Route 01: Busbahnhof  >>  Schnellbus Zavelstein
+----------------------------------------------------------------------
+
+[infosystem_trip]
+62001
+BUSBAHNHOF  >>  SCHNELLBUS ZAVELSTEIN
+141
+XXX
+
+[infosystem_busstop_list]
+3
+Busbahnhof
+Pfrondorf
+Schnellbus Zavelstein
+
+
+Line 620, Route 02: Zavelstein  >>  Schnellbus Römerberg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+62002
+ZAVELSTEIN  >>  SCHNELLBUS RÖMERBERG
+140
+XXX
+
+[infosystem_busstop_list]
+3
+Zavelstein
+Pfrondorf
+Schnellbus Römerberg
+
+
+Line 207, Route 01: Zavelstein  >>  Zavelstein Rf
+----------------------------------------------------------------------
+
+[infosystem_trip]
+20701
+ZAVELSTEIN  >>  ZAVELSTEIN RF
+194
+XXX
+
+[infosystem_busstop_list]
+8
+Zavelstein
+Claudiusstraße
+Michaelskirche
+Sportpark
+Aussiedlerhöfe
+Grafeneck
+Berghalde
+Zavelstein Rf
+
+

@@ -1,0 +1,2970 @@
+	########################
+		HOF-Datei
+	########################
+
+	Enthält die diversen Informationen zum Einsatz für diesen Hof.
+	Auf diese Weise kann EIN Bus-Modell für verschiedene Einsätze
+	mit verschiedenen Zielen und Haltestellen verwendet werden.
+
+
+
+	Name des Hofes:
+
+[name]
+Bowdenham
+
+[servicetrip]
+Not In Service
+
+
+	Setzen der Anzahl der Strings:
+
+stringcount_terminus
+6
+
+	string0:	IBIS-Display & Rollband-Textur
+	string1:	Annax (Front, 1. Zeile)
+	string2:	Annax (Front, 2. Zeile)
+	string3:	Annax (SD Seite)
+	string4:	Rollbandtextur
+	string5:	IBIS2-Display (Klarname in Groß-/Kleinschreibung), max 20 Zeichen
+
+stringcount_busstop
+4
+
+
+	Fügt ein Ziel hinzu. Bei "_allexit" handelt es sich um ein Ziel,
+	wo nie Leute einsteigen bzw. wo alle aussteigen. (z.B. Betriebsfahrt)
+
+	[addterminus_{allexit}]
+	{ident}
+	{texture-string}
+	{terminus station}
+	{string0}
+	{string1}
+	{...}
+
+	die Nummer dient der Kodierung, der String der Auswahl der entsprechenden
+	Ziel-Austauschtextur.
+
+
+	Fehlt der Hinweis "allexit", muss zusätzlich in der dritten Zeile die Haltestelle
+	angegeben werden, wo alle aussteigen. Dies meistens der gleiche Sting wie der der
+	Austauschtextur - muss aber nicht sein, falls entweder die Textur oder aber die Haltestelle
+	über weitere Zusätze verfügt - aus diesem Grund gibt es beide Einträge separat.
+
+	Beispiel:
+	
+	[addterminus]				<= Titel
+	3					<= Code
+	SP_Johannesstift			<= Textur-Change-ID
+	Johannesstift				<= Haltestellenbezeichnung der Endhaltestelle
+	JOHANNESSTIFT				<= String 0: IBIS-Anzeige
+	    SPANDAU    				<= String 1: Front-Annax  - obere Zeile
+	 JOHANNESSTIFT				<= String 2: Front-Annax  - untere Zeile
+	 JOHANNESSTIFT				<= String 3: Seiten-Annax beim SD
+	................			<= Hilfslinie
+
+
+[addterminus_allexit]
+0
+Empty
+
+
+
+
+Blanko.tga
+
+
+[addterminus_allexit]
+099
+Not In Service
+NOT IN SERVICE
+     SORRY
+ NOT IN SERVICE
+NOT IN SERVICE
+NotInService.tga
+Not In Service
+................
+
+[addterminus]
+010
+Wotton Direct
+WOTTON HIGH ROAD
+WOTTON HIGH ROAD
+    DIRECT
+WOTTON HIGH ROAD   
+WHR_Direct.tga
+Wotton High Road
+................
+
+[addterminus]
+011
+Apsley Station Direct
+APSLEY STATION
+ APSLEY STATION
+    DIRECT
+APSLEY STATION
+AYSTN_Direct.tga
+Apsley Station
+................
+
+[addterminus]
+012
+Wotton Via Bowdenham
+WOTTON HIGH ROAD
+WOTTON HIGH ROAD
+ VIA BOWDENHAM
+WOTTON HIGH ROAD
+WHR_Via_Bowdenham.tga
+Wotton High Road
+................
+
+[addterminus]
+013
+Apsley Station Via Bowdenham
+APSLEY STATION
+ APSLEY STATION
+ VIA BOWDENHAM
+APSLEY STATION
+AYSTN_Via_Bowdenham.tga
+Apsley Station
+................
+
+[addterminus]
+014
+Wotton Via Winterbourne
+WOTTON HIGH ROAD
+WOTTON HIGH ROAD
+VIA WINTERBOURNE
+WOTTON HIGH ROAD
+WHR_Via_Winterbourne.tga
+Wotton High Road
+................
+
+[addterminus]
+015
+Apsley Station Via Winterbourne
+APSLEY STATION
+ APSLEY STATION
+VIA WINTERBOURNE
+APSLEY STATION
+AYSTN_Via_Winterbourne.tga
+Apsley Station
+................
+
+[addterminus]
+016
+Wotton
+WOTTON HIGH ROAD
+     WOTTON
+   HIGH ROAD
+WOTTON HIGH ROAD
+WHR.tga
+Wotton High Road
+................
+
+[addterminus]
+017
+Apsley Bus Station
+APSLEY BUS STN
+     APSLEY
+  BUS STATION
+APSLEY BUS STN
+AYBSTN.tga
+Apsley Bus Stn
+................
+
+[addterminus]
+018
+Wotton Via Monkton
+WOTTON HIGH ROAD
+WOTTON HIGH ROAD
+  VIA MONKTON
+WOTTON HIGH ROAD
+WHR_Via_Monkton.tga
+Wotton High Road
+................
+
+[addterminus]
+019
+Apsley Station Via Monkton
+APSLEY STATION
+ APSLEY STATION
+  VIA MONKTON
+APSLEY STATION
+AYBSTN_Via_Monkton.tga
+Apsley Station
+................
+
+[addterminus]
+020
+Apsley Station
+APSLEY STATION
+ APSLEY STATION
+
+APSLEY STATION
+AYSTN.tga
+Apsley Station
+................
+
+[addterminus]
+021
+Wotton Express
+WOTTON HIGH ROAD
+WOTTON HIGH ROAD
+  LIMITED STOP
+WOTTON HIGH ROAD
+WHR_LS.tga
+Wotton High Road
+................
+
+[addterminus]
+022
+Apsley Station Express
+APSLEY STATION
+ APSLEY STATION
+  LIMITED STOP
+APSLEY STATION
+AYSTN_LS.tga
+Apsley Station
+................
+
+[addterminus]
+023
+Winterbourne School
+WINTERBOURNE SCH
+  WINTERBOURNE
+     SCHOOL
+WINTERBOURNE SCH
+WESCH.tga
+Winterbourne School
+................
+
+[addterminus]
+024
+Carlton Green
+CARLTON GREEN
+ CARLTON GREEN
+
+CARLTON GREEN
+CEGRN.tga
+Carlton Green
+................
+
+[addterminus]
+025
+Melton
+MELTON
+     MELTON
+
+MELTON
+MN.tga
+Melton
+................
+
+[addterminus]
+026
+Yorksdale
+YORKSDALE
+   YORKSDALE
+
+YORKSDALE
+YE.tga
+Yorksdale
+................
+
+[addterminus]
+027
+Gaywood Fields
+GAYWOOD FIELDS
+ GAYWOOD FIELDS
+
+GAYWOOD FIELDS
+GDFD.tga
+Gaywood Fields
+................
+
+[addterminus]
+028
+Gospel Hill
+GOSPEL HILL
+  GOSPEL HILL
+
+GOSPEL HILL
+GLHL.tga
+Gospel Hill
+................
+
+[addterminus]
+029
+Pendlebury
+PENDLEBURY
+   PENDLEBURY
+
+PENDLEBURY
+PY.tga
+Pendlebury
+................
+
+[addterminus]
+030
+Fobbingham Green
+FOBBINGHAM GREEN
+   FOBBINGHAM
+     GREEN
+FOBBINGHAM GREEN
+FMGN.tga
+Fobbingham Green
+................
+
+[addterminus]
+031
+Shelton
+SHELTON
+    SHELTON
+
+SHELTON
+SN.tga
+Shelton
+................
+
+[addterminus]
+032
+Princess Kate Hospital Terminus
+PRINCESS KATE HO
+ PRINCESS KATE
+    HOSPITAL
+PRINCESS KATE HO
+PKH.tga
+Princess Kate HO
+................
+
+[addterminus]
+033
+Hemel Industrial Estate
+HEMEL IND EST
+HEMEL INDUSTRIAL
+     ESTATE
+HEMEL IND EST
+HIA.tga
+Hemel Ind Est
+................
+
+[addterminus]
+034
+New Farm Vale
+NEW FARM VALE
+ NEW FARM VALE
+
+NEW FARM VALE
+NFV.tga
+New Vale Farm
+................
+
+[addterminus]
+035
+Hockley Reid Parade
+REID PARADE
+    HOCKLEY
+  REID PARADE
+REID PARADE
+HRP.tga
+Reid Parade
+................
+
+[addterminus]
+036
+Hockley Clockwise
+REID PARADE
+    HOCKLEY
+VIA EALING LANE
+HOCKLEY
+HVE.tga
+Reid Parade
+................
+
+[addterminus]
+037
+Hockley Anticlockwise
+REID PARADE
+    HOCKLEY
+  VIA LANGLEY
+HOCKLEY
+HVL.tga
+Reid Parade
+................
+
+[addterminus]
+038
+Knockhill
+KNOCKHILL PARK
+   KNOCKHILL
+ BUSINESS PARK
+KNOCKHILL PARK
+KBP.tga
+Knockhill Park
+................
+
+[addterminus]
+039
+Apsley Bus Station Express
+APSLEY BUS STN
+ APSLEY BUS STN
+  LIMITED STOP
+APSLEY BUS STN
+ALS.tga
+Apsley Bus Station
+................
+
+[addterminus]
+040
+Garston Manor
+GARSTON MANOR
+ GARSTON MANOR
+
+GARSTON MANOR
+GSM.tga
+Garston Manor
+................
+
+[addterminus]
+041
+Bowdenham
+BOWDENHAM
+   BOWDENHAM
+WESSEX CRESCENT
+BOWDENHAM
+BWC.tga
+Bowdenham
+................
+
+[addterminus]
+042
+Barton Lido
+BARTON LIDO
+
+  BARTON LIDO
+BARTON LIDO
+BL.tga
+Barton Lido
+................
+
+[addterminus]
+043
+Apsley Town Hall
+APSLEY TOWN HALL
+
+APSLEY TOWN HALL
+APSLEY TOWN HALL
+ATH.tga
+Apsley Town Hall
+................
+
+[addterminus]
+044
+Apsley Town Hall Circular
+APSLEY TOWN HALL
+APSLEY TOWN HALL
+   VIA HESTON
+APSLEY TOWN HALL
+ATHH.tga
+Apsley Town Hall
+................
+
+[addterminus]
+045
+Apsley Circular
+WEEKEND CIRCULAR
+     APSLEY
+WEEKEND CIRCULAR
+WEEKEND CIRCULAR
+AWC.tga
+Weekend Circular
+................
+
+[addterminus]
+046
+Herefield Station
+HEREFIELD STN
+   HEREFIELD
+    STATION
+HEREFIELD STN
+HS.tga
+Herefield Station
+................
+
+[addterminus]
+047
+Railway Replacement
+RAILWAY REPLACEM
+    RAILWAY
+  REPLACEMENT
+RAILWAY REPLACEM
+RR.tga
+Railway Replacement
+................
+
+[addterminus]
+048
+Special
+SPECIAL
+    SPECIAL
+
+SPECIAL
+SL.tga
+Special
+................
+
+
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+
+			Informationssysteme
+
+##############################################################################################################################
+##############################################################################################################################
+#############################################################################################################################
+##############################################################################################################################
+
+
+
+[addbusstop]
+Apsley Station
+APSLEY STATION
+Apsley Station
+
+Apsley Station
+....................
+................
+
+[addbusstop]
+Hemlock Road
+HEMLOCK ROAD
+Hemlock Road
+
+Hemlock Road
+....................
+................
+
+[addbusstop]
+Carlton Road
+CARLTON ROAD
+Carlton Road
+
+Carlton Road
+....................
+................
+
+[addbusstop]
+Stanton Street
+STANTON STREET
+Stanton Street
+
+Stanton Street
+....................
+................
+
+[addbusstop]
+Walton Avenue
+WALTON AVENUE
+Walton Avenue
+
+Walton Avenue
+....................
+................
+
+[addbusstop]
+Apsley House
+APSLEY HOUSE
+Apsley House
+
+Apsley House
+....................
+................
+
+[addbusstop]
+Apsley Bus Station
+APSLEY BUS STN
+Apsley Bus
+Station
+Apsley Bus Station
+....................
+................
+
+[addbusstop]
+Apsley Town Hall
+APSLEY TOWN HALL
+Apsley Town Hall
+
+Apsley Town Hall
+....................
+................
+
+[addbusstop]
+St Marys Road
+ST MARYS ROAD
+St Marys Road
+
+St Marys Road
+....................
+................
+
+[addbusstop]
+Kew Lane
+KEW LANE
+Kew Lane
+
+Kew Lane
+....................
+................
+
+[addbusstop]
+West Street
+WEST STREET
+West Street
+
+West Street
+....................
+................
+
+[addbusstop]
+Meadowview
+MEADOWVIEW
+Meadowview
+
+Meadowview
+....................
+................
+
+[addbusstop]
+Hampton Row
+HAMPTON ROW
+Hampton Row
+
+Hampton Row
+....................
+................
+
+[addbusstop]
+Frederick Street
+FREDERICK STREET
+Frederick Street
+
+Frederick Street
+....................
+................
+
+[addbusstop]
+Bramley Halls
+BRAMLEY HALLS
+Bramley Halls
+
+Bramley Halls
+....................
+................
+
+[addbusstop]
+Trent Way
+TRENT WAY
+Trent Way
+
+Trent Way
+....................
+................
+
+[addbusstop]
+Villa Allotments
+VILLA ALLOTMENTS
+Villa Allotments
+
+Villa Allotments
+....................
+................
+
+[addbusstop]
+Princess Kate Hospital
+PRINCESS KATE HO
+Princess Kate
+Hospital
+Princess Kate Hosp.
+....................
+................
+
+[addbusstop]
+Princess Kate Hospital Entrance
+HOSP. ENTRANCE
+Hospital
+Main Entrance
+Hospital Entrance
+....................
+................
+
+[addbusstop]
+Princess Kate Hospital Terminus
+HOSPITAL TERMINI
+Princess Kate
+Hospital Termini
+Hospital Termini
+....................
+................
+
+[addbusstop]
+Lantern Cottages
+LANTERN COTTAGES
+Lantern Cottages
+
+Lantern Cottages
+....................
+................
+
+[addbusstop]
+Hamlet Farm
+HAMLET FARM
+Hamlet Farm
+
+Hamlet Farm
+....................
+................
+
+[addbusstop]
+Horsley House
+HORSLEY HOUSE
+Horsley House
+
+Horlsey House
+....................
+................
+
+[addbusstop]
+Bowdenham Shops
+BOWDENHAM SHOPS
+Bowdenham Shops
+
+Bowdenham Shops
+....................
+................
+
+[addbusstop]
+Bowdenham Esso
+BOWDENHAM ESSO
+Bowdenham Esso
+
+Bowdenham Esso
+....................
+................
+
+[addbusstop]
+Chisleton Manor
+CHISLETON MANOR
+Chisleton Manor
+
+Chisleton Manor
+....................
+................
+
+[addbusstop]
+Ingoldisthorpe Pond
+INGOLDISTHORPE P
+Ingoldisthorpe
+Pond
+Ingoldisthorpe Pond
+....................
+................
+
+[addbusstop]
+Ingoldisthorpe Church
+INGOLDISTHORPE C
+Ingoldisthorpe
+Church
+Ingoldisthorpe Chch
+....................
+................
+
+[addbusstop]
+Swansea Drive
+SWANSEA DRIVE
+Swansea Drive
+
+Swansea Drive
+....................
+................
+
+[addbusstop]
+Winterbourne Shops
+WINTERBOURNE SHP
+Winterbourne
+Shops
+Winterbourne Shops
+....................
+................
+
+[addbusstop]
+Wotton Asda
+WOTTON ASDA
+Wotton Asda
+
+Wotton Asda
+....................
+................
+
+[addbusstop]
+Wotton Road
+WOTTON ROAD
+Wotton Road
+
+Wotton Road
+....................
+................
+
+[addbusstop]
+Harrier Way
+HARRIER WAY
+Harrier Way
+
+Harrier Way
+....................
+................
+
+[addbusstop]
+Dromford Corner
+DROMFORD CORNER
+Dromford Corner
+
+Dromford Corner
+....................
+................
+
+[addbusstop]
+Leyland Street
+LEYLAND STREET
+Leyland Street
+
+Leyland Street
+....................
+................
+
+[addbusstop]
+Wotton High Road
+WOTTON HIGH ROAD
+Wotton High Road
+
+Wotton High Road
+....................
+................
+
+[addbusstop]
+Hertfordshire Way
+HERTFORDSHIRE WY
+Hertfordshire
+Way
+Hertfordshire Way
+....................
+................
+
+[addbusstop]
+Lincoln Road
+LINCOLN ROAD
+Lincoln Road
+
+Lincoln Road
+....................
+................
+
+[addbusstop]
+Yorkshire Way
+YORKSHIRE WAY
+Yorkshire Way
+
+Yorkshire Way
+....................
+................
+
+[addbusstop]
+Hildene Avenue
+HILDENE AVENUE
+Hildene Avenue
+
+Hildene Avenue
+....................
+................
+
+[addbusstop]
+Winterbourne House
+WINTERBOURNE HSE
+Winterbourne
+House
+Winterbourne House
+....................
+................
+
+[addbusstop]
+Noel Green
+NOEL GREEN
+Noel Green
+
+Noel Green
+....................
+................
+
+[addbusstop]
+Cunard Farm
+CUNARD FARM
+Cunard Farm
+
+Cunard Farm
+....................
+................
+
+[addbusstop]
+Bassett Hall
+BASSETT HALL
+Bassett Hall
+
+Bassett Hall
+....................
+................
+
+[addbusstop]
+Railway Cottages
+RAILWAY COTTAGES
+Railway Cottages
+
+Railway Cottages
+....................
+................
+
+[addbusstop]
+Monkton Village
+MONKTON VILLAGE
+Monkton Village
+
+Monkton Village
+....................
+................
+
+[addbusstop]
+Nags Head
+NAGS HEAD
+Nags Head
+
+Nags Head
+....................
+................
+
+[addbusstop]
+Winterbourne School
+WINTERBOURNE SCH
+Winterbourne
+School
+Winterbourne School
+....................
+................
+
+[addbusstop]
+Lindsay Lane
+LINDSAY LANE
+Lindsay Lane
+
+Lindsay Lane
+....................
+................
+
+[addbusstop]
+Camberwell Park
+CAMBERWELL PARK
+Camberwell Park
+
+Camberwell Park
+....................
+................
+
+[addbusstop]
+Ealing Lane
+EALING LANE
+Ealing Lane
+
+Ealing Lane
+....................
+................
+
+[addbusstop]
+Winchester Mews
+WINCHESTER MEWS
+Winchester Mews
+
+Winchester Mews
+....................
+................
+
+[addbusstop]
+Winchester Street
+WINCHESTER STREET 
+Winchester Street
+
+Winchester Street
+....................
+................
+
+[addbusstop]
+Hemlock Tower
+HEMLOCK TOWER
+Hemlock Tower
+
+Hemlock Tower
+....................
+................
+
+[addbusstop]
+Apsley Bus Garage
+APSLEY BUS GAR
+Apsley Bus
+Garage
+Apsley Bus Gar
+....................
+................
+
+[addbusstop]
+Industry Way
+INDUSTRY WAY
+Industry Way
+
+Industry Way
+....................
+................
+
+[addbusstop]
+Hemel Industrial Estate
+HEMEL IND EST
+Hemel Industrial
+Estate
+Hemel Ind Est
+....................
+................
+
+[addbusstop]
+Carter Road
+CARTER ROAD
+Carter Road
+
+Carter Road
+....................
+................
+
+[addbusstop]
+Grange Lane
+GRANGE LANE
+Grange Lane
+
+Grange Lane
+....................
+................
+
+[addbusstop]
+Yardley Hotel
+YARDLEY HOTEL
+Yardley Hotel
+
+Yardley Hotel
+....................
+................
+
+[addbusstop]
+Langley Parade
+LANGLEY PARADE
+Langley Parade
+
+Langley Parade
+....................
+................
+
+[addbusstop]
+Leicester Street
+LEICESTER STREET
+Leicester Street
+
+Leicester Street
+....................
+................
+
+[addbusstop]
+Gower Hall
+GOWER HALL
+Gower Hall
+
+Gower Hall
+....................
+................
+
+[addbusstop]
+Apsley Road
+APSLEY ROAD
+Apsley Road
+
+Apsley Road
+....................
+................
+
+[addbusstop]
+Keogh Avenue
+KEOGH AVENUE
+Keogh Avenue
+
+Keogh Avenue
+....................
+................
+
+[addbusstop]
+Nolan Road
+NOLAN ROAD
+Nolan Road
+
+Nolan Road
+....................
+................
+
+[addbusstop]
+Reid Parade
+REID PARADE
+Reid Parade
+
+Reid Parade
+....................
+................
+
+[addbusstop]
+Hockley Reid Parade
+REID PARADE
+Hockley
+Reid Parade
+Reid Parade
+....................
+................
+
+[addbusstop]
+Petersfield Lane
+PETERSFIELD LANE
+Petersfield Lane
+
+Petersfield Lane
+....................
+................
+
+[addbusstop]
+New Farm Vale
+NEW FARM VALE
+New Farm Vale
+
+New Farm Vale
+....................
+................
+
+[addbusstop]
+Knockhill
+KNOCKHILL PARK
+Knockhill
+Business Park
+Knockhill Park
+....................
+................
+
+[addbusstop]
+Wessex Crescent
+WESSEX CRESCENT
+Wessex Crescent
+
+Wessex Crescent
+....................
+................
+
+[addbusstop]
+Norfolk Drive
+NORFOLK DRIVE
+Norfolk Drive
+
+Norfolk Drive
+....................
+................
+
+[addbusstop]
+Bedfordshire Way
+BEDFORDSHIRE WAY
+Bedfordshire Way
+
+Bedfordshire Way
+....................
+................
+
+[addbusstop]
+Bathurst Nurseries
+BATHURST NUR
+Bathurst
+Nurseries
+Bathurst Nurseries
+....................
+................
+
+[addbusstop]
+Royal Lane
+ROYAL LANE
+Royal Lane
+
+Royal Lane
+....................
+................
+
+[addbusstop]
+Wessex Street
+WESSEX STREET
+Wessex Street
+
+Wessex Street
+....................
+................
+
+[addbusstop]
+Charlie Street
+CHARLIE STREET
+Charlie Street
+
+Charlie Street
+....................
+................
+
+[addbusstop]
+Haven Green
+HAVEN GREEN
+Haven Green
+
+Haven Green
+....................
+................
+
+[addbusstop]
+Tinto Road
+TINTO ROAD
+Tinto Road
+
+Tinto Road
+....................
+................
+
+[addbusstop]
+St Johns Road
+ST JOHNS ROAD
+St Johns Road
+
+St Johns Road
+....................
+................
+
+[addbusstop]
+Willow Park
+WILLOW PARK
+Willow Park
+
+Willow Park
+....................
+................
+
+[addbusstop]
+Heston
+HESTON
+Heston
+
+Heston
+....................
+................
+
+[addbusstop]
+Pale Street
+PALE STREET
+Pale Street
+
+Pale Street
+....................
+................
+
+[addbusstop]
+Trinity Way
+TRINITY WAY
+Trinity Way
+
+Trinity Way
+....................
+................
+
+[addbusstop]
+Kirkland Drive
+KIRKLAND DRIVE
+Kirkland Drive
+
+Kirkland Drive
+....................
+................
+
+[addbusstop]
+Ardleigh Way
+ARDLEIGH WAY
+Ardleigh Way
+
+Ardleigh Way
+....................
+................
+
+[addbusstop]
+Barton Lido
+BARTON LIDO
+Barton Lido
+
+Barton Lido
+....................
+................
+
+[addbusstop]
+Haven House
+HAVEN HOUSE
+Haven House
+
+Haven House
+....................
+................
+
+[addbusstop]
+Fallowfield
+FALLOWFIELD
+Fallowfield
+
+Fallowfield
+....................
+................
+
+[addbusstop]
+Wallend
+WALLEND
+Wallend
+
+Wallend
+....................
+................
+
+[addbusstop]
+Castleview
+CASTLEVIEW
+Castleview
+
+Castleview
+....................
+................
+
+[addbusstop]
+Marston Hill
+MARSTON HILL
+Marston Hill
+
+Marston Hill
+....................
+................
+
+[addbusstop]
+Poulton Lane
+POULTON LANE
+Poulton Lane
+
+Poulton Lane
+....................
+................
+
+[addbusstop]
+Five Points Corner
+FIVE POINTS CNR
+Five Points
+Corner
+Five Points Corner
+....................
+................
+
+[addbusstop]
+Williams Court
+WILLIAMS COURT
+Williams Court
+
+Williams Court
+....................
+................
+
+	[infosystem_trip]
+	{routecode} (z.B. '540001', integer)
+	{routestring} (ggf. für IBIS-Gerät oder vieleicht später auch zum Setzen)
+	{terminuscode}
+	{line string} (z.B. '54 ')
+
+	[infosystem_busstop]
+	{string0: IBIS-Name}
+	{string1: LCD 1. Zeile links}
+	{string2: LCD 1. Zeile rechts}
+	{string3: LCD 2. Zeile links}
+	{string4: LCD 2. Zeile rechts}
+	
+
+
+
+===============================================================================
+	520:
+===============================================================================
+
+Apsley Station-Wotton High Road
+-----------------------------------
+
+[infosystem_trip]
+52001
+AYSTN-WHR
+010
+520
+
+................
+
+[infosystem_busstop_list]
+32
+Apsley Station
+Hemlock Road
+Carlton Road
+Walton Avenue
+Apsley House
+Apsley Bus Station
+Apsley Town Hall
+Williams Court
+West Street
+Meadowview
+Hampton Row
+Frederick Street
+Bramley Halls
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Lantern Cottages
+Hamlet Farm
+Horsley House
+Bowdenham Shops
+Bowdenham Esso
+Chisleton Manor
+Ingoldisthorpe Pond
+Ingoldisthorpe Church
+Swansea Drive
+Winterbourne Shops
+Wotton Asda
+Wotton Road
+Harrier Way
+Dromford Corner
+Leyland Street
+Wotton High Road
+
+
+Wotton High Road-Apsley Station
+-----------------------------------
+
+[infosystem_trip]
+52002
+WHR-AYSTN
+011
+520
+
+................
+
+[infosystem_busstop_list]
+32
+Wotton High Road
+Leyland Street
+Dromford Corner
+Harrier Way
+Wotton Road
+Wotton Asda
+Winterbourne Shops
+Swansea Drive
+Ingoldisthorpe Church
+Ingoldisthorpe Pond
+Chisleton Manor
+Bowdenham Esso
+Bowdenham Shops
+Horsley House
+Hamlet Farm
+Lantern Cottages
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Bramley Halls
+Frederick Street
+Hampton Row
+Meadowview
+Kew Lane
+Five Points Corner
+Apsley Town Hall
+Apsley Bus Station
+Apsley House
+Walton Avenue
+Stanton Street
+Hemlock Road
+Apsley Station
+
+
+===============================================================================
+	521:
+===============================================================================
+
+Apsley Station-Wotton High Road Via Bowdenham
+-----------------------------------
+
+[infosystem_trip]
+52101
+AYSTN-WHR
+012
+521
+
+................
+
+[infosystem_busstop_list]
+34
+Apsley Station
+Hemlock Road
+Carlton Road
+Walton Avenue
+Apsley House
+Apsley Bus Station
+Apsley Town Hall
+Williams Court
+West Street
+Meadowview
+Hampton Row
+Frederick Street
+Bramley Halls
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Lantern Cottages
+Hamlet Farm
+Horsley House
+Hertfordshire Way
+Lincoln Road
+Yorkshire Way
+Bowdenham Esso
+Chisleton Manor
+Ingoldisthorpe Pond
+Ingoldisthorpe Church
+Swansea Drive
+Winterbourne Shops
+Wotton Asda
+Wotton Road
+Harrier Way
+Dromford Corner
+Leyland Street
+Wotton High Road
+
+
+Wotton High Road-Apsley Station Via Bowdenham
+-----------------------------------
+
+[infosystem_trip]
+52102
+WHR-AYSTN
+013
+521
+
+................
+
+[infosystem_busstop_list]
+34
+Wotton High Road
+Leyland Street
+Dromford Corner
+Harrier Way
+Wotton Road
+Wotton Asda
+Winterbourne Shops
+Swansea Drive
+Ingoldisthorpe Church
+Ingoldisthorpe Pond
+Chisleton Manor
+Bowdenham Esso
+Yorkshire Way
+Lincoln Road
+Hertfordshire Way
+Horsley House
+Hamlet Farm
+Lantern Cottages
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Bramley Halls
+Frederick Street
+Hampton Row
+Meadowview
+Kew Lane
+Five Points Corner
+Apsley Town Hall
+Apsley Bus Station
+Apsley House
+Walton Avenue
+Stanton Street
+Hemlock Road
+Apsley Station
+
+===============================================================================
+	522:
+===============================================================================
+
+Apsley Station-Wotton High Road Via Winterbourne
+-----------------------------------
+
+[infosystem_trip]
+52201
+AYSTN-WHR
+014
+522
+
+................
+
+[infosystem_busstop_list]
+33
+Apsley Station
+Hemlock Road
+Carlton Road
+Walton Avenue
+Apsley House
+Apsley Bus Station
+Apsley Town Hall
+Williams Court
+West Street
+Meadowview
+Hampton Row
+Frederick Street
+Bramley Halls
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Lantern Cottages
+Hamlet Farm
+Horsley House
+Bowdenham Shops
+Bowdenham Esso
+Chisleton Manor
+Ingoldisthorpe Pond
+Ingoldisthorpe Church
+Hildene Avenue
+Winterbourne House
+Noel Green
+Wotton Asda
+Wotton Road
+Harrier Way
+Dromford Corner
+Leyland Street
+Wotton High Road
+
+
+Wotton High Road-Apsley Station Via Winterbourne
+-----------------------------------
+
+[infosystem_trip]
+52202
+WHR-AYSTN
+015
+522
+
+................
+
+[infosystem_busstop_list]
+33
+Wotton High Road
+Leyland Street
+Dromford Corner
+Harrier Way
+Wotton Road
+Wotton Asda
+Noel Green
+Winterbourne House
+Hildene Avenue
+Ingoldisthorpe Church
+Ingoldisthorpe Pond
+Chisleton Manor
+Bowdenham Esso
+Bowdenham Shops
+Horsley House
+Hamlet Farm
+Lantern Cottages
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Bramley Halls
+Frederick Street
+Hampton Row
+Meadowview
+Kew Lane
+Five Points Corner
+Apsley Town Hall
+Apsley Bus Station
+Apsley House
+Walton Avenue
+Stanton Street
+Hemlock Road
+Apsley Station
+
+===============================================================================
+	523:
+===============================================================================
+
+Apsley Bus Station-Wotton High Road
+-----------------------------------
+
+[infosystem_trip]
+52301
+AYBSSTN-WHR
+016
+523
+
+................
+
+[infosystem_busstop_list]
+30
+Apsley Bus Station
+Apsley Town Hall
+Williams Court
+West Street
+Meadowview
+Hampton Row
+Frederick Street
+Bramley Halls
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Lantern Cottages
+Hamlet Farm
+Horsley House
+Hertfordshire Way
+Lincoln Road
+Yorkshire Way
+Bowdenham Esso
+Chisleton Manor
+Ingoldisthorpe Pond
+Ingoldisthorpe Church
+Hildene Avenue
+Winterbourne House
+Noel Green
+Wotton Asda
+Wotton Road
+Harrier Way
+Dromford Corner
+Leyland Street
+Wotton High Road
+
+
+Wotton High Road-Apsley Bus Station
+-----------------------------------
+
+[infosystem_trip]
+52302
+WHR-AYBSSTN
+017
+523
+
+................
+
+[infosystem_busstop_list]
+30
+Wotton High Road
+Leyland Street
+Dromford Corner
+Harrier Way
+Wotton Road
+Wotton Asda
+Noel Green
+Winterbourne House
+Hildene Avenue
+Ingoldisthorpe Church
+Ingoldisthorpe Pond
+Chisleton Manor
+Bowdenham Esso
+Yorkshire Way
+Lincoln Road
+Hertfordshire Way
+Horsley House
+Hamlet Farm
+Lantern Cottages
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Bramley Halls
+Frederick Street
+Hampton Row
+Meadowview
+Kew Lane
+Five Points Corner
+Apsley Town Hall
+Apsley Bus Station
+
+===============================================================================
+	524:
+===============================================================================
+
+Apsley Station-Wotton High Road Via Monkton
+-----------------------------------
+
+[infosystem_trip]
+52401
+AYSTN-WHR
+018
+524
+
+................
+
+[infosystem_busstop_list]
+39
+Apsley Station
+Hemlock Road
+Carlton Road
+Walton Avenue
+Apsley House
+Apsley Bus Station
+Apsley Town Hall
+Williams Court
+West Street
+Meadowview
+Hampton Row
+Frederick Street
+Bramley Halls
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Lantern Cottages
+Hamlet Farm
+Horsley House
+Bowdenham Shops
+Cunard Farm
+Bassett Hall
+Cunard Farm
+Bowdenham Esso
+Chisleton Manor
+Ingoldisthorpe Pond
+Ingoldisthorpe Church
+Hildene Avenue
+Railway Cottages
+Monkton Village
+Railway Cottages
+Winterbourne House
+Noel Green
+Wotton Asda
+Wotton Road
+Harrier Way
+Dromford Corner
+Leyland Street
+Wotton High Road
+
+
+Wotton High Road-Apsley Station Via Monkton
+-----------------------------------
+
+[infosystem_trip]
+52402
+WHR-AYSTN
+019
+524
+
+................
+
+[infosystem_busstop_list]
+39
+Wotton High Road
+Leyland Street
+Dromford Corner
+Harrier Way
+Wotton Road
+Wotton Asda
+Noel Green
+Winterbourne House
+Railway Cottages
+Monkton Village
+Railway Cottages
+Hildene Avenue
+Ingoldisthorpe Church
+Ingoldisthorpe Pond
+Chisleton Manor
+Bowdenham Esso
+Cunard Farm
+Bassett Hall
+Cunard Farm
+Bowdenham Shops
+Horsley House
+Hamlet Farm
+Lantern Cottages
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Bramley Halls
+Frederick Street
+Hampton Row
+Meadowview
+Kew Lane
+Five Points Corner
+Apsley Town Hall
+Apsley Bus Station
+Apsley House
+Walton Avenue
+Stanton Street
+Hemlock Road
+Apsley Station
+
+===============================================================================
+	525:
+===============================================================================
+
+Apsley Station to Wotton High Road via Bowdenham and Winterbourne
+-----------------------------------
+
+[infosystem_trip]
+52501
+AYSTN-WHR
+016
+525
+
+................
+
+[infosystem_busstop_list]
+35
+Apsley Station
+Hemlock Road
+Carlton Road
+Walton Avenue
+Apsley House
+Apsley Bus Station
+Apsley Town Hall
+Williams Court
+West Street
+Meadowview
+Hampton Row
+Frederick Street
+Bramley Halls
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Lantern Cottages
+Hamlet Farm
+Horsley House
+Hertfordshire Way
+Lincoln Road
+Yorkshire Way
+Bowdenham Esso
+Chisleton Manor
+Ingoldisthorpe Pond
+Ingoldisthorpe Church
+Hildene Avenue
+Winterbourne House
+Noel Green
+Wotton Asda
+Wotton Road
+Harrier Way
+Dromford Corner
+Leyland Street
+Wotton High Road
+
+
+Wotton High Road-Apsley Station Via Winterbourne and Bowdenham
+-----------------------------------
+
+[infosystem_trip]
+52502
+WHR-AYSTN
+020
+525
+
+................
+
+[infosystem_busstop_list]
+35
+Wotton High Road
+Leyland Street
+Dromford Corner
+Harrier Way
+Wotton Road
+Wotton Asda
+Noel Green
+Winterbourne House
+Hildene Avenue
+Ingoldisthorpe Church
+Ingoldisthorpe Pond
+Chisleton Manor
+Bowdenham Esso
+Yorkshire Way
+Lincoln Road
+Hertfordshire Way
+Horsley House
+Hamlet Farm
+Lantern Cottages
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Bramley Halls
+Frederick Street
+Hampton Row
+Meadowview
+Kew Lane
+Five Points Corner
+Apsley Town Hall
+Apsley Bus Station
+Apsley House
+Walton Avenue
+Stanton Street
+Hemlock Road
+Apsley Station
+
+===============================================================================
+	N52:
+===============================================================================
+
+Apsley Bus Station to Wotton High Road
+-----------------------------------
+
+[infosystem_trip]
+05201
+AYBSSTN-WHR
+016
+N52
+
+................
+
+[infosystem_busstop_list]
+23
+Apsley Bus Station
+Nags Head
+Meadowview
+Hampton Row
+Frederick Street
+Bramley Halls
+Trent Way
+Villa Allotments
+Lantern Cottages
+Hamlet Farm
+Horsley House
+Bowdenham Shops
+Bowdenham Esso
+Chisleton Manor
+Ingoldisthorpe Pond
+Ingoldisthorpe Church
+Swansea Drive
+Winterbourne Shops
+Wotton Road
+Harrier Way
+Dromford Corner
+Leyland Street
+Wotton High Road
+
+
+Wotton High Road-Apsley Station
+-----------------------------------
+
+[infosystem_trip]
+05202
+WHR-AYBSSTN
+017
+N52
+
+................
+
+[infosystem_busstop_list]
+23
+Wotton High Road
+Leyland Street
+Dromford Corner
+Harrier Way
+Wotton Road
+Winterbourne Shops
+Swansea Drive
+Ingoldisthorpe Church
+Ingoldisthorpe Pond
+Chisleton Manor
+Bowdenham Esso
+Bowdenham Shops
+Horsley House
+Hamlet Farm
+Lantern Cottages
+Villa Allotments
+Trent Way
+Bramley Halls
+Frederick Street
+Hampton Row
+Meadowview
+Nags Head
+Apsley Bus Station
+
+===============================================================================
+	X52:
+===============================================================================
+
+Apsley Bus Station to Wotton High Road
+-----------------------------------
+
+[infosystem_trip]
+05203
+AYBSSTN-WHR
+021
+X52
+
+................
+
+[infosystem_busstop_list]
+5
+Apsley Station
+Apsley Bus Station
+Princess Kate Hospital
+Wotton Asda
+Wotton High Road
+
+Wotton High Road-Apsley Station
+-----------------------------------
+
+[infosystem_trip]
+05204
+WHR-AYBSSTN
+022
+X52
+
+................
+
+[infosystem_busstop_list]
+5
+Wotton High Road
+Wotton Asda
+Princess Kate Hospital
+Apsley Bus Station
+Apsley Station
+
+===============================================================================
+	S52:
+===============================================================================
+
+Apsley Bus Station-Winterbourne School
+-----------------------------------
+
+[infosystem_trip]
+05205
+AYBSSTN-WESCH
+023
+S52
+
+................
+
+[infosystem_busstop_list]
+20
+Apsley Bus Station
+Nags Head
+Meadowview
+Hampton Row
+Frederick Street
+Bramley Halls
+Trent Way
+Villa Allotments
+Lantern Cottages
+Hamlet Farm
+Horsley House
+Hertfordshire Way
+Lincoln Road
+Yorkshire Way
+Bowdenham Esso
+Chisleton Manor
+Ingoldisthorpe Pond
+Ingoldisthorpe Church
+Swansea Drive
+Winterbourne School
+
+Winterbourne School-Apsley Bus Station
+-----------------------------------
+
+[infosystem_trip]
+05206
+WESCH-AYBSSTN
+017
+S52
+
+................
+
+[infosystem_busstop_list]
+20
+Winterbourne School
+Swansea Drive
+Ingoldisthorpe Church
+Ingoldisthorpe Pond
+Chisleton Manor
+Bowdenham Esso
+Yorkshire Way
+Lincoln Road
+Hertfordshire Way
+Horsley House
+Hamlet Farm
+Lantern Cottages
+Villa Allotments
+Trent Way
+Bramley Halls
+Frederick Street
+Hampton Row
+Meadowview
+Nags Head
+Apsley Bus Station
+
+===============================================================================
+	94:
+===============================================================================
+
+Hemel Industrial Estate-Princess Kate Hospital
+-----------------------------------
+
+[infosystem_trip]
+09401
+HIA-PKH
+032
+94
+
+................
+
+[infosystem_busstop_list]
+21
+Hemel Industrial Estate
+Industry Way
+Apsley Bus Garage
+Walton Avenue
+Stanton Street
+Hemlock Road
+Apsley Station
+Hemlock Tower
+Winchester Street
+Winchester Mews
+St Marys Road
+Apsley Town Hall
+Apsley Bus Station
+Nags Head
+Ealing Lane
+Camberwell Park
+Lindsay Lane
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Princess Kate Hospital Terminus
+
+Princess Kate-Hemel Industrial Estate
+-----------------------------------
+
+[infosystem_trip]
+09402
+PKH-HIA
+033
+94
+
+................
+
+[infosystem_busstop_list]
+21
+Princess Kate Hospital Terminus
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Lindsay Lane
+Camberwell Park
+Ealing Lane
+Nags Head
+Apsley Bus Station
+Apsley Town Hall
+St Marys Road
+Winchester Mews
+Winchester Street
+Hemlock Tower
+Apsley Station
+Hemlock Road
+Carlton Road
+Walton Avenue
+Apsley Bus Garage
+Industry Way
+Hemel Industrial Estate
+
+===============================================================================
+	93:
+===============================================================================
+
+Hockley-New Farm Vale
+-----------------------------------
+
+[infosystem_trip]
+09301
+HRP-NFV
+034
+93
+
+................
+
+[infosystem_busstop_list]
+17
+Hockley Reid Parade
+Nolan Road
+Keogh Avenue
+Apsley Road
+Apsley Bus Garage
+Apsley House
+Apsley Bus Station
+Apsley Town Hall
+St Marys Road
+Gower Hall
+Leicester Street
+Langley Parade
+Yardley Hotel
+Frederick Street
+Grange Lane
+Petersfield Lane
+New Farm Vale
+
+New Farm Vale-Hockley
+-----------------------------------
+
+[infosystem_trip]
+09302
+NFV-HRP
+035
+93
+
+................
+
+[infosystem_busstop_list]
+17
+New Farm Vale
+Carter Road
+Grange Lane
+Frederick Street
+Yardley Hotel
+Langley Parade
+Leicester Street
+Gower Hall
+St Marys Road
+Apsley Town Hall
+Apsley Bus Station
+Apsley House
+Apsley Bus Garage
+Apsley Road
+Keogh Avenue
+Nolan Road
+Reid Parade
+
+===============================================================================
+	94A:
+===============================================================================
+
+Apsley Station-Princess Kate Hospital
+-----------------------------------
+
+[infosystem_trip]
+09403
+AYSTN-PKH
+032
+94A
+
+................
+
+[infosystem_busstop_list]
+15
+Apsley Station
+Hemlock Tower
+Winchester Street
+Winchester Mews
+St Marys Road
+Apsley Town Hall
+Apsley Bus Station
+Nags Head
+Ealing Lane
+Camberwell Park
+Lindsay Lane
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Princess Kate Hospital Terminus
+
+Princess Kate-Hemel Industrial Estate
+-----------------------------------
+
+[infosystem_trip]
+09404
+PKH-AYSTN
+020
+94A
+
+................
+
+[infosystem_busstop_list]
+15
+Princess Kate Hospital Terminus
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Lindsay Lane
+Camberwell Park
+Ealing Lane
+Nags Head
+Apsley Bus Station
+Apsley Town Hall
+St Marys Road
+Winchester Mews
+Winchester Street
+Hemlock Tower
+Apsley Station
+
+===============================================================================
+	95A:
+===============================================================================
+
+Hockley Anticlockwise
+-----------------------------------
+
+[infosystem_trip]
+09502
+HRP ACWE
+037
+95A
+
+................
+
+[infosystem_busstop_list]
+29
+Hockley Reid Parade
+Nolan Road
+Keogh Avenue
+Apsley Road
+Apsley Bus Garage
+Apsley House
+Apsley Bus Station
+Apsley Town Hall
+St Marys Road
+Gower Hall
+Leicester Street
+Langley Parade
+Yardley Hotel
+Frederick Street
+Bramley Halls
+Trent Way
+Lindsay Lane
+Camberwell Park
+Ealing Lane
+Kew Lane
+Five Points Corner
+Apsley Town Hall
+Apsley Bus Station
+Apsley House
+Apsley Bus Garage
+Apsley Road
+Keogh Avenue
+Nolan Road
+Reid Parade
+
+
+===============================================================================
+	95:
+===============================================================================
+
+Hockley Clockwise
+-----------------------------------
+
+[infosystem_trip]
+09501
+HRP CW
+036
+95
+
+................
+
+[infosystem_busstop_list]
+29
+Hockley Reid Parade
+Nolan Road
+Keogh Avenue
+Apsley Road
+Apsley Bus Garage
+Apsley House
+Apsley Bus Station
+Apsley Town Hall
+Williams Court
+West Street
+Ealing Lane
+Camberwell Park
+Lindsay Lane
+Trent Way
+Bramley Halls
+Frederick Street
+Yardley Hotel
+Langley Parade
+Leicester Street
+Gower Hall
+St Marys Road
+Apsley Town Hall
+Apsley Bus Station
+Apsley House
+Apsley Bus Garage
+Apsley Road
+Keogh Avenue
+Nolan Road
+Reid Parade
+
+
+===============================================================================
+	X53:
+===============================================================================
+
+Apsley Bus Station to Knockhill
+-----------------------------------
+
+[infosystem_trip]
+05301
+AYBSSTN-KBP
+038
+X53
+
+................
+
+[infosystem_busstop_list]
+10
+Apsley Bus Station
+Hampton Row
+Trent Way
+Bowdenham Shops
+Ingoldisthorpe Pond
+Winterbourne Shops
+Wotton Road
+Dromford Corner
+Wotton High Road
+Knockhill
+
+Knockhill-Apsley Bus Station
+-----------------------------------
+
+[infosystem_trip]
+05302
+KBP-AYBSSTN
+039
+X53
+
+................
+
+[infosystem_busstop_list]
+10
+Knockhill
+Wotton High Road
+Dromford Corner
+Wotton Road
+Winterbourne Shops
+Ingoldisthorpe Pond
+Bowdenham Shops
+Trent Way
+Hampton Row
+Apsley Bus Station
+
+
+===============================================================================
+	952:
+===============================================================================
+
+Apsley Bus Station to Bowdenham
+-----------------------------------
+
+[infosystem_trip]
+95201
+AYBSSTN-BWC
+041
+952
+
+................
+
+[infosystem_busstop_list]
+21
+Apsley Bus Station
+Apsley Town Hall
+Williams Court
+West Street
+Ealing Lane
+Camberwell Park
+Lindsay Lane
+Trent Way
+Villa Allotments
+Princess Kate Hospital
+Princess Kate Hospital Entrance
+Royal Lane
+Lantern Cottages
+Hamlet Farm
+Bathurst Nurseries
+Cunard Farm
+Yorkshire Way
+Lincoln Road
+Bedfordshire Way
+Norfolk Drive
+Wessex Crescent
+
+Bowdenham-Apsley Bus Station
+-----------------------------------
+
+[infosystem_trip]
+95202
+BWC-AYBSSTN
+017
+952
+
+................
+
+[infosystem_busstop_list]
+21
+Wessex Crescent
+Norfolk Drive
+Bedfordshire Way
+Lincoln Road
+Yorkshire Way
+Cunard Farm
+Bathurst Nurseries
+Hamlet Farm
+Lantern Cottages
+Royal Lane
+Princess Kate Hospital Entrance
+Princess Kate Hospital
+Villa Allotments
+Trent Way
+Lindsay Lane
+Camberwell Park
+Ealing Lane
+Kew Lane
+Five Points Corner
+Apsley Town Hall
+Apsley Bus Station
+
+===============================================================================
+	92:
+===============================================================================
+
+Apsley Town Hall to Barton Lido
+-----------------------------------
+
+[infosystem_trip]
+09201
+AYTH-BL
+042
+92
+
+................
+
+[infosystem_busstop_list]
+17
+Apsley Town Hall
+Apsley Bus Station
+Nags Head
+Ealing Lane
+Camberwell Park
+Wessex Street
+Charlie Street
+Haven Green
+Tinto Road
+St Johns Road
+Willow Park
+Heston
+Pale Street
+Trinity Way
+Kirkland Drive
+Ardleigh Way
+Barton Lido
+
+Barton Lido-Apsley Town Hall
+-----------------------------------
+
+[infosystem_trip]
+09202
+BL-AYTH
+043
+92
+
+................
+
+[infosystem_busstop_list]
+17
+Barton Lido
+Ardleigh Way
+Kirkland Drive
+Trinity Way
+Pale Street
+Heston
+Willow Park
+St Johns Road
+Tinto Road
+Haven Green
+Charlie Street
+Wessex Street
+Camberwell Park
+Ealing Lane
+Nags Head
+Apsley Bus Station
+Apsley Town Hall
+
+===============================================================================
+	92A:
+===============================================================================
+
+Apsley Town Hall to Barton Lido
+-----------------------------------
+
+[infosystem_trip]
+09203
+AYTH-BL
+042
+92A
+
+................
+
+[infosystem_busstop_list]
+17
+Apsley Town Hall
+Apsley Bus Station
+Nags Head
+Ealing Lane
+Camberwell Park
+Wessex Street
+Charlie Street
+Haven Green
+Tinto Road
+St Johns Road
+Willow Park
+Poulton Lane
+Marston Hill
+Fallowfield
+Wallend
+Castleview
+Barton Lido
+
+Barton Lido-Apsley Town Hall
+-----------------------------------
+
+[infosystem_trip]
+09204
+BL-AYTH
+043
+92A
+
+................
+
+[infosystem_busstop_list]
+17
+Barton Lido
+Castleview
+Wallend
+Fallowfield
+Marston Hill
+Poulton Lane
+Willow Park
+St Johns Road
+Tinto Road
+Haven Green
+Charlie Street
+Wessex Street
+Camberwell Park
+Ealing Lane
+Nags Head
+Apsley Bus Station
+Apsley Town Hall
+
+===============================================================================
+	92B:
+===============================================================================
+
+Apsley Town Hall to Barton Lido
+-----------------------------------
+
+[infosystem_trip]
+09205
+AYTH-BL
+042
+92B
+
+................
+
+[infosystem_busstop_list]
+16
+Apsley Town Hall
+Apsley Bus Station
+Nags Head
+Ealing Lane
+Camberwell Park
+Wessex Street
+Charlie Street
+Haven House
+Marston Hill
+Poulton Lane
+Heston
+Pale Street
+Trinity Way
+Kirkland Drive
+Ardleigh Way
+Barton Lido
+
+Barton Lido-Apsley Town Hall
+-----------------------------------
+
+[infosystem_trip]
+09206
+BL-AYTH
+043
+92B
+
+................
+
+[infosystem_busstop_list]
+16
+Barton Lido
+Ardleigh Way
+Kirkland Drive
+Trinity Way
+Pale Street
+Heston
+Poulton Lane
+Marston Hill
+Haven House
+Charlie Street
+Wessex Street
+Camberwell Park
+Ealing Lane
+Nags Head
+Apsley Bus Station
+Apsley Town Hall
+
+===============================================================================
+	96:
+===============================================================================
+
+Apsley Town Hall - Heston Clockwise
+-----------------------------------
+
+[infosystem_trip]
+09601
+AYTH-HN CW
+044
+96
+
+................
+
+[infosystem_busstop_list]
+27
+Apsley Town Hall
+Apsley Bus Station
+Nags Head
+Ealing Lane
+Camberwell Park
+Wessex Street
+Charlie Street
+Haven House
+Fallowfield
+Wallend
+Castleview
+Ardleigh Way
+Kirkland Drive
+Trinity Way
+Pale Street
+Heston
+Willow Park
+St Johns Road
+Tinto Road
+Haven Green
+Charlie Street
+Wessex Street
+Camberwell Park
+Ealing Lane
+Nags Head
+Apsley Bus Station
+Apsley Town Hall
+
+===============================================================================
+	96A:
+===============================================================================
+
+Apsley Town Hall - Heston Anticlockwise
+-----------------------------------
+
+[infosystem_trip]
+09602
+AYTH-HN ACW
+044
+96A
+
+................
+
+[infosystem_busstop_list]
+27
+Apsley Town Hall
+Apsley Bus Station
+Nags Head
+Ealing Lane
+Camberwell Park
+Wessex Street
+Charlie Street
+Haven Green
+Tinto Road
+St Johns Road
+Willow Park
+Heston
+Pale Street
+Trinity Way
+Kirkland Drive
+Ardleigh Way
+Castleview
+Wallend
+Fallowfield
+Haven House
+Charlie Street
+Wessex Street
+Camberwell Park
+Ealing Lane
+Nags Head
+Apsley Bus Station
+Apsley Town Hall
+
+===============================================================================
+	N90:
+===============================================================================
+
+Apsley Weekend Circular
+-----------------------------------
+
+[infosystem_trip]
+09001
+AY WC
+045
+N90
+
+................
+
+[infosystem_busstop_list]
+31
+Apsley Bus Station
+Apsley House
+Apsley Bus Garage
+Apsley Road
+Keogh Avenue
+Nolan Road
+Hockley Reid Parade
+Fallowfield
+Wallend
+Castleview
+Ardleigh Way
+Kirkland Drive
+Trinity Way
+Pale Street
+Heston
+Willow Park
+Tinto Road
+Haven Green
+Charlie Street
+Wessex Street
+Lindsay Lane
+Trent Way
+Bramley Halls
+Frederick Street
+Yardley Hotel
+Langley Parade
+Leicester Street
+Gower Hall
+St Marys Road
+Apsley Town Hall
+Apsley Bus Station

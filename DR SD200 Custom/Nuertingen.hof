@@ -1,0 +1,1342 @@
+#####TEMPLATE FILE#####
+SD200_SD202_Template.xml
+
+#####COMMENT#####
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####ENDCOMMENT#####
+
+
+>>> Created: 5/2/2012, 12:36:29
+
+>>> This file was created with HOF Creator 1.1. Thank you for usage!
+>>> www.jan-kiesewalter.de
+
+
+[name]
+Nürtingen
+
+[servicetrip]
+Betriebsfahrt
+
+
+stringcount_terminus
+6
+
+stringcount_busstop
+4
+
+
+
+######################################
+ TERMINI
+######################################
+
+
+[addterminus]
+013
+Betriebsfahrt
+ BETRIEBSFAHRT
+ BETRIEBSFAHRT
+
+ BETRIEBSFAHRT
+betriebsfahrt.tga
+   Betriebsfahrt
+.........................
+
+
+[addterminus]
+01
+Kleeweg
+KLEEWEG Ü METZ.
+METZINGER STR.
+    ROSSDORF
+    ROSSDORF
+
+Kleeweg ü. Metzinger
+.........................
+
+
+[addterminus]
+02
+ZOB Steig 4
+ZOB STEIG 4
+METZINGER STR.
+ NÜRTINGEN/ZOB
+NÜRTINGEN/ZOB
+
+ZOB Steig 4
+.........................
+
+
+[addterminus]
+03
+Braike/Roßdorf
+BRAIKE/ROSSDORF
+     BRAIKE
+    ROSSDORF
+BRAIKE/ROSSDORF
+
+Braike/Rossdorf
+.........................
+
+
+[addterminus]
+04
+ZOB Steig 2
+ZOB STEIG 2
+    BRAIKE
+ NÜRTINGEN/ZOB
+NÜRTINGEN/ZOB
+
+ZOB Steig 2
+.........................
+
+
+[addterminus]
+05
+Wald-Klee
+WALDFRDH-KLEEWEG
+WALDFRIEDHOF
+        ROSSDORF
+WALDFR.-ROSSDORF
+
+Waldfrdh.-Roßdorf
+.........................
+
+
+[addterminus]
+06
+Waldfriedhof
+ZOB Ü WALDFRIDH.
+WALDFRIEDHOF
+   NÜRTINGEN/ZOB
+ZOB Ü.WALDFRIEDH
+
+ZOB über Waldfriedh.
+.........................
+
+
+[addterminus]
+07
+Steinbeisweg
+NÜRTINGEN  RIETH
+ VENDELAUSTR.
+     RIETH
+VEDELAUSTR-RIETH
+
+Nürtingen Rieth
+.........................
+
+
+[addterminus]
+08
+ZOB Steig 10
+ZOB STEIG 10
+KIRCHHEIMERSTR.
+ NÜRTINGEN/ZOB
+NÜRTINGEN/ZOB
+
+ZOB Steig 10
+.........................
+
+
+[addterminus]
+09
+Wendlingen
+WENDLINGEN
+UNTERENSINGEN
+ -WENDLINGEN (S)
+ WENDLINGEN (S)
+
+Wendlingen
+.........................
+
+
+[addterminus]
+10
+ZOB Steig 1
+ZOB STEIG 1
+
+NÜRTINGEN/ZOB
+NÜRTINGEN/ZOB
+
+ZOB Steig 1
+.........................
+
+
+[addterminus]
+11
+B313 Aus
+BERNHAUSEN
+   BERNHAUSEN
+    BAHNHOF
+BERNHAUSEN BHF.
+
+Bernhausen
+.........................
+
+
+[addterminus]
+12
+ZOB Steig 5
+ZOB STEIG 5
+   NÜRTINGEN
+
+NÜRTINGEN
+
+ZOB Steig 5
+.........................
+
+
+[addterminus]
+13
+Neuenhaus
+   NEUENHAUS
+   NEUENHAUS
+ÜBER GRÖTZINGEN
+NEUENHAUS
+
+Neuenhaus
+.........................
+
+
+[addterminus]
+15
+Kirchheim
+KIRCHHEIM
+KIRCHHEIM/TECK
+ÜBER KRANKENHAUS
+KIRCHHEIM/TECK
+
+Kirchheim
+.........................
+
+
+[addterminus]
+14
+ZOB Steig 7
+ZOB STEIG 7
+NÜRTINGEN ZOB
+
+NÜRTINGEN ZOB
+
+ZOB STeig 7
+.........................
+
+
+[addterminus]
+16
+ZOB Steig 6
+ZOB STEIG 6
+ NÜRTINGEN ZOB
+ÜBER KRANKENHAUS
+NÜRTINGEN ZOB
+
+ZOB STeig 6
+.........................
+
+
+[addterminus]
+17
+Ostpreußenweg
+OSTPREUßENWEG
+
+OSTPREUSSENWEG
+OSTPREUSSENWEG
+
+Ostpreußenweg
+.........................
+
+
+[addterminus]
+18
+ZOB Steig 3
+ZOB STEIG 3
+ NÜRTINGEN ZOB
+
+NÜRTINGEN ZOB
+
+ZOB Steig 3
+.........................
+
+
+[addterminus]
+19
+Neckartailfingen
+NECKARTENZLINGEN
+NECKARTENZLINGEN
+ALTD.-SCHLAITDRF
+NECKARTENZLINGEN
+
+Neckartentzlingen
+.........................
+
+
+[addterminus]
+20
+ZOB Steig 9
+ZOB STEIG 9
+ NÜRTINGEN ZOB
+Ü.ALTD.-N´TAILF.
+NÜRTINGEN ZOB
+
+ZOB Steig 9
+.........................
+
+
+[addterminus]
+21
+Lerchenberg
+LERCHENBERG
+AUF DEM
+LERCHENBERG
+A.D.LERCHENBERG
+
+Lerchenberg
+.........................
+
+
+[addterminus]
+30
+Krankenhaus
+KRANKENHAUS
+  KRANKENHAUS
+    S Ä E R
+KRANKENHAUS SÄER
+
+Krankenhaus
+.........................
+
+
+[addterminus]
+036
+Rossdorf
+ROSSDORF
+
+ROSSDORF
+ROSSDORF
+
+Rossdorf
+.........................
+
+
+
+
+
+
+######################################
+ BUS STOPS
+######################################
+
+
+[addbusstop]
+ZOB Steig 1
+NT ZOB STEIG 1
+Nürtingen ZOB
+Nürtingen ZOB
+NT ZOB Steig 4
+.........................
+
+
+[addbusstop]
+ZOB Steig 2
+NT ZOB STEIG 2
+Nürtingen ZOB
+
+NT ZOB Steig 2
+.........................
+
+
+[addbusstop]
+ZOB Steig 3
+NT ZOB STEIG 3
+Nürtingen ZOB
+
+NT ZOB Steig 3
+.........................
+
+
+[addbusstop]
+ZOB Steig 4
+NT ZOB STEIG 4
+Nürtingen ZOB
+Nürtingen ZOB
+NT ZOB Steig 4
+.........................
+
+
+[addbusstop]
+ZOB Steig 5
+NT ZOB STEIG 5
+Nürtingen ZOB
+
+NT ZOB Steig 5
+.........................
+
+
+[addbusstop]
+ZOB Steig 6
+ZOB STEIG 6
+Nürtingen ZOB
+Steig 5
+ZOB Steig 6
+.........................
+
+
+[addbusstop]
+ZOB Steig 7
+NT ZOB STEIG 7
+Nürtingen ZOB
+
+NT ZOB Steig 7
+.........................
+
+
+[addbusstop]
+ZOB Steig 8
+ZOB STEIG 8
+Nürtingen ZOB
+Steig 8
+ZOB Steig 8
+.........................
+
+
+[addbusstop]
+ZOB Steig 9
+ZOB STEIG 9
+Nürtingen ZOB
+Steig 9
+ZOB Steig 9
+.........................
+
+
+[addbusstop]
+ZOB Steig 10
+ZOB STEIG 10
+Nürtingen ZOB
+Steig 10
+ZOB Steig 10
+.........................
+
+
+[addbusstop]
+ZOB Steig 11
+ZOB STEIG 11
+Nürtingen ZOB
+Steig 11
+ZOB Steig 11
+.........................
+
+
+[addbusstop]
+Schillerplatz
+SCHILLERPLATZ
+Schillerplatz
+Schillerplatz
+Schillerplatz
+.........................
+
+
+[addbusstop]
+Kroatenhof
+KROATENHOF
+Kroatenhof
+Kroatenhof
+Kroatenhof
+.........................
+
+
+[addbusstop]
+Metzinger Straße
+METZINGER STR.
+Metzinger Straße
+Metzinger Straße
+Metzinger Str.
+.........................
+
+
+[addbusstop]
+Humpfentalstraße
+HUMPFENTALSTR.
+Humpfentalstraße
+Humpfentalstraße
+Humpfentalstraße
+.........................
+
+
+[addbusstop]
+Berliner Straße
+BERLINER STR.
+Rossdorf
+Berliner Straße
+Berliner Str.
+.........................
+
+
+[addbusstop]
+Holbeinstraße
+HOLBEINSTR.
+Rossdorf
+Holbeinstraße
+Holbeinstr.
+.........................
+
+
+[addbusstop]
+Dürer Platz
+DÜRER PLATZ
+Rossdorf
+Dürer Platz
+Dürer Platz
+.........................
+
+
+[addbusstop]
+Rossdorf Schule
+ROSSDORF SCHULE
+Rossdorf Schule
+Rossdorf Schule
+Rossdorf Schule
+.........................
+
+
+[addbusstop]
+Liebermannstraße
+LIEBERMANNSTR.
+Rossdorf
+Liebermannstraße
+Liebermannstr.
+.........................
+
+
+[addbusstop]
+Kleeweg
+KLEEWEG
+Rossdorf
+Kleeweg
+Kleeweg
+.........................
+
+
+[addbusstop]
+Kirchheim Aus
+
+
+
+
+.........................
+
+
+[addbusstop]
+Kirchheim Ein
+
+
+
+
+.........................
+
+
+[addbusstop]
+Amtsgericht
+AMTSGERICHT
+Amtsgericht
+
+Amtsgericht
+.........................
+
+
+[addbusstop]
+Albstraße
+ALBSTRASSE
+Albstraße
+Siedlerstube
+Albstraße
+.........................
+
+
+[addbusstop]
+Rotenbergplatz
+ROTENBERGPLATZ
+Braike
+Rotenbergplatz
+Rotenbergplatz
+.........................
+
+
+[addbusstop]
+Achalmstraße
+ACHALMSTRAßE
+Braike
+Achalmstraße
+Achalmstraße
+.........................
+
+
+[addbusstop]
+Schelmenwasen
+SCHELMENWASEN
+Braike
+Schelmenwasen
+Schelmenwasen
+.........................
+
+
+[addbusstop]
+Steinachbrücke
+STEINACHBRÜCKE
+Steinachbrücke
+
+Steinachbrücke
+.........................
+
+
+[addbusstop]
+Herman-Löns-Straße
+HERMAN-LÖNS-STR.
+Braike
+Herman-Löns-Straße
+Herman-Löns-Straße
+.........................
+
+
+[addbusstop]
+Vendelaustraße
+VENDELAUSTRAßE
+Vendelaustraße
+
+Vendelaustraße
+.........................
+
+
+[addbusstop]
+Steinbeisweg
+STEINBEISWEG
+Steinbeisweg
+
+Steinbeisweg
+.........................
+
+
+[addbusstop]
+Otto Hahn Straße
+OTTO-HAHN-STRAßE
+Otto-Hahn-Straße
+
+Otto-Hahn-Straße
+.........................
+
+
+[addbusstop]
+Kirchheimer Straße
+KIRCHHEIMER STR.
+Kirchheimer Straße
+
+Kirchheimer Straße
+.........................
+
+
+[addbusstop]
+Waldfriedhof
+WALDFRIEDHOF
+Waldfriedhof
+Waldfriedhof
+Waldfriedhof
+.........................
+
+
+[addbusstop]
+B313 Aus
+
+
+
+
+.........................
+
+
+[addbusstop]
+B313 Ein
+
+
+
+
+.........................
+
+
+[addbusstop]
+Grafenberg Aus
+GRAFENBERG AUS
+Grafenberg
+
+Grafenberg
+.........................
+
+
+[addbusstop]
+Grafenberg Ein
+GRAFENBERG EIN
+Grafenberg
+
+Grafenberg
+.........................
+
+
+[addbusstop]
+Dammstraße
+DAMMSTRAßE
+Dammstraße
+Dammstraße
+Dammstraße
+.........................
+
+
+[addbusstop]
+Eibenweg
+EIBENWEG
+Eibenweg
+Eibenweg
+Eibenweg
+.........................
+
+
+[addbusstop]
+Auf dem Lerchenberg
+LERCHENBERG
+Auf dem Lerchenberg
+Auf dem Lerchenberg
+Auf dem Lerchenberg
+.........................
+
+
+[addbusstop]
+Enzenhardtplatz
+ENZENHARDTPLATZ
+Enzenhardtplatz
+Enzenhardtplatz
+Enzenhardtplatz
+.........................
+
+
+[addbusstop]
+Stettiner Straße
+STETTINER STRAßE
+Stettiner Straße
+Stettiner Straße
+Stettiner Straße
+.........................
+
+
+[addbusstop]
+Ostpreußenweg
+OSTPREUßENWEG
+Ostpreussenweg
+Ostpreussenweg
+Ostpreußenweg
+.........................
+
+
+[addbusstop]
+Weberstraße
+WEBERSTRAßE
+Weberstraße
+Weberstraße
+Weberstraße
+.........................
+
+
+[addbusstop]
+Inselbad
+INSELBAD
+Inselbad
+Inselbad
+Inselbad
+.........................
+
+
+[addbusstop]
+Unterensinger Straße
+UNTERENSINGER ST
+Unterensinger Straße
+Unterensinger Straße
+Unterensinger Straße
+.........................
+
+
+[addbusstop]
+Linde
+LINDE
+Linde
+Linde
+Linde
+.........................
+
+
+[addbusstop]
+Stern
+STERN
+Stern
+Stern
+Stern
+.........................
+
+
+[addbusstop]
+Blumenstraße
+BLUMENSTRAßE
+Blumenstraße
+Blumenstraße
+Blumenstraße
+.........................
+
+
+[addbusstop]
+Industriegebiet
+INDUSTRIEGEBIET
+Industriegebiet
+Industriegebiet
+Industriegebiet
+.........................
+
+
+[addbusstop]
+Wendlingen
+WENDLINGEN STG.4
+Wendlingen
+Bahnhof
+Wendlingen Steig 4
+.........................
+
+
+[addbusstop]
+Säerstraße
+SÄERSTRAßE
+Säerstrasse
+
+Säerstraße
+.........................
+
+
+[addbusstop]
+Krankenhaus Nürtingen
+KRANKENHAUS
+Krankenhaus
+Krankenhaus
+Krankenhaus
+.........................
+
+
+
+
+
+
+######################################
+ TRIPS / ROUTES
+######################################
+
+
+Line 182, Route 01: ZOB Steig 4  >>  Kleeweg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18201
+ZOB STEIG 4  >>  KLEEWEG
+01
+XXX
+
+[infosystem_busstop_list]
+10
+ZOB Steig 4
+Schillerplatz
+Kroatenhof
+Metzinger Straße
+Humpfentalstraße
+Berliner Straße
+Holbeinstraße
+Dürer Platz
+Rossdorf Schule
+Kleeweg
+
+
+Line 182, Route 02: Kleeweg  >>  ZOB Steig 4
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18202
+KLEEWEG  >>  ZOB STEIG 4
+02
+XXX
+
+[infosystem_busstop_list]
+9
+Kleeweg
+Liebermannstraße
+Holbeinstraße
+Berliner Straße
+Humpfentalstraße
+Metzinger Straße
+Kroatenhof
+Schillerplatz
+ZOB Steig 4
+
+
+Line 184, Route 01: ZOB Steig 1  >>  Wendlingen
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18401
+ZOB STEIG 1  >>  WENDLINGEN
+09
+XXX
+
+[infosystem_busstop_list]
+9
+ZOB Steig 1
+Weberstraße
+Inselbad
+Unterensinger Straße
+Linde
+Stern
+Blumenstraße
+Industriegebiet
+Wendlingen
+
+
+Line 184, Route 02: Wendlingen  >>  ZOB Steig 1
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18402
+WENDLINGEN  >>  ZOB STEIG 1
+10
+XXX
+
+[infosystem_busstop_list]
+9
+Wendlingen
+Industriegebiet
+Blumenstraße
+Stern
+Linde
+Unterensinger Straße
+Inselbad
+Weberstraße
+ZOB Steig 1
+
+
+Line 183, Route 01: ZOB Steig 2  >>  Kleeweg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18301
+ZOB STEIG 2  >>  KLEEWEG
+03
+XXX
+
+[infosystem_busstop_list]
+13
+ZOB Steig 2
+Schillerplatz
+Amtsgericht
+Albstraße
+Rotenbergplatz
+Achalmstraße
+Herman-Löns-Straße
+Schelmenwasen
+Steinachbrücke
+Berliner Straße
+Holbeinstraße
+Rossdorf Schule
+Kleeweg
+
+
+Line 183, Route 02: Kleeweg  >>  ZOB Steig 2
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18302
+KLEEWEG  >>  ZOB STEIG 2
+04
+XXX
+
+[infosystem_busstop_list]
+14
+Kleeweg
+Liebermannstraße
+Holbeinstraße
+Dürer Platz
+Berliner Straße
+Steinachbrücke
+Schelmenwasen
+Herman-Löns-Straße
+Achalmstraße
+Rotenbergplatz
+Albstraße
+Amtsgericht
+Schillerplatz
+ZOB Steig 2
+
+
+Line 181, Route 01: ZOB Steig 10  >>  Steinbeisweg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18101
+ZOB STEIG 10  >>  STEINBEISWEG
+07
+XXX
+
+[infosystem_busstop_list]
+4
+ZOB Steig 10
+Schillerplatz
+Vendelaustraße
+Steinbeisweg
+
+
+Line 181, Route 02: Steinbeisweg  >>  ZOB Steig 10
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18102
+STEINBEISWEG  >>  ZOB STEIG 10
+08
+XXX
+
+[infosystem_busstop_list]
+5
+Steinbeisweg
+Otto Hahn Straße
+Kirchheimer Straße
+Schillerplatz
+ZOB Steig 10
+
+
+Line 074, Route 01: ZOB Steig 5  >>  B313 Aus
+----------------------------------------------------------------------
+
+[infosystem_trip]
+07401
+ZOB STEIG 5  >>  B313 AUS
+11
+XXX
+
+[infosystem_busstop_list]
+2
+ZOB Steig 5
+B313 Aus
+
+
+Line 074, Route 02: B313 Ein  >>  ZOB Steig 5
+----------------------------------------------------------------------
+
+[infosystem_trip]
+07402
+B313 EIN  >>  ZOB STEIG 5
+12
+XXX
+
+[infosystem_busstop_list]
+2
+B313 Ein
+ZOB Steig 5
+
+
+Line 167, Route 01: ZOB Steig 7  >>  B313 Aus
+----------------------------------------------------------------------
+
+[infosystem_trip]
+16701
+ZOB STEIG 7  >>  B313 AUS
+13
+XXX
+
+[infosystem_busstop_list]
+2
+ZOB Steig 7
+B313 Aus
+
+
+Line 167, Route 02: B313 Ein  >>  ZOB Steig 7
+----------------------------------------------------------------------
+
+[infosystem_trip]
+16702
+B313 EIN  >>  ZOB STEIG 7
+14
+XXX
+
+[infosystem_busstop_list]
+2
+B313 Ein
+ZOB Steig 7
+
+
+Line 166, Route 01: ZOB Steig 6  >>  Kirchheim Aus
+----------------------------------------------------------------------
+
+[infosystem_trip]
+16601
+ZOB STEIG 6  >>  KIRCHHEIM AUS
+15
+XXX
+
+[infosystem_busstop_list]
+2
+ZOB Steig 6
+Kirchheim Aus
+
+
+Line 166, Route 02: Kirchheim Ein  >>  ZOB Steig 6
+----------------------------------------------------------------------
+
+[infosystem_trip]
+16602
+KIRCHHEIM EIN  >>  ZOB STEIG 6
+16
+XXX
+
+[infosystem_busstop_list]
+2
+Kirchheim Ein
+ZOB Steig 6
+
+
+Line 185, Route 01: ZOB Steig 3  >>  Ostpreußenweg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18501
+ZOB STEIG 3  >>  OSTPREUßENWEG
+17
+XXX
+
+[infosystem_busstop_list]
+9
+ZOB Steig 3
+Schillerplatz
+Amtsgericht
+Dammstraße
+Eibenweg
+Auf dem Lerchenberg
+Enzenhardtplatz
+Stettiner Straße
+Ostpreußenweg
+
+
+Line 185, Route 02: Ostpreußenweg  >>  ZOB Steig 3
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18502
+OSTPREUßENWEG  >>  ZOB STEIG 3
+18
+XXX
+
+[infosystem_busstop_list]
+9
+Ostpreußenweg
+Stettiner Straße
+Enzenhardtplatz
+Auf dem Lerchenberg
+Eibenweg
+Dammstraße
+Amtsgericht
+Schillerplatz
+ZOB Steig 3
+
+
+Line 185, Route 03: ZOB Steig 3  >>  Auf dem Lerchenberg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18503
+ZOB STEIG 3  >>  AUF DEM LERCHENBERG
+21
+XXX
+
+[infosystem_busstop_list]
+7
+ZOB Steig 3
+Schillerplatz
+Amtsgericht
+Dammstraße
+Eibenweg
+Auf dem Lerchenberg
+Auf dem Lerchenberg
+
+
+Line 185, Route 04: Auf dem Lerchenberg  >>  ZOB Steig 3
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18504
+AUF DEM LERCHENBERG  >>  ZOB STEIG 3
+18
+XXX
+
+[infosystem_busstop_list]
+6
+Auf dem Lerchenberg
+Eibenweg
+Dammstraße
+Amtsgericht
+Schillerplatz
+ZOB Steig 3
+
+
+Line 166, Route 03: ZOB Steig 3  >>  Krankenhaus Nürtingen
+----------------------------------------------------------------------
+
+[infosystem_trip]
+16603
+ZOB STEIG 3  >>  KRANKENHAUS NÜRTINGEN
+30
+XXX
+
+[infosystem_busstop_list]
+3
+ZOB Steig 3
+Säerstraße
+Krankenhaus Nürtingen
+
+
+Line 166, Route 04: Krankenhaus Nürtingen  >>  ZOB Steig 1
+----------------------------------------------------------------------
+
+[infosystem_trip]
+16604
+KRANKENHAUS NÜRTINGEN  >>  ZOB STEIG 1
+10
+XXX
+
+[infosystem_busstop_list]
+3
+Krankenhaus Nürtingen
+Säerstraße
+ZOB Steig 1
+
+
+Line 194, Route 01: Ostpreußenweg  >>  Kleeweg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+19401
+OSTPREUßENWEG  >>  KLEEWEG
+01
+XXX
+
+[infosystem_busstop_list]
+8
+Ostpreußenweg
+Stettiner Straße
+Enzenhardtplatz
+Auf dem Lerchenberg
+Berliner Straße
+Holbeinstraße
+Rossdorf Schule
+Kleeweg
+
+
+Line 194, Route 02: Kleeweg  >>  Ostpreußenweg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+19402
+KLEEWEG  >>  OSTPREUßENWEG
+17
+XXX
+
+[infosystem_busstop_list]
+8
+Kleeweg
+Liebermannstraße
+Holbeinstraße
+Berliner Straße
+Auf dem Lerchenberg
+Enzenhardtplatz
+Stettiner Straße
+Ostpreußenweg
+
+
+Line 183, Route 03: ZOB Steig 2  >>  Kleeweg
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18303
+ZOB STEIG 2  >>  KLEEWEG
+05
+XXX
+
+[infosystem_busstop_list]
+14
+ZOB Steig 2
+Schillerplatz
+Amtsgericht
+Albstraße
+Rotenbergplatz
+Achalmstraße
+Herman-Löns-Straße
+Waldfriedhof
+Schelmenwasen
+Steinachbrücke
+Berliner Straße
+Holbeinstraße
+Rossdorf Schule
+Kleeweg
+
+
+Line 183, Route 04: Kleeweg  >>  ZOB Steig 2
+----------------------------------------------------------------------
+
+[infosystem_trip]
+18304
+KLEEWEG  >>  ZOB STEIG 2
+06
+XXX
+
+[infosystem_busstop_list]
+15
+Kleeweg
+Liebermannstraße
+Holbeinstraße
+Dürer Platz
+Berliner Straße
+Steinachbrücke
+Schelmenwasen
+Waldfriedhof
+Herman-Löns-Straße
+Achalmstraße
+Rotenbergplatz
+Albstraße
+Amtsgericht
+Schillerplatz
+ZOB Steig 2
+
+

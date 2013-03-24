@@ -1,0 +1,612 @@
+	########################
+		HOF-Datei
+	########################
+
+	Enthält die diversen Informationen zum Einsatz für diesen Hof.
+	Auf diese Weise kann EIN Bus-Modell für verschiedene Einsätze
+	mit verschiedenen Zielen und Haltestellen verwendet werden.
+
+
+
+	Name des Hofes:
+
+[name]
+Pilzdorf
+
+[servicetrip]
+Betriebsfahrt
+
+
+	Setzen der Anzahl der Strings:
+
+stringcount_terminus
+6
+
+	string0:	IBIS-Display & Rollband-Textur
+	string1:	Annax (Front, 1. Zeile)
+	string2:	Annax (Front, 2. Zeile)
+	string3:	Annax (SD Seite)
+	string4:	Rollbandtextur
+        string5:	IBIS2-Display (Klarname in Groß-/Kleinschreibung), max 20 Zeichen
+
+stringcount_busstop
+5
+
+
+	Fügt ein Ziel hinzu. Bei "_allexit" handelt es sich um ein Ziel,
+	wo nie Leute einsteigen bzw. wo alle aussteigen. (z.B. Betriebsfahrt)
+
+	[addterminus_{allexit}]
+	{ident}
+	{texture-string}
+	{terminus station}
+	{string0}
+	{string1}
+	{...}
+
+	die Nummer dient der Kodierung, der String der Auswahl der entsprechenden
+	Ziel-Austauschtextur.
+
+
+	Fehlt der Hinweis "allexit", muss zusätzlich in der dritten Zeile die Haltestelle
+	angegeben werden, wo alle aussteigen. Dies meistens der gleiche Sting wie der der
+	Austauschtextur - muss aber nicht sein, falls entweder die Textur oder aber die Haltestelle
+	über weitere Zusätze verfügt - aus diesem Grund gibt es beide Einträge separat.
+
+	Beispiel:
+	
+	[addterminus]				<= Titel
+	3					<= Code
+	SP_Johannesstift			<= Textur-Change-ID
+	Johannesstift				<= Haltestellenbezeichnung der Endhaltestelle
+	JOHANNESSTIFT				<= String 0: IBIS-Anzeige
+	    SPANDAU    				<= String 1: Front-Annax  - obere Zeile
+	 JOHANNESSTIFT				<= String 2: Front-Annax  - untere Zeile
+	 JOHANNESSTIFT				<= String 3: Seiten-Annax beim SD
+	................			<= Hilfslinie
+
+
+
+[addterminus_allexit]
+001
+Betriebsfahrt
+BETRIEBSFAHRT
+                
+ BETRIEBSFAHRT
+ BETRIEBSFAHRT
+Betriebsfahrt.tga
+Betriebsfahrt
+
+[addterminus_allexit]
+002
+Schulbus
+SCHULBUS
+                
+    SCHULBUS
+    SCHULBUS
+Schulbus.tga
+Schulbus
+.........................................
+
+
+
+[addterminus]
+003
+Pilzdorf ZOB
+PILZDORF ZOB
+  PILZDORF ZOB
+   
+PILZDORF ZOB
+Pilzdorf_ZOB.tga
+Pilzdorf ZOB
+................
+
+[addterminus]
+004
+Pilzdorf Bahnhof
+PILZDORF BHF.
+PILZDORF BAHNHOF
+ 
+PILZDORF BHF.
+Pilzdorf_Bhf.tga
+Pilzdorf Bahnhof
+................
+
+[addterminus]
+005
+Industriegebiet Süd
+IND.GEBIET SÜD
+INDUSTRIEGEBIET
+    - SÜD -
+IND.GEBIET SÜD
+Industriegebiet_süd.tga
+Industriegebiet Süd
+................
+
+[addterminus]
+006
+Oberpilzdorf Ende
+OBERPILZD. ENDE
+  OBERPILZDORF
+   
+OBERPILZDORF
+Oberpilzdorf.tga
+Oberpilzdorf
+................
+
+[addterminus]
+007
+Felsberg
+FELSBERG
+    FELSBERG
+ 
+FELSBERG
+Felsberg.tga
+Felsberg
+................
+
+[addterminus]
+008
+Fichtensee Strandbad
+FICHTENSEE
+   FICHTENSEE
+
+FICHTENSEE
+Fichtensee.tga
+Fichtensee
+................
+
+[addterminus]
+009
+Meersbach Bahnhof
+MEERSBACH BHF.
+   MEERSBACH
+   
+MEERSBACH BHF.
+Meersbach.tga
+Meersbach Bahnhof
+................
+
+
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+
+			Informationssysteme
+
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+
+
+
+[addbusstop]
+Pilzdorf ZOB
+PILZDORF ZOB
+PILZDORF ZOB
+
+Pilzdorf ZOB
+................
+
+[addbusstop]
+Brunnenstr.
+BRUNNENSTR.
+BRUNNENSTR.
+
+Brunnenstr.
+................
+
+[addbusstop]
+Stadtmitte
+STADTMITTE
+STADTMITTE
+PILZDORF
+Stadtmitte
+................
+
+[addbusstop]
+Pilzdorf Bahnhof
+PILZDORF BHF
+PILZDORF
+BAHNHOF
+Pilzdorf Bahnhof
+................
+
+[addbusstop]
+Pilzdorfer Allee
+PILZDORFER ALLEE
+PILZDORFER ALLEE
+
+Pilzdorfer Allee
+................
+
+[addbusstop]
+Oberpilzdorf
+OBERPILZDORF
+OBERPILZDORF
+
+Oberpilzdorf
+................
+
+[addbusstop]
+Oberpilzdorf Ende
+OBERPILZD. ENDE
+OBERPILZDORF
+ENDE
+Oberpilzdorf Ende
+................
+
+[addbusstop]
+Tennishalle
+TENNISHALLE
+TENNISHALLE
+
+Tennishalle
+................
+
+[addbusstop]
+Am Kreisel
+AM KREISEL
+AM KREISEL
+
+Am Kreisel
+................
+
+[addbusstop]
+Industriegebiet Süd
+IND. GEBIET SÜD
+INDUSTRIEGEBIET
+SÜD
+Industriegebiet Süd
+................
+
+[addbusstop]
+Bauernhof
+BAUERNHOF
+BAUERNHOF
+
+Bauernhof
+................
+
+[addbusstop]
+Meersbach
+MEERSBACH
+MEERSBACH
+
+Meersbach
+................
+
+[addbusstop]
+Industriegebiet Süd Terminus
+IND.GEBIET TER.
+IND.GEBIET TER.
+
+Ind.Gebiet Terminus
+................
+
+[addbusstop]
+Kirche
+KIRCHE
+KIRCHE
+
+Kirche
+................
+
+[addbusstop]
+Gymnasium
+GYMNASIUM
+GYMNASIUM
+
+Gymnasium
+................
+
+[addbusstop]
+Schubertstr.
+SCHUBERTSTR.
+SCHUBERTSTR.
+
+Schubertstr.
+................
+
+[addbusstop]
+Fichtensee Brücke
+FICHTENSEE BR.
+FICHTENSEE BR.
+
+Fichtensee Brücke
+................
+
+[addbusstop]
+Fichtensee Mitte
+FICHTENSEE MIT.
+FICHTENSEE MIT.
+
+Fichtensee Mitte
+................
+
+[addbusstop]
+Bernsteinweg
+BERNSTEINWEG
+BERNSTEINWEG
+
+Bernsteinweg
+................
+
+[addbusstop]
+Jugendherberge
+JUGENDHERBERGE
+JUGENDHERBERGE
+
+Jugendherberge
+................
+
+[addbusstop]
+Alte Grundschule
+ALTE GRUNDSCHULE
+ALTE GRUNDSCHULE
+
+Alte Grundschule
+................
+
+
+	[infosystem_trip]
+	{routecode} (z.B. '540001', integer)
+	{routestring} (ggf. für IBIS-Gerät oder vieleicht später auch zum Setzen)
+	{terminuscode}
+	{line string} (z.B. '54 ')
+
+	[infosystem_busstop]
+	{string0: IBIS-Name}
+	{string1: LCD 1. Zeile links}
+	{string2: LCD 1. Zeile rechts}
+	{string3: LCD 2. Zeile links}
+	{string4: LCD 2. Zeile rechts}
+	
+
+
+
+===============================================================================
+	1:
+===============================================================================
+
+Pilzdorf ZOB - Oberpilzdorf Ende
+-----------------------------------
+
+[infosystem_trip]
+00101
+Pilzdorf ZOB-Oberpilzdorf Ende
+006
+1
+
+................
+
+[infosystem_busstop_list]
+7
+Pilzdorf ZOB
+Brunnenstr.
+Stadtmitte
+Pilzdorf Bahnhof
+Pilzdorfer Allee
+Oberpilzdorf
+Oberpilzdorf Ende
+
+
+Oberpilzdorf Ende-Pilzdorf ZOB
+-----------------------------------
+
+[infosystem_trip]
+00102
+Oberpilzdorf Ende-Pilzdorf ZOB
+003
+1
+
+................
+
+[infosystem_busstop_list]
+7
+Oberpilzdorf Ende
+Oberpilzdorf
+Pilzdorfer Allee
+Pilzdorf Bahnhof
+Stadtmitte
+Brunnenstr.
+Pilzdorf ZOB
+
+===============================================================================
+	2:
+===============================================================================
+
+Pilzdorf ZOB - Industriegebiet Süd
+-----------------------------------
+
+[infosystem_trip]
+00201
+Pilzdorf ZOB-Industriegebiet Süd
+005
+2
+
+................
+
+[infosystem_busstop_list]
+9
+Pilzdorf ZOB
+Brunnenstr.
+Stadtmitte
+Pilzdorf Bahnhof
+Pilzdorfer Allee
+Tennishalle
+Am Kreisel
+Industriegebiet Süd
+Industriegebiet Süd Terminus
+
+
+Industriegebiet Süd-Pilzdorf ZOB
+-----------------------------------
+
+[infosystem_trip]
+00202
+Industriegebiet Süd-Pilzdorf ZOB
+003
+2
+
+................
+
+[infosystem_busstop_list]
+8
+Industriegebiet Süd
+Am Kreisel
+Tennishalle
+Pilzdorfer Allee
+Pilzdorf Bahnhof
+Stadtmitte
+Brunnenstr.
+Pilzdorf ZOB
+
+===============================================================================
+	3:
+===============================================================================
+
+Pilzdorf ZOB - Meersbach Bahnhof
+-----------------------------------
+
+[infosystem_trip]
+00301
+Pilzdorf ZOB-Meersbach Bahnhof
+009
+3
+
+................
+
+[infosystem_busstop_list]
+8
+Pilzdorf ZOB
+Brunnenstr.
+Stadtmitte
+Pilzdorf Bahnhof
+Pilzdorfer Allee
+Bauernhof
+Meersbach
+Meersbach Bahnhof
+
+
+Meersbach Bahnhof-Pilzdorf ZOB
+-----------------------------------
+
+[infosystem_trip]
+00302
+Meersbach Bahnhof-Pilzdorf ZOB
+003
+3
+
+................
+
+[infosystem_busstop_list]
+8
+Meersbach Bahnhof
+Meersbach
+Bauernhof
+Pilzdorfer Allee
+Pilzdorf Bahnhof
+Stadtmitte
+Brunnenstr.
+Pilzdorf ZOB
+
+===============================================================================
+	4:
+===============================================================================
+
+Pilzdorf ZOB - Fichtensee Strandbad
+-----------------------------------
+
+[infosystem_trip]
+00401
+Pilzdorf ZOB-Fichtensee Strandbad
+008
+4
+
+................
+
+[infosystem_busstop_list]
+9
+Pilzdorf ZOB
+Brunnenstr.
+Stadtmitte
+Kirche
+Gymnasium
+Schubertstr.
+Fichtensee Brücke
+Fichtensee Mitte
+Fichtensee Strandbad
+
+
+Fichtensee Strandbad-Pilzdorf ZOB
+-----------------------------------
+
+[infosystem_trip]
+00402
+Fichtensee Strandbad-Pilzdorf ZOB
+003
+4
+
+................
+
+[infosystem_busstop_list]
+9
+Fichtensee Strandbad
+Fichtensee Mitte
+Fichtensee Brücke
+Schubertstr.
+Gymnasium
+Kirche
+Stadtmitte
+Brunnenstr.
+Pilzdorf ZOB
+
+===============================================================================
+	5:
+===============================================================================
+
+Pilzdorf Bahnhof - Felsberg
+-----------------------------------
+
+[infosystem_trip]
+00501
+Pilzdorf Bahnhof-Felsberg
+007
+5
+
+................
+
+[infosystem_busstop_list]
+7
+Pilzdorf Bahnhof
+Stadtmitte
+Brunnenstr.
+Bernsteinweg
+Jugendherberge
+Alte Grundschule
+Felsberg
+
+
+Felsberg - Pilzdorf Bahnhof
+-----------------------------------
+
+[infosystem_trip]
+00502
+Felsberg-Pilzdorf Bahnhof
+004
+5
+
+................
+
+[infosystem_busstop_list]
+7
+Felsberg
+Alte Grundschule
+Jugendherberge
+Bernsteinweg
+Brunnenstr.
+Stadtmitte
+Pilzdorf Bahnhof
