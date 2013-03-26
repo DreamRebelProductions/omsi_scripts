@@ -16,11 +16,11 @@ engine_ASR
 
 [const]
 engine_governed_idle_RPM
-550
+850
 
 [const]
 engine_power_idle
-15124
+18124
 
 [const]
 engine_coldM
@@ -35,34 +35,34 @@ engine_M_maxThrottle
 
 [pnt]
 600
-1000
+1100
 
 [pnt]
-800
-1030
+1100
+1230
 
 [pnt]
-1000
+1700
+1150
+
+[pnt]
+2000
 1050
 
 [pnt]
-1400
-1050
-
-[pnt]
-1600
+2600
 1025
 
 [pnt]
-1900
+3300
 960
 
 [pnt]
-2300
+3600
 750
 
 [pnt]
-2500
+3700
 0
 
 
@@ -139,7 +139,7 @@ Heizwert Diesel: 11.8 kWh/kg mit Dichte 0.845 kg/l verrechnet
 
 [const]
 engine_tank_capacity
-250
+280
 
 
 
