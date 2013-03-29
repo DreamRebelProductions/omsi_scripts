@@ -35,7 +35,7 @@ Engine: Cummins ISBe4 225.
 Power: 191 kW (260 PS) @ 1,900 rpm
 Torque: 1,050 Nm @ 1,000-1,400 rpm
 Gearbox: Voith D863.3E
-Maximum speed: 72 km/h
+Maximum speed: 80 km/h
 
 Empty weight: 10.500 kg
 Gross weight: 14.000 kg
@@ -70,7 +70,7 @@ Regs_SD200.org
 	[registration_free]
 
 [registration_automatic]
-B-V 
+NG-P 
 
 
 
