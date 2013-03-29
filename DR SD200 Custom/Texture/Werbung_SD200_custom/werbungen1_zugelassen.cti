@@ -12,7 +12,7 @@ Fane1.dds
 [item]
 Fane
 farbschema_tex2
-Fane2.dds
+Fane2.bmp
 
 
 ***************************************
@@ -28,7 +28,7 @@ Skin1.dds
 [item]
 Green White
 farbschema_tex2
-Skin1_1.dds
+Skin1_1.bmp
 
 
 ***************************************
@@ -44,4 +44,4 @@ Skin2.dds
 [item]
 Green
 farbschema_tex2
-Skin2_2.dds
+Skin2_2.bmp
