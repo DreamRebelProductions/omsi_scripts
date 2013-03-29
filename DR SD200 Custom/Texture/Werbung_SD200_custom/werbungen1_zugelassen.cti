@@ -7,14 +7,41 @@ Fane
 [item]
 Fane
 farbschema_tex1
-SD83_01.dds
+Fane1.dds
 
 [item]
 Fane
 farbschema_tex2
-SD83_02.bmp
+Fane2.dds
+
+
+***************************************
+Green White
+***************************************
+
 
 [item]
-Fane
-farbschema_tex3
-SD82-83_Panel.bmp
+Green White
+farbschema_tex1
+Skin1.dds
+
+[item]
+Green White
+farbschema_tex2
+Skin1_1.dds
+
+
+***************************************
+Green
+***************************************
+
+
+[item]
+Green
+farbschema_tex1
+Skin2.dds
+
+[item]
+Green
+farbschema_tex2
+Skin2_2.dds
